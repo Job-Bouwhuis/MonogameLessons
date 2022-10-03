@@ -1,0 +1,2791 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SnowingMonoLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:SnowLibrary.Monogame.Debugging.Debug">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Debugging.Debug.IsShowing">
+            <summary>
+            Indicates if the debug window is at present shown to the screen or not
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.Debug.Initialize">
+            <summary>
+            creates the debug window for any debugging within the game, not only when developing but also at release builds. only for windows
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.Debug.Log``1(``0)">
+            <summary>
+            writes a line of content to the debug screen
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.Debug.Show">
+            <summary>
+            Shows the debug window
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.Debug.Hide">
+            <summary>
+            Hides the debug window
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.Debug.Destroy">
+            <summary>
+            Destroys the debug window
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Debugging.DebugWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.DebugWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Debugging.DebugWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.GameObject">
+            <summary>
+            Represents an object use within the game world
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(SnowLibrary.Monogame.Transform,Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor">
+            <summary>
+            Creates a new empty instance of a GameObject
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.hitbox">
+            <summary>
+            the hitbox of the gameObject. 
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.GameObject.transform">
+            <summary>
+            represents the position, rotation and scale of the given object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.texture">
+            <summary>
+            the texture that is drawn to the screen
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.TextureName">
+            <summary>
+            the name of the texture. use this to dynamically load textures for this game object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.objectName">
+            <summary>
+            Allows for finding the game object within the scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Update">
+            <summary>
+            Updates the given game object
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draws the given GameObject
+            </summary>
+            <param name="batch"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.Transform">
+            <summary>
+            Represents the positional, rotational, and scaling data of an object within a 2D worldspace
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Transform.position">
+            <summary>
+            Defines locational data in 2 dimentions
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Transform.scale">
+            <summary>
+            defines scale in 2 dimentions
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Transform.rotation">
+            <summary>
+            defines rotational data in 2 dimentions
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new instance of the Transform class with its values set to the given parameters
+            </summary>
+            <param name="position"></param>
+            <param name="scale"></param>
+            <param name="rotation"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new instance of the Transform class with the position set the the parameter, and the rest set to its default value
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.#ctor">
+            <summary>
+            Creates a new empty Transform instance
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.Dispose">
+            <summary>
+            releases all acociated 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.ToString">
+            <summary>
+            Returns a string representation of the Transform instance
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.ToString(System.String)">
+            <summary>
+            Returns a string representation of the Transform instance where the specified format is applied
+            </summary>
+            <param name="format"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.UIEditor">
+            <summary>
+            Allows for the easy creation of game UIs be it for scores, or pause menus
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UIEditor.Editing">
+            <summary>
+            Value is true when the editor is set to Edit mode.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UIEditor.processingUIInstance">
+            <summary>
+            The UI instance that is currently being worked with
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.#ctor(SnowLibrary.Monogame.UI.UI,Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+            <summary>
+            Creates a new instance of the UIEditor class, from here one can edit a UI instance
+            </summary>
+            <param name="ui">the UI instance that will be worked with</param>
+            <param name="graphics">the graphics device to use when editing UI</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.EditUI">
+            <summary>
+            make sure nothing is going on in the update and draw method when this is active. use the "Editing" field to check. to use press space to add new elements and drag them around with the mouse.
+            </summary>
+            <returns>the completed task </returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Save(System.String,System.Boolean)">
+            <summary>
+            Saves the current processing UI using the given name
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Save(SnowLibrary.Monogame.UI.UI,System.String)">
+            <summary>
+            Saves the given UI with the given name
+            </summary>
+            <param name="ui"></param>
+            <param name="saveName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Load(System.String)">
+            <summary>
+            Loads the UI that has the given name. throws an exception when there was no UI found with the given name
+            </summary>
+            <param name="saveName"></param>
+            <returns></returns>
+            <exception cref="!:FileManagement.FileNotFoundException"></exception>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditor.GetSaves">
+            <summary>
+            Gets all the saves that are saved
+            </summary>
+            <returns>An array of names from all the saved UI templates</returns>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.UIElement">
+            <summary>
+            all UI elements inherit from this class. it enables the bundling of all elements for convenient bulk use
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIElement.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Requests for the given object to be drawn to the screen using the passed Spritebatch
+            </summary>
+            <param name="batch"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.UI">
+            <summary>
+            Represents a UI object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.textFields">
+            <summary>
+            A list containing all text fields present in the UI
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.buttons">
+            <summary>
+            A list containing all buttons presnt in the UI
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.sliders">
+            <summary>
+            A list containing all images present in the UI
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.inputFields">
+            <summary>
+            A list containing all InputFields present in the UI
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.UI.UIControl">
+            <summary>
+            if a certain UI element has control, this veriable should be used to stop all interfearing code. e.g. keyboard input
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.UseUIBackground">
+            <summary>
+            Specifies if the background color of this UI should be used
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UI.backgroundColor">
+            <summary>
+            Used to change the backgrounds of specific UI environments
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.DrawUI(Microsoft.Xna.Framework.Graphics.SpriteBatch@)">
+            <summary>
+            draws the UI to the screen using the provided SpriteBatch
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.UI.Elements">
+            <summary>
+            returns all the elements assigned to the UI.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.UpdateUI(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Calls the update method on every UI element that requires it
+            </summary>
+            <param name="time">the GameTime some UIElements need</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.TextField)">
+            <summary>
+            adds <paramref name="element"/> to <paramref name="ui"/>
+            </summary>
+            <param name="ui"></param>
+            <param name="element"></param>
+            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.Button)">
+            <summary>
+            adds <paramref name="element"/> to <paramref name="ui"/>
+            </summary>
+            <param name="ui"></param>
+            <param name="element"></param>
+            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.Slider)">
+            <summary>
+            adds <paramref name="element"/> to <paramref name="ui"/>
+            </summary>
+            <param name="ui"></param>
+            <param name="element"></param>
+            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.UIElement)">
+            <summary>
+            adds <paramref name="element"/> to <paramref name="ui"/>
+            </summary>
+            <param name="ui"></param>
+            <param name="element"></param>
+            <returns><paramref name="ui"/> with the newly added <paramref name="element"/> if the element is of a supported type. if not, it returns the ui unchanged</returns> 
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.NewButtonForm.ccomponents">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewButtonForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewButtonForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.NewInputFieldForm">
+            <summary>
+            Allows easy creation of a new text field using the UIEditor system
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewInputFieldForm.#ctor(SnowLibrary.Monogame.UI.UIEditorControls)">
+            <summary>
+            creates a new instance of this form
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.NewInputFieldForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewInputFieldForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewInputFieldForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.NewTextFieldForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewTextFieldForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.NewTextFieldForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.UIEditorControls.ccomponents">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.TextField">
+            <summary>
+            Represents a piece of UI text
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextField.Content">
+            <summary>
+            Gets or sets the content of this Text element
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.TextField.textColor">
+            <summary>
+            The color of this Text element
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.TextField.font">
+            <summary>
+            The font to use for this Text element
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextField.PixelLength">
+            <summary>
+            gets the with and length of the string using the font of this element, should it not be assigned it uses the global default font
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextField.#ctor">
+            <summary>
+            creates a new empty text element
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextField.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Requests the drawing of this text element
+            </summary>
+            <param name="batch">the spritebatch to use when drawing</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.Button">
+            <summary>
+            Represents a UI button object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.buttonX">
+            <summary>
+            the width of the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.buttonY">
+            <summary>
+            the height of the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.normal">
+            <summary>
+            Color of the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.hover">
+            <summary>
+            Color of the button when mouse is hovering
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.click">
+            <summary>
+            color when button is clicked <b>Obsoltete, field is not used</b>
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.dissabled">
+            <summary>
+            Color the button has when its dissabled
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.Button.isDissabled">
+            <summary>
+            specify if the button can be clicked or not
+            </summary>
+        </member>
+        <member name="E:SnowLibrary.Monogame.UI.Button.OnClick">
+            <summary>
+            raised when the button is clicked
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Button.#ctor">
+            <summary>
+            Creates a new button UI element, with all the default values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Button.MouseHovering">
+            <returns>
+            returns true when the mouse has entered the bountrybox of the button otherwise false
+            </returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Button.Update">
+            <summary>
+            Updates the button so the color changes if the mouse hovers and invokes the OnClick event when the button is clicked 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Button.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            draws the button to the screen
+            </summary>
+            <param name="batch"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.OnClickEventArgs">
+            <summary>
+            serves to specify which button was used to click the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.OnClickEventArgs.button">
+            <summary>
+            Gets what button was used to click the button
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.OnClickEventArgs.#ctor(SnowLibrary.Monogame.MouseButton)">
+            <summary>
+            Creates a new instance of the <b>OnClickEventArgs</b> class
+            </summary>
+            <param name="button"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.InputField">
+            <summary>
+            represents a Inputfield control for users to input text
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.input">
+            <summary>
+            the text that the user inputted into this InputField
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.placeHolder">
+            <summary>
+            the text to show when no input has been given
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.inputTextColor">
+            <summary>
+            the text color of user inputted text
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.placeholderTextColor">
+            <summary>
+            the color of the placeholder text
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.backgroundColor">
+            <summary>
+            Background of this TextField
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.selectedBackgroundColor">
+            <summary>
+            The background of this TextField when it is selected
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.IsSelected">
+            <summary>
+            Indicates whether the InputField is selected
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.multiLine">
+            <summary>
+            Indicates whether the InputField should allow the user to enter multiple lines.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.InputField.font">
+            <summary>
+            The font to use with this UI element
+            </summary>
+        </member>
+        <member name="E:SnowLibrary.Monogame.UI.InputField.OnCompleteTyping">
+            <summary>
+            Raised when enter is pressed while this InputField is selected
+            </summary>
+        </member>
+        <member name="E:SnowLibrary.Monogame.UI.InputField.OnTextChanged">
+            <summary>
+            Raised when the input text has changed
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.InputField.#ctor">
+            <summary>
+            Creates a new empty InputField UI element
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.InputField.Update">
+            <summary>
+            Updates the InputField UI element
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.InputField.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Requests the drawing of the InputField UI element
+            </summary>
+            <param name="batch"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.TextChangedEventArgs">
+            <summary>
+            Carries the text that was inputted by the user
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextChangedEventArgs.op_Implicit(SnowLibrary.Monogame.UI.TextChangedEventArgs)~System.String">
+            <summary>
+            Gets the associated argument of this event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextChangedEventArgs.ToString">
+            <summary>
+            gets the text that was changed
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.FinishedTypingEventArgs">
+            <summary>
+            Carries the text that was inputted by the user
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.FinishedTypingEventArgs.op_Implicit(SnowLibrary.Monogame.UI.FinishedTypingEventArgs)~System.String">
+            <summary>
+            Gets the associated argument of this event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.FinishedTypingEventArgs.ToString">
+            <summary>
+            Gets the associated argument of this event
+            </summary>
+            <returns>the argument</returns>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.Slider">
+            <summary>
+            Represents a UI slider object
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Slider.Update">
+            <summary>
+            updates the UI element
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.SliderIndicator.#ctor">
+            <summary>
+            Creates a new instance of the SliderIndicator class. this is used for the Slider class. it has no use on its own
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.MonoUtils">
+            <summary>
+            A convenient class containing global elements that can be used throughout the entirety of the project
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.MonoUtils.graphics">
+            <summary>
+            Represents the default graphics device used for the game
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.MonoUtils.screenSize">
+            <summary>
+            represents the width and height of the screen
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.MonoUtils.screenCenter">
+            <summary>
+            represents the exact coordinates of the center of the screen
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.MonoUtils.spriteBatch">
+            <summary>
+            represents the default spritebatch used for the game
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.MonoUtils.DefaultFont">
+            <summary>
+            represents the default font used by the game. this is also the font used for any UI element created using the UIEditor
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.MonoUtils.content">
+            <summary>
+            the global contentmanager used within the game
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.MonoUtils.DefaultWhiteTexture">
+            <summary>
+            retrieves a default 10x10 white texture, this can be used to project upon a rectangle to have a larger white area
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.Initialize(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Content.ContentManager)">
+            <summary>
+            Initialize the static utility class
+            </summary>
+            <param name="_graphics"></param>
+            <param name="_spriteBatch"></param>
+            <param name="_arial"></param>
+            <param name="_content"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.AreYouOnScreen(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            checks if the given object is within the boundaries of the game window
+            </summary>
+            <param name="pos"></param>
+            <param name="tex"></param>
+            <returns>return true if position is within bounds of screensize, accounts for texture sizes</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.CreateTexture(System.Int32,System.Int32,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.GraphicsDevice,System.Byte)">
+            <summary>
+            Creates a new textures using the given parameters
+            </summary>
+            <param name="x">the Width of the texture</param>
+            <param name="y">the Height of the texture</param>
+            <param name="color">the Color of the texture</param>
+            <param name="alpha">the transparency of the texture</param>
+            <param name="_graphics">the graphics device to use when creating this texture</param>
+            <returns>the newly created texture</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.CreateTexture(System.Int32,System.Int32,Microsoft.Xna.Framework.Color,System.Byte)">
+            <summary>
+            Creates a new textures using the given parameters
+            </summary>
+            <param name="x">the Width of the texture</param>
+            <param name="y">the Height of the texture</param>
+            <param name="color">the Color of the texture</param>
+            <param name="alpha">the transparency of the texture</param>
+            <returns>the newly created texture</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.AlterTexture(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Color,System.Byte)">
+            <summary>
+            alters the given texture to have a different color and or alpha
+            </summary>
+            <param name="texture"></param>
+            <param name="color"></param>
+            <param name="alpha"></param>
+            <returns>the altered texture</returns>
+        </member>
+        <member name="T:SnowLibrary.Monogame.Colision">
+            <summary>
+            Helper class for getting collitions
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if there is a collition happening using 2 Rectangles
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>returns true if two rectangles collide, otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.IsCollidingOnSides(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if two rectangles are colliding
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>returns true if two rectangles collide, otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if the given point finds itself within the bounds specified rectangle
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>returns true if the point is within the given rectangle, otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.ColisionTop(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if <paramref name="me"/> is colliding at the top of <paramref name="them"/>
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>true if <paramref name="me"/> is intersecting with the top of <paramref name="them"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.ColisionBottom(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if <paramref name="me"/> is colliding at the bottom of <paramref name="them"/>
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>true if <paramref name="me"/> is intersecting with the bottom of <paramref name="them"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.ColisionRight(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if <paramref name="me"/> is colliding at the right of <paramref name="them"/>
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>true if <paramref name="me"/> is intersecting with the right of <paramref name="them"/></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Colision.ColisionLeft(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            checks if <paramref name="me"/> is colliding at the left of <paramref name="them"/>
+            </summary>
+            <param name="me"></param>
+            <param name="them"></param>
+            <returns>true if <paramref name="me"/> is intersecting with the left of <paramref name="them"/></returns>
+        </member>
+        <member name="T:SnowLibrary.Monogame.Input">
+            <summary>
+            Helper class for getting keyboard and mouse input from the user. place the <b>UpdateState()</b> method at the top of your update for this to be used.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.UpdateState">
+            <summary>
+            Updates the keyboard and mouse states so this class works as intended.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>
+            gets if the specified key is pressed on this frame
+            </summary>
+            <param name="key"></param>
+            <returns>returns if the specified key is being pressed this frame, and not the last. otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKey(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>
+            gets whether the specified key is pressed
+            </summary>
+            <param name="key"></param>
+            <returns>returns true if the given key is being pressed</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeyUp(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>
+            gets if the specified key is released on this frame
+            </summary>
+            <param name="key"></param>
+            <returns>returns true if the key is released on the current frame, otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeysUp(Microsoft.Xna.Framework.Input.Keys[])">
+            <summary>
+            Checks if all the given keys are currently not pressed
+            </summary>
+            <param name="keys"></param>
+            <returns>true if none of the given keys are pressed. otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeysDown(Microsoft.Xna.Framework.Input.Keys[])">
+            <summary>
+            Gets if all the given keys are currently pressed
+            </summary>
+            <param name="keys"></param>
+            <returns>true if all of the given keys are currently pressed. otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetAnyKey">
+            <summary>
+            Gets all pressed keys and returns a tuple that contains all keys and a bool that specifies if any key is pressed
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetAnyKeyDown">
+            <summary>
+            Gets all pressed keys and returns a tuple that contains all keys that were pressed this frame and were not pressed last frame, and a bool that specifies if any key is pressed
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetMouseDown(SnowLibrary.Monogame.MouseButton)">
+            <summary>
+            Gets if specified mouse button is being pressed this frame
+            </summary>
+            <param name="button"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetMouseUp(SnowLibrary.Monogame.MouseButton)">
+            <summary>
+            Gets if the specified mouse button is released this frame
+            </summary>
+            <param name="button"></param>
+            <returns>true if the specified key is released this frame, and pressed last frame, otherwise false</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetMouse(SnowLibrary.Monogame.MouseButton)">
+            <summary>
+            Gets if the specified mouse button is pressed
+            </summary>
+            <param name="button"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SnowLibrary.Monogame.Input.MousePosition">
+            <summary>
+            Gets the current mouse position on the screen
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.Input.MouseScroll">
+            <summary>
+            gets the current mouse scroll value since the game started
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.MouseButton">
+            <summary>
+            Selector for mouse buttons
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.ConsoleExtentions.Input">
+            <summary>
+            Allows for easy key input gathering from console applications
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.Input.GetKey(System.ConsoleKey,System.Boolean,System.Boolean)">
+            <summary>
+            gets the specified key. using intercept to determain if the pressed key should appear in the console.
+            </summary>
+            <param name="key"></param>
+            <param name="intercept"></param>
+            <param name="wait"></param>
+            <returns>returns true when the key is pressed. otherwise, if wait is set to false and the key is not being pressed, it returns false</returns>
+        </member>
+        <member name="T:SnowLibrary.ConsoleExtentions.ConsoleS">
+            <summary>
+            Extra stuff for console applications
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.ConsoleS.WriteErrorLine``1(``0)">
+            <summary>
+            Writes a red text line with slight indent to the console
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="Message"></param>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.ConsoleS.WriteError``1(``0)">
+            <summary>
+            Writes the red text to the console with a tab before it
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="Message"></param>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.ConsoleS.WriteWarningLine``1(``0)">
+            <summary>
+            Writes a yellow text line with slight indent to the console
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="Message"></param>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.ConsoleS.WriteWarning``1(``0)">
+            <summary>
+            Writes the yellow text to the console with a tab before it
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="Message"></param>
+        </member>
+        <member name="T:SnowLibrary.ConsoleExtentions.WindowFlasher">
+            <summary>
+            Allows for flashing of Console Windows
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHWINFO.cbSize">
+            <summary>
+            The size of the structure, in bytes
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHWINFO.hwnd">
+            <summary>
+            A handle to the window to be flashed. The window can be either opened or minimized.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHWINFO.dwFlags">
+            <summary>
+            The flash status. This parameter can be one or more of the following values.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHWINFO.uCount">
+            <summary>
+            The number of times to flash the window.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHWINFO.dwTimeout">
+            <summary>
+            The rate at which the window is to be flashed, in milliseconds. If dwTimeout is zero, the function uses the default cursor blink rate.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHW_ALL">
+            <summary>
+            Flash both the window caption and taskbar button. This is equivalent to setting the FLASHW_CAPTION | FLASHW_TRAY flags.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.ConsoleExtentions.WindowFlasher.FLASHW_STOP">
+            <summary>
+            Stop flashing. The system restores the window to its original state.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.WindowFlasher.GetFLASHWINFO(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Create an instance of the FLASHWINFO structure
+            </summary>
+            <param name="flashwConstant">One of the provided FLASHW contant values</param>
+            <param name="uCount">uCount to initialize the struct</param>
+            <param name="dwTimeout">dwTimeout to initalize the struct</param>
+            <returns>A fully instantiated FLASHWINFO struct</returns>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.WindowFlasher.Flash(System.UInt32)">
+            <summary>
+            Flashes the console window (continues indefinitely)
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ConsoleExtentions.WindowFlasher.StopFlash">
+            <summary>
+            Stops the flashing of the console window
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Encryption.Encrypter">
+            <summary>
+            Encrypt strings with special incrytion settings
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.Encrypter.SupportedCharacters">
+            <summary>
+            Represents a string literal that shows all supported characters by the encrypter
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.#ctor(SnowLibrary.Encryption.EncrypterSetting,SnowLibrary.Encryption.EncrypterSetting,SnowLibrary.Encryption.EncrypterSetting)">
+            <summary>
+            Creates a new instance of the Encrypter class
+            </summary>
+            <param name="setting1"></param>
+            <param name="setting2"></param>
+            <param name="setting3"></param>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Encrypt(System.String)">
+            <summary>
+            encrypts the given message.
+            </summary>
+            <returns>The resulting string from the encrypting</returns>
+            <param name="message"></param>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Encrypt(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Int32)">
+            <summary>
+            encrypts the given message.
+            </summary>
+            <param name="message"></param>
+            <param name="progress"></param>
+            <param name="reportAt"></param>
+            <returns>The resulting string from the encrypting</returns>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Encrypt(System.String,System.Int32)">
+            <summary>
+            encrypts the string using multiple threads for a faster result
+            </summary>
+            <param name="message"></param>
+            <param name="ThreadsToUse"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Decrypt(System.String)">
+            <summary>
+            Decrypts the given message
+            </summary>
+            <param name="message"></param>
+            <returns>the resulting string from the decryption</returns>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Decrypt(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32)">
+            <summary>
+            Decrypts the given message
+            </summary>
+            <param name="message"></param>
+            <param name="progress"></param>
+            <param name="reportAt"></param>
+            <returns>the resulting string from the decryption</returns>
+        </member>
+        <member name="M:SnowLibrary.Encryption.Encrypter.Decrypt(System.String,System.Int32)">
+            <summary>
+            Work in progress
+            </summary>
+            <param name="message"></param>
+            <param name="ThreadsToUse"></param>
+            <returns>Work in progress. might return faulty data</returns>
+        </member>
+        <member name="T:SnowLibrary.Encryption.EncrypterSetting">
+            <summary>
+            this class is part of the Encryption, 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Encryption.EncrypterSetting.#ctor(SnowLibrary.Encryption.ScrambleConfiguration,System.Int32,System.Int32)">
+            <summary>
+            creates a new instance of the Rotor class
+            </summary>
+            <param name="configuration">Selects which config is chosen for this specific rotor</param>
+            <param name="offset">indicates at what position the rotor starts at</param>
+            <param name="moveNext">at what rotation of this rotor should it signal the rotation of the next</param>
+        </member>
+        <member name="T:SnowLibrary.Encryption.ScrambleConfiguration">
+            <summary>
+            Makes for easy determaining what rotor configuration to choose from
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.ScrambleConfiguration.I">
+            <summary>
+            Represents the first configuration of the rotors
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.ScrambleConfiguration.II">
+            <summary>
+            Represents the second configuration of the rotors
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.ScrambleConfiguration.III">
+            <summary>
+            Represents the third configuration of the rotors
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.ScrambleConfiguration.IV">
+            <summary>
+            Represents the fourth configuration of the rotors
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Encryption.ScrambleConfiguration.V">
+            <summary>
+            Represents the fifth configuration of the rotors
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.DirectorySerializer">
+            <summary>
+            Provides methods to serialize or deserialize a directory
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.DirectorySerializer.SerializeDirectory(System.String)">
+            <summary>
+            serializes the given directory
+            </summary>
+            <param name="directoryToSerialize">path to the directory to be serialized</param>
+            <returns>a string containing data of the serialized directory</returns>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.DirectorySerializer.DeserializeDirectory(System.String,System.String)">
+            <summary>
+            Deserialized the given directory
+            </summary>
+            <param name="archiveContent"></param>
+            <param name="directoryDestination"></param>
+            <returns>true if the operation was succesfull, false if it wasnt</returns>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.SerializedDirectory">
+            <summary>
+            represents a serialized directory
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.FileManagement.SerializedDirectory.directories">
+            <summary>
+            Represents all the sub directories within this serialized directory
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.FileManagement.SerializedDirectory.files">
+            <summary>
+            contains all the serialized files within this serialized directory
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.SerializedFile">
+            <summary>
+            represents a serialized file
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.SerializedFile.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            creates a new instance of the SerializedFile class with the given properties
+            </summary>
+            <param name="fileName"></param>
+            <param name="fileExtention"></param>
+            <param name="byteContent"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.SerializedFile.#ctor">
+            <summary>
+            creates an empty intance of the SerializedFile class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.SerializedFile.SerializeFile(System.String,System.String)">
+            <summary>
+            serializes the file at the given path
+            </summary>
+            <param name="path"></param>
+            <returns>the serialized file</returns>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.FileManager">
+            <summary>
+            Allows for easy file manipulation. For suggestions please relay them to <b>TheSnowOwl</b>
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.Write(System.String,System.String,System.Boolean)">
+            <summary>
+            Write a given string to a text file. include the .txt in the path. Method creates new file and directory if either does not exists.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.WriteLine(System.String,System.String,System.Boolean)">
+            <summary>
+            Write a given string to a text file on a new line. include the .txt in the path. Method creates new file and directory if either does not exists.
+            </summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <param name="overrideFile"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.Read(System.String)">
+            <summary>
+            Reads all text from the FileStream from beginning to end
+            </summary>
+            <returns>one conplete string of all text in the file</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.TryRead(System.String)">
+            <summary>
+            attempts to read the given file
+            </summary>
+            <param name="path"></param>
+            <returns>if the given file does not exist, or is already used, returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ReadLine(System.String,System.Int32)">
+            <summary>
+            reads the specified line
+            </summary>
+            <param name="path"></param>
+            <param name="lineNumber"></param>
+            <returns>the string that exists on the specified line</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:SnowLibrary.FileManagement.LineNumberTooGreatException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ReadAllLines(System.String)">
+            <summary>
+            reads all lines in the file
+            </summary>
+            <param name="path"></param>
+            <returns>a string array of all lines</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.WriteAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Write a given string to a text file. include the .txt in the path. Method creates new file and directory if either does not exists.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.WriteLineAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Write a given string to a text file on a new line. include the .txt in the path. Method creates new file and directory if either does not exists.
+            </summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <param name="overrideFile"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ReadAsync(System.String)">
+            <summary>
+            Reads all text from the FileStream from beginning to end
+            </summary>
+            <returns>one conplete string of all text in the file</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ReadLineAsync(System.String,System.Int32)">
+            <summary>
+            reads the specified line
+            </summary>
+            <param name="path"></param>
+            <param name="lineNumber"></param>
+            <returns>the string that exists on the specified line</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:SnowLibrary.FileManagement.LineNumberTooGreatException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ReadAllLinesAsync(System.String)">
+            <summary>
+            reads all lines in the file
+            </summary>
+            <param name="path"></param>
+            <returns>a string array of all lines</returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.ZipDirectory(System.String,System.String,System.IO.Compression.CompressionLevel,System.Boolean)">
+            <summary>
+            Zips the given directory, and places the created zip file in the given destination path
+            </summary>
+            <param name="sourceDirectory"></param>
+            <param name="archiveDestinationPath"></param>
+            <param name="compressionLevel"></param>
+            <param name="overrideExistingFile"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileManager.UnzipDirectory(System.String,System.String,System.Boolean)">
+            <summary>
+            unzips the given archive, and places the resulting directory at the given path
+            </summary>
+            <param name="sourceArchive"></param>
+            <param name="destinationDirectoryPath"></param>
+            <param name="overrideFiles"></param>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.FileOutput">
+            <summary>
+            Represents the output from a read action from the SnowLibrary. this class can be directly assigned to and from a string. no casting needed.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutput.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the FileOutput class that contains a populated string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutput.#ctor">
+            <summary>
+            Creates a new instance of the FileOutput class that contains an empty string
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutput.RemoveReadAnomalies">
+            <summary>
+            Removes any and all <b>\r\n</b> that contain within the FileOutput, then returns it as a string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutput.op_Implicit(SnowLibrary.FileManagement.FileOutput)~System.String">
+            <summary>
+            Get the output value as a string
+            </summary>
+            <param name="f"></param>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutput.op_Implicit(System.String)~SnowLibrary.FileManagement.FileOutput">
+            <summary>
+            Get a new FileOutput instance from a given string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.FileOutputExtensions">
+            <summary>
+            A class containing helpfull methods for FileOutput handling
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutputExtensions.RemoveReadAnomalies(SnowLibrary.FileManagement.FileOutput[])">
+            <summary>
+            Removes the Read anomalies from every FileOutput within the array
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutputExtensions.ToStringArray(SnowLibrary.FileManagement.FileOutput[])">
+            <summary>
+            turns the complete FileOutput array into a array of strings
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.FileManagement.FileOutputExtensions.ToFileOutputArray(System.String[])">
+            <summary>
+            Creates an array of FileOutput classes from an array of strings
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SnowLibrary.FileManagement.LineNumberTooGreatException">
+            <summary>
+            Gets thrown when reading for a specific line which does not exist in the given file
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.SnowMathExtentionMethods">
+            <summary>
+            Math Extention Methods for all Snow needs
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.FloorToInt(System.Double)">
+            <summary>
+            floors the given double to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer floored from to the nearest possible whole number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.FloorToInt(System.Single)">
+            <summary>
+            floors the given float to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer floored from to the nearest possible whole number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.CeilingToInt(System.Double)">
+            <summary>
+            Raises the given double to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer raised from to the nearest possible whole number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.CeilingToInt(System.Single)">
+            <summary>
+            Raises the given float to the nearest integer
+            </summary>
+            <param name="num">This number will be convertd to an integer</param>
+            <returns>an integer raised from to the nearest possible whole number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.FloorToInt(System.Decimal)">
+            <summary>
+            floors the given decumal to the nearest round integer
+            </summary>
+            <param name="num"></param>
+            <returns>the floored number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.CeilingToInt(System.Decimal)">
+            <summary>
+            Raises the given decimal to the nearest round integer
+            </summary>
+            <param name="num"></param>
+            <returns>the raised number</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.ConsecutiveNumbers(System.Collections.Generic.List{System.Int32},System.Int32)">
+            <summary>
+            Generates a list of numbers starting at 0 up to count - 1
+            </summary>
+            <param name="nums"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SnowLibrary.MathS">
+            <summary>
+            All extra Math methods Snow needs
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.MathS.FloorToInt(System.Double)">
+            <summary>
+            Floors the given double to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer floored from to the nearest possible integer</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.FloorToInt(System.Single)">
+            <summary>
+            Floors the given float to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer floored from to the nearest possible integer</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.CeilingToInt(System.Double)">
+            <summary>
+            Raises the given double to the nearest integer
+            </summary>
+            <param name="num">This number will be converted to an integer</param>
+            <returns>an integer raised from to the nearest possible integer</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.CeilingToInt(System.Single)">
+            <summary>
+            Raises the given float to the nearest integer
+            </summary>
+            <param name="num">This number will be convertd to an integer</param>
+            <returns>an integer raised from to the nearest possible integer</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.FloorToInt(System.Decimal)">
+            <summary>
+            floors the given decumal to the nearest round integer
+            </summary>
+            <param name="num"></param>
+            <returns>the floored number</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.CeilingToInt(System.Decimal)">
+            <summary>
+            Raises the given decimal to the nearest round integer
+            </summary>
+            <param name="num"></param>
+            <returns>the raised number</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetHexadecimal(System.Int32)">
+            <summary>
+            Gets the hexadecimal value from the given int
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetNumber(System.String)">
+            <summary>
+            gets the integer value from the given hexadecimal
+            </summary>
+            <param name="hexadecimal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Double,System.Double,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Int32,System.Double,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Single,System.Single,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Single,System.Double,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Double,System.Single,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Int32,System.Single,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="M:SnowLibrary.MathS.GetPersentage(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get the persentage based on the given parameters
+            </summary>
+            <param name="current"></param>
+            <param name="max"></param>
+            <param name="decimals"></param>
+            <returns>the persentage calculated from the given parameters</returns>
+        </member>
+        <member name="T:SnowLibrary.ActionQueuer">
+            <summary>
+            Allows for queueing of Methods with no arguments and no return values.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.ActionQueuer.Count">
+            <summary>
+            Gets the number of methods in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer.#ctor">
+            <summary>
+            Creates a new instance of the ActionQueuer class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer.Add(System.Action)">
+            <summary>
+            Adds a new action to the queue
+            </summary>
+            <param name="action">The action that will be added</param>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer.StartQueue">
+            <summary>
+            Starts the queue
+            </summary>
+            <returns>The completed task</returns>
+        </member>
+        <member name="T:SnowLibrary.ActionQueuer`1">
+            <summary>
+            allows for queueing of Methods with one argument and no return values.
+            </summary>
+            <typeparam name="T1">Argument 1</typeparam>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`1.#ctor">
+            <summary>
+            Creates a new instance of the ActionQueuer class
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.ActionQueuer`1.Count">
+            <summary>
+            Gets the number of methods in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`1.Add(SnowLibrary.ActionQueuer{`0}.QueueArgumentCarrier)">
+            <summary>
+            Adds a new action to the queue
+            </summary>
+            <param name="argument">The action that will be added, alongside its argument</param>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`1.StartQueue">
+            <summary>
+            Starts the queue
+            </summary>
+            <returns>The completed task</returns>
+        </member>
+        <member name="T:SnowLibrary.ActionQueuer`1.QueueArgumentCarrier">
+            <summary>
+            allows for the carrying of arguments to actions in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`1.QueueArgumentCarrier.#ctor(System.Action{`0},`0)">
+            <summary>
+            Creates a new instance of the <b>QueueArgumentCarrier</b> class
+            </summary>
+            <param name="action"></param>
+            <param name="argument"></param>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`1.QueueArgumentCarrier.op_Implicit(SnowLibrary.ActionQueuer{`0}.QueueArgumentCarrier)~`0">
+            <summary>
+            Gets the arguments value
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="T:SnowLibrary.ActionQueuer`2">
+            <summary>
+            allows for queueing of Methods with two arguments, and no return types. Contact the author of this library if you wish to use more arguments
+            </summary>
+            <typeparam name="T1">argument 1</typeparam>
+            <typeparam name="T2">argument 2</typeparam>
+        </member>
+        <member name="P:SnowLibrary.ActionQueuer`2.Count">
+            <summary>
+            Gets the number of methods in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.#ctor">
+            <summary>
+            Creates a new instance of the ActionQueuer class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.Add(SnowLibrary.ActionQueuer{`0,`1}.QueueArgumentCarrier)">
+            <summary>
+            Adds a new action to the queue
+            </summary>
+            <param name="arguments">The action that will be added, alongside its argument</param>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.StartQueue">
+            <summary>
+            Starts the queue
+            </summary>
+            <returns>The completed task</returns>
+        </member>
+        <member name="T:SnowLibrary.ActionQueuer`2.QueueArgumentCarrier">
+            <summary>
+            Allows for the carrying of a Action with arguments
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.QueueArgumentCarrier.#ctor(System.Action{`0,`1},`0,`1)">
+            <summary>
+            allows for the carrying of arguments to actions in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.QueueArgumentCarrier.op_Implicit(SnowLibrary.ActionQueuer{`0,`1}.QueueArgumentCarrier)~`0">
+            <summary>
+            Gets the first argument
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="M:SnowLibrary.ActionQueuer`2.QueueArgumentCarrier.op_Implicit(SnowLibrary.ActionQueuer{`0,`1}.QueueArgumentCarrier)~`1">
+            <summary>
+            Gets the second argument
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`1">
+            <summary>
+            allows for queueing of Methods with no arguments and a return value
+            </summary>
+            <typeparam name="TReturnType">Return value</typeparam>
+        </member>
+        <member name="P:SnowLibrary.FuncQueuer`1.Count">
+            <summary>
+            Gets the number of methods in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`1.#ctor">
+            <summary>
+            Creates a new instance of the FuncQueuer class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`1.Add(SnowLibrary.FuncQueuer{`0}.QueueFuncArgumentCarrier)">
+            <summary>
+            Adds the given Func to the queue
+            </summary>
+            <param name="arguments">the func that will be added, along side its callback action</param>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`1.StartQueue(System.Boolean)">
+            <summary>
+            Starts the queue
+            </summary>
+            <param name="waitForCallback"></param>
+            <returns>The completed task</returns>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`1.QueueFuncArgumentCarrier">
+            <summary>
+            Allows for the carrying of a func with a callback action and arguments
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`1.QueueFuncArgumentCarrier.#ctor(System.Func{`0},System.Action{`0})">
+            <summary>
+            Creates a new instance of the <b>QueueFuncArgumentCarrier</b> class
+            </summary>
+            <param name="func"></param>
+            <param name="callBack"></param>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`2">
+            <summary>
+            allows for queueing of Methods with one argument and a return value.
+            </summary>
+            <typeparam name="TArgument1">argument 1</typeparam>
+            <typeparam name="TReturnType">return value</typeparam>
+        </member>
+        <member name="P:SnowLibrary.FuncQueuer`2.Count">
+            <summary>
+            Gets the number of methods currently in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`2.Add(SnowLibrary.FuncQueuer{`0,`1}.QueueFuncArgumentCarrier)">
+            <summary>
+            adds the specified func with its callback action and its argument to the queue
+            </summary>
+            <param name="arguments"></param>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`2.StartQueue">
+            <summary>
+            Starts the queue
+            </summary>
+            <returns>The Completed Task</returns>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`2.QueueFuncArgumentCarrier">
+            <summary>
+            Allows for the carrying of a func with a callback action and arguments
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`2.QueueFuncArgumentCarrier.#ctor(System.Func{`0,`1},`0,System.Action{`1})">
+            <summary>
+            Creates a new instance of the <b>QueueFuncArgumentCarrier</b> class
+            </summary>
+            <param name="func"></param>
+            <param name="callBack"></param>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`2.QueueFuncArgumentCarrier.op_Implicit(SnowLibrary.FuncQueuer{`0,`1}.QueueFuncArgumentCarrier)~`0">
+            <summary>
+            Gets the argument
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`3">
+            <summary>
+            Contact the author of this library if you wish to use more arguments
+            </summary>
+            <typeparam name="TArgument1">argument 1</typeparam>
+            <typeparam name="TArgument2">argument 2</typeparam>
+            <typeparam name="TReturnType">return value</typeparam>
+        </member>
+        <member name="P:SnowLibrary.FuncQueuer`3.Count">
+            <summary>
+            Gets the number of methods currently in the queue
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.#ctor">
+            <summary>
+            Creates a new instance of the FuncQueuer class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.Add(SnowLibrary.FuncQueuer{`0,`1,`2}.QueueFuncArgumentCarrier)">
+            <summary>
+            Adds the given func with its callback action and arguments to the queue
+            </summary>
+            <param name="arguments"></param>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.StartQueue">
+            <summary>
+            Starts the queue
+            </summary>
+            <returns>The completed task</returns>
+        </member>
+        <member name="T:SnowLibrary.FuncQueuer`3.QueueFuncArgumentCarrier">
+            <summary>
+            Allows for the carrying of a func with a callback action and arguments
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.QueueFuncArgumentCarrier.#ctor(System.Func{`0,`1,`2},`0,`1,System.Action{`2})">
+            <summary>
+            Creates a new instance of the FuncQueuer class
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.QueueFuncArgumentCarrier.op_Implicit(SnowLibrary.FuncQueuer{`0,`1,`2}.QueueFuncArgumentCarrier)~`0">
+            <summary>
+            Gets the first argument
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="M:SnowLibrary.FuncQueuer`3.QueueFuncArgumentCarrier.op_Implicit(SnowLibrary.FuncQueuer{`0,`1,`2}.QueueFuncArgumentCarrier)~`1">
+            <summary>
+            Gets the second argument
+            </summary>
+            <param name="argument"></param>
+        </member>
+        <member name="T:SnowLibrary.Serialization.ExcludeFromSerializationAttribute">
+            <summary>
+            Makes sure that when serializing or deserializing this field will always be ignore
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.IncludeWithSerializationAttribute">
+            <summary>
+            Tells the serializer to include this property when handling its declaring class
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.IncludePrivateFieldsAttribute">
+            <summary>
+            Tells the serializer to use the private fields within this class or struct even if the passed setting states not to include them
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.IncludeAllPropertiesAttribute">
+            <summary>
+            Tells the serializer to include all properties in the given class or struct even if they do not have the <b>IncludeWithSerializationAttribute</b> attribute
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.SnowSerializer">
+            <summary>
+            Provides methods for the Serializing and Deserializing to and from the Snow-Format. it can be used to save and load data for use after a program reboot
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.Serialize``1(``0,System.Boolean,System.Boolean)">
+            <summary>
+            Serialize an object to the Snow-Format. returns a string containing all datafields. Check the README.md provided for supported values. skips and any value with the "ExcludeFromSerialization" attribute
+            </summary>
+            <returns>a string format containing all data from the given object</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeList``1(System.Collections.Generic.List{``0},System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Serialize a list of objects to the Snow-format. returns a string containing all objects with their datafields. can only nest 2 classes from the base class
+            if the amount of items to handle is more than 5000 it uses 4 threads and processes 4 items at once
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeArray``1(``0[],System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Serialize a array of objects to the Snow-format. returns a string containing all objects with their base C# datatypes
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided array</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeList``1(System.Collections.Generic.List{``0},System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Serialize an object to the Snow-Format.
+            reports its progress to the given function every given amount of iteration
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeArray``1(``0[],System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Serialize an object to the Snow-Format.
+            reports its progress to the given function every given amount of iteration
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.Deserialize``1(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Deserialize a string from the Snow-Format into a C# class object. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            </summary>
+            <returns>the deserialized object with values given from the serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeList``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Deserialize a string from the Snow-Format into a list of C# class objects. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            if <paramref name="potatoCPU"/> is set to true it will make sure to only process one object at a time on a single thread.
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>a list of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeList``1(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Deserialize a string from the Snow-Format into a list of C# class objects. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>a list of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeArray``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Deserialize a string from the Snow-Format into an array of C# class objects.
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            /// <returns>an array of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeArray``1(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Deserialize a string from the Snow-Format into an array of C# class objects.
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            reports its progress to the given function every time the given amount of iteration. 
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            /// <returns>an array of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeAsync``1(``0,System.Boolean,System.Boolean)">
+            <summary>
+            Asynchronously serializes an object to the Snow-Format. returns a string containing all datafields. Check the README.md provided for supported values. skips and any value with the "ExcludeFromSerialization" attribute
+            </summary>
+            <returns>a string format containing all data from the given object</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeListAsync``1(System.Collections.Generic.List{``0},System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Serializes a list of objects to the Snow-format.returns a string containing all objects with their datafields. can only nest 2 classes from the base class
+            if the amount of items to handle is more than 5000 it uses 4 threads and processes 4 items at once
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeArrayAsync``1(``0[],System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Serializes a array of objects to the Snow-format.returns a string containing all objects with their base C# datatypes
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            if its set to false and the given amount of objects is more than 5000 it will process 4 at a time
+            </summary>
+            <returns>string containing the data of every object instance in the provided array</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeListAsync``1(System.Collections.Generic.List{``0},System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Serializes an object to the Snow=Format.
+            reports its progress to the given function every given amount of iteration
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeAsync``1(``0[],System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Serializes an object array to the Snow=Format.
+            reports its progress to the given function every given amount of iteration
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>string containing the data of every object instance in the provided list</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type corrosponding with a class field is found</exception>
+            <exception cref="T:System.Exception">thrown if creation of classfield instance has failed</exception>
+            <exception cref="T:SnowLibrary.Serialization.SerializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeAsync``1(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Asynchronously Deserializes a string from the Snow-Format into a C# class object. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            </summary>
+            <returns>the deserialized object with values given from the serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeListAsync``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Deserializes a string from the Snow-Format into a list of C# class objects. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            if <paramref name="potatoCPU"/> is set to true it will always use 1 thread and thus process one item at a time. else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>a list of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeListAsync``1(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Deserializes a string from the Snow-Format into a list of C# class objects. 
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            if its set to false, it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            <returns>a list of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeArrayasync``1(System.String,System.Action{SnowLibrary.ProgressReporter},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Asynchronously Deserializes a string from the Snow=Format into an array of C# class objects.
+            when 'ignoreNotFoundFields' is true it will not throw an exception when it tries to deserialize a field which does not exist in the given class. the data that was linked to the field will be ignored aswell.
+            reports its progress to the given function every time the given amount of iteration. 
+            if <paramref name="potatoCPU"/> is set to true it will process only 1 object at a time no matter the total objects to be handled. 
+            else it will determain the best distribution among the  allowed usable threads and processes multiple at once
+            </summary>
+            /// <returns>an array of objects containing the data that was extracted from the provided serialized string</returns>
+            <exception cref="T:System.ArgumentNullException">thrown when 'assembly' or 'typeName' are null when working with a classfield object</exception>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException">thrown when no type was found for the classfield object</exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
+            <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
+        </member>
+        <member name="T:SnowLibrary.Serialization.InvalidArgumentException">
+            <summary>
+            Gets thrown when an argument is invalid
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.TypeNotFoundException">
+            <summary>
+            Gets thrown when a type is not found when using the serializer
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.FieldNotSupportedException">
+            <summary>
+            Gets thrown when a field is not supported by the serializer
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.FieldNotFoundException">
+            <summary>
+            Gets thrown when a field is not found within the current handling class, but is present in the serialized data
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.SerializationFailedException">
+            <summary>
+            Gets thrown when anything fails when serializing
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Serialization.DeserializationFailedException">
+            <summary>
+            Gets thrown when anything fails when deserializing
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.ProgressReporter">
+            <summary>
+            Used to report the progress of serializing or deserializing
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.ProgressReporter.Progress">
+            <summary>
+            the percentage of completed entries
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.ProgressReporter.Message">
+            <summary>
+            a descriptive message 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.ProgressReporter.op_Implicit(SnowLibrary.ProgressReporter)~System.String">
+            <summary>
+            Gets the message of progress reporter
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:SnowLibrary.ProgressReporter.op_Implicit(SnowLibrary.ProgressReporter)~System.Double">
+            <summary>
+            get the persentage value of the progress reporter
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:SnowLibrary.SnowUtils">
+            <summary>
+            Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.GetDirectoryName(System.String)">
+            <summary>
+            gets the last part of the given path
+            </summary>
+            <param name="path"></param>
+            <returns>the last part of the given path</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.Repeat(System.Action,System.Int32)">
+            <summary>
+            Repeats the given action the given amount of times.
+            </summary>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.Repeat(System.Action{System.UInt64},System.UInt64)">
+            <summary>
+            Repeats the given action the given amount of times. gives the current iteration number as argument for the action
+            </summary>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.Repeat(System.Action{System.Int32},System.Int32)">
+            <summary>
+            Repeats the given action the given amount of times. gives the current iteration number as argument for the action
+            </summary>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.Repeat(System.Action,System.Func{System.Boolean},System.Boolean)">
+            <summary>
+            Repeats the given action until the condition is met. or if 'UntilConditionIsTrue' is set to true, it repeats the action while the condition is met
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.RepeatAsync(System.Action,System.Int32)">
+            <summary>
+            Repeats the given action the given amount of times.
+            </summary>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.RepeatAsync(System.Action,System.Func{System.Boolean},System.Boolean)">
+            <summary>
+            Repeats the given action until the condition is met. or if 'UntilConditionIsTrue' is set to true, it repeats the action while the condition is met
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowUtils.ConsecutiveNumbers(System.Int32)">
+            <summary>
+            creates a list of consecutive numbers
+            </summary>
+            <param name="count"></param>
+            <returns>a new list that counts from 0 to the given count - 1</returns>
+        </member>
+        <member name="T:SnowLibrary.SnowUtilsExtentions">
+            <summary>
+            Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.As``2(System.Collections.Generic.List{``0},``1)">
+            <summary>
+            Converts All the items in the list to the given type if possible 
+            </summary>
+            <returns>a list of type T2 where all the items from the first list are converted to the new type</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.As``2(System.Collections.Generic.List{``0})">
+            <summary>
+            Converts All the items in the list to the given type if possible 
+            </summary>
+            <returns>a list of type T2 where all the items from the first list are converted to the new type</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ConvertAll``2(System.Collections.Generic.List{``0})">
+            <summary>
+            Tries to converts all the items in the list to the given type using <see cref="!:TypeWorker.TryCastPrimitive&lt;T&gt;(dynamic, out T?)"/>
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Add``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.KeyValuePair{``0,``1})">
+            <summary>
+            Adds the given Pair to the Dictionary
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dict"></param>
+            <param name="pair"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.MakeString(System.Char[])">
+            <summary>
+            Sets all the letters in the char array into one single string
+            </summary>
+            <param name="chars"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.GetRelativeTime(System.DateTime,System.DateTime)">
+            <summary>
+            Calculates the relative time between the given times
+            </summary>
+            <param name="time"></param>
+            <param name="target"></param>
+            <returns>Timespan containing the relative time between the two and whether this time is in the past or not</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Split``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Splits the given IEnumerable into the given amount of parts. does not keep the order of the enumerable. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="parts"></param>
+            <returns>a list of all parts</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Partition``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            determains the most efficient way to create smaller groups of the given IEnumberable and handles upon that conclution but never goes above the max alowed partitions. if put back together into one list it retains the same order (should you handle the items from the first split list to the last)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>an array of lists that has elements of the IEnumberable operated on split between them</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Count``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Counts the number of items present in the enumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+            <returns>The number of items in the enumerable</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Count(System.Collections.IEnumerable)">
+            <summary>
+            Counts the number of items present in the enumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+             <returns>The number of items in the enumerable</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.NextAvalible(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            finds the first unused int32 from a list
+            </summary>
+            <param name="list"></param>
+            <returns>the next avalible int32 from a list of int32</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.NextAvalible``1(System.Collections.Generic.Dictionary{System.Int32,``0})">
+            <summary>
+            finds the first unused integer from a Dictionary which has a Key value of type Int32
+            </summary>
+            <returns>the next avalible interger from the Dictionary of Keys of type int32</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            executes the given action on every entry in the Enumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Repeat``1(``0,System.Action{``0},System.Int32)">
+            <summary>
+            Repeats the given action the given amount of times.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Repeat``1(``0,System.Action{``0},System.Func{System.Boolean},System.Boolean)">
+            <summary>
+            Repeats the given action until the condition is met. or if 'UntilConditionIsTrue' is set to true, it repeats the action while the condition is met
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Foreach``1(``0[],System.Action{``0})">
+            <summary>
+            executes the given action on every entry in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Foreach``1(``0[],System.Action{``0,System.Int32})">
+            <summary>
+            executes the given action on every entry in the array. passes the iteration int as the second argument.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ForeachAsync``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            executes the given action on every entry in the Enumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <returns>the list where the given action is preformed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.RepeatAsync``1(``0,System.Action{``0},System.Int32)">
+            <summary>
+            Repeats the given action the given amount of times.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="action"></param>
+            <param name="times"></param>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.RepeatAsync``1(``0,System.Action{``0},System.Func{System.Boolean},System.Boolean)">
+            <summary>
+            Repeats the given action until the stop condition is met.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ForeachAsync``1(``0[],System.Action{``0})">
+            <summary>
+            executes the given action on every entry in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+            <returns>the array where the action has executed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
+            <summary>
+            executes the given action on every entry in the Enumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <returns>the list where the given action is preformed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.Foreach``1(``0[],System.Func{``0,``0})">
+            <summary>
+            executes the given action on every entry in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+            <returns>the array where the action has executed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.For``1(``0[],System.Func{``0,``0})">
+            <summary>
+            executes an action on every index of the array. index can be null, the default of the type will be used for this iteration then
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+            <returns>the array where the action has executed for all indexes</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ForeachAsync``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
+            <summary>
+            executes the given action on every entry in the Enumerable
+            </summary>
+            <returns>the list where the given action is preformed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ForeachAsync``1(``0[],System.Func{``0,``0})">
+            <summary>
+            executes the given action on every entry in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+            <returns>the array where the action has executed on all entries</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowUtilsExtentions.ForAsync``1(``0[],System.Func{``0,``0})">
+            <summary>
+            executes an action on every index of the array. index can be null, the default of the type will be used for this iteration then
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="action"></param>
+            <returns>the array where the action has executed for all indexes</returns>
+        </member>
+        <member name="T:SnowLibrary.StringWorker">
+            <summary>
+            Provides methods to manipulate strings 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.ReverseOrder(System.String)">
+            <summary>
+            reverses the given string
+            </summary>
+            <param name="input"></param>
+            <returns>a new string with its character order exactly reversed</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.FirstCapital(System.String)">
+            <summary>
+            makes the first letter capital while making the rest lowercase
+            </summary>
+            <param name="source">string to be acted on</param>
+            <returns>the manipulated string where all but the first letter are lower case</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.FirstCapitalOnAllWords(System.String)">
+            <summary>
+            Makes all first letters of sections seperated by a space a capital letter
+            </summary>
+            <param name="source"></param>
+            <returns>the manipulated string where every word has its first letter turned into a captial letter</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.Base64Encode(System.String)">
+            <summary>
+            converts the given string to a base64 format
+            </summary>
+            <param name="plainText"></param>
+            <returns>the base64 result from the given string</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.Base64Decode(System.String)">
+            <summary>
+            converts the given base64 format into UTF8 characters
+            </summary>
+            <param name="base64EncodedData"></param>
+            <returns>the UTF8 string result from the given base64 format input</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.StringAnimation(System.String,System.Int32)">
+            <summary>
+            allows easy animation of a string to be shown to the user. combine with <b>Foreach()</b>, <b>ForeachAsync()</b>, or any other foreach loop to attchieve the desired result
+            </summary>
+            <param name="content"></param>
+            <param name="delay"></param>
+            <returns>yield returns a string with one extra character than the last until the given <paramref name="content"/> is returned in its fullest</returns>
+        </member>
+        <member name="M:SnowLibrary.StringWorker.StringAnimationChar(System.String,System.Int32)">
+            <summary>
+            allows easy animation of a string to be shown to the user. combine with <b>Foreach()</b>, <b>ForeachAsync()</b>, or any other foreach loop to attchieve the desired result
+            </summary>
+            <param name="content"></param>
+            <param name="delay"></param>
+            <returns>yield returns a char taken from the given <paramref name="content"/> until the last char has been returned</returns>
+        </member>
+        <member name="T:SnowLibrary.TypeWorker">
+            <summary>
+            Provides methods for finding a type or method within accessable assembiles, and easy casting to and from default data types
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.ConvertTo(System.Object,System.Type)">
+            <summary>
+            the same as Convert.ChangeType(object frrom, object To) except this returns a dynamic instead of an object
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns>a dynamic object converted to the given type. or null if converting failed</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.FindType(System.String,System.Reflection.Assembly)">
+            <summary>
+            Searches for the Type matching to the given name. can pass the assembly as filter for the search
+            </summary>
+            <returns>The type matching the given name if it is found within the current accessable assemblies. if no matching type is found it returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.FindType(System.String,System.String)">
+            <summary>
+            Searches for the Type matching to the given name. can pass the assembly as filter for the search. be sure to just give the name of the assembly
+            </summary>
+            <returns>The type matching the given name if it is found within the given Assembly. if no matching type is found it returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.FindMethod(System.Type,System.String)">
+            <summary>
+            Searches for a method within the given type that has the given name.
+            </summary>
+            <param name="containing"></param>
+            <param name="name"></param>
+            <returns>returns the found method info if a method with the given name is found, otherwise returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.CastPrimitive(System.Object,System.Type,System.Reflection.Assembly,System.String)">
+            <summary>
+            Casts the given file to the given destination type. should this fail it throws an exception
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="targetAssembly"></param>
+            <param name="targetTypeName"></param>
+            <returns>the converted value</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException"></exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException"></exception>
+            <exception cref="T:SnowLibrary.CastTypeNotSupportedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.CastPrimitive``1(System.Object,``0,System.Reflection.Assembly,System.String)">
+            <summary>
+            Casts the given file to the given destination type. should this fail it throws an exception
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="targetAssembly"></param>
+            <param name="targetTypeName"></param>
+            <returns>the converted value</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException"></exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException"></exception>
+            <exception cref="T:SnowLibrary.CastTypeNotSupportedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.CastPrimitive``1(System.Object)">
+            <summary>
+            Casts the given file to the given destination type. should this fail it throws an exception
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="from"></param>
+            <returns>the converted value</returns>
+            <exception cref="T:SnowLibrary.Serialization.TypeNotFoundException"></exception>
+            <exception cref="T:SnowLibrary.FailedToCastTypeException"></exception>
+            <exception cref="T:SnowLibrary.CastTypeNotSupportedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.TryCastPrimitive``1(System.Object,``0@)">
+            <summary>
+            Attemts to cast a primitive value to the given cast target
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="from"></param>
+            <param name="result"></param>
+            <returns>true if the operation was successful, otherwise false. puts the result in <paramref name="result"/>. if the operation failed this will be the default value of the specified target type</returns>
+        </member>
+        <member name="T:SnowLibrary.FailedToCastTypeException">
+            <summary>
+            Gets thrown when casting fails
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.CastTypeNotSupportedException">
+            <summary>
+            Gets thrown when destination type is not supported by the <b>CastPrimitive</b> method
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.MethodNotFoundException">
+            <summary>
+            Gets thrown when a linked method for events when serializing is not found
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Vectors.Vector2">
+            <summary>
+            An object that represents a point in 2D worldspace
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Vectors.Vector2.x">
+            <summary>
+            Vector2 coördinate
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Vectors.Vector2.y">
+            <summary>
+            Vector2 coördinate
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.#ctor(System.Single,System.Single)">
+            <summary>
+            poppulated constructor
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.#ctor">
+            <summary>
+            empty constructor
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.ToString">
+            <summary>
+            gets a string representation of this Vector2 object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.Random(System.Int32,System.Int32)">
+            <summary>
+            generates a vector2 with random values
+            </summary>
+            <returns>new vector2 where the values xy are randomized</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.Distance(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            gets the distance between 2 vector2 points
+            </summary>
+            <returns>a float with the distance between the 2 points in a straight line</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Addition(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            Adds 2 Vector2 together
+            </summary>
+            <returns>a new vector2 where the 2 values are added together</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Addition(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary>
+            adds a float value to a vector2
+            </summary>
+            <returns>a new vector2 where the float has been added to the original values</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Subtraction(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            subtracts 2 Vector2 from eachother
+            </summary>
+            <returns>a new vector2 where the 2 values are subtracted</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Subtraction(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary>
+            subtracts a float value from a vector2
+            </summary>
+            <returns>a new vector2 where the float has been subtracted from the original values</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Division(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            devides the values of 2 vector2
+            </summary>
+            <returns>a new vector2 where the values have been diveded with eachother</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Division(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary>
+            devides the values of a vector2 with a float
+            </summary>
+            <returns>a new vector2 where the values are devided by the float</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Multiply(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            multiplies the values together
+            </summary> 
+            <returns>a new vector2 where the values are multiplied by eachother</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Multiply(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary>
+            multiplies the values by a float
+            </summary>
+            <returns>a new vector2 where the values are multiplied by the float</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Modulus(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary>
+            makes a new vector3 with the remainders of a devision
+            </summary>
+            <returns>a new vector2 with the remainders of a devision as its values</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_Modulus(SnowLibrary.Vectors.Vector2,System.Single)">
+             <summary></summary>
+            <returns>a new vector2 where the values are the remainers of a division</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_GreaterThan(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary></summary>
+            <returns>true if left value is greater than the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_LessThan(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary></summary>
+            <returns>true if right value is greater than the left value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_GreaterThan(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary></summary>
+            <returns>true if left value is greater than the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_LessThan(SnowLibrary.Vectors.Vector2,System.Single)">
+            <summary></summary>
+            <returns>true if right value is greater than the left value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_GreaterThanOrEqual(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary></summary>
+            <returns>true if left value is greater than, or equal the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector2.op_LessThanOrEqual(SnowLibrary.Vectors.Vector2,SnowLibrary.Vectors.Vector2)">
+            <summary></summary>
+            <returns>true if right value is greater than, or equal the left value</returns>
+        </member>
+        <member name="T:SnowLibrary.Vectors.Vector3">
+            <summary>
+            An object that represents a position in 3D worldspace
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Vectors.Vector3.x">
+            <summary>
+            Vector3 coördinate
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Vectors.Vector3.y">
+            <summary>
+            Vector3 coördinate
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Vectors.Vector3.z">
+            <summary>
+            Vector3 coördinate
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            poppulation constructor
+            </summary>
+            <param name="x">x</param>
+            <param name="y">y</param>
+            <param name="z">z</param>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.#ctor">
+            <summary>
+            empty constructor
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.ToString">
+            <summary>
+            Returns a string representation of the Vector3
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.Random(System.Int32,System.Int32)">
+            <summary>
+            generates a vector3 with random values
+            </summary>
+            <returns>new vector3 where the values xyz are randomized</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.Distance(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            gets the distance between 2 vector3 points
+            </summary>
+            <returns>a float with the distance between the 2 points in a straight line</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Addition(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            Adds 2 Vector3 together
+            </summary>
+            <returns>a new vector3 where the 2 values are added together</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Addition(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary>
+            adds a float value to a vector3
+            </summary>
+            <returns>a new vector3 where the float has been added to the original values</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Subtraction(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            subtracts 2 Vector3 from eachother
+            </summary>
+            <returns>a new vector3 where the 2 values are subtracted</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Subtraction(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary>
+            subtracts a float value from a vector3
+            </summary>
+            <returns>a new vector3 where the float has been subtracted from the original values</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Division(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            devides the values of 2 vector3
+            </summary>
+            <returns>a new vector3 where the values have been diveded with eachother</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Division(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary>
+            devides the values of a vector3 with a float
+            </summary>
+            <returns>a new vector3 where the values are devided by the float</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Multiply(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            multiplies the values together
+            </summary>
+            <returns>a new vector3 where the values are multiplied by eachother</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Multiply(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary>
+            multiplies the values by a float
+            </summary>
+            <returns>a new vector3 where the values are multiplied by the float</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Modulus(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary>
+            makes a new vector3 with the remainders of a devision
+            </summary>
+            <returns>a new vector3 where the values are the remainers of a division</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_Modulus(SnowLibrary.Vectors.Vector3,System.Single)">
+             <summary>
+             makes a new vector3 with the remainders of a devision
+             </summary>
+            <returns>a new vector3 where the values are the remainers of a division</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_GreaterThan(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary></summary>
+            <returns>true if left value is greater than the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_LessThan(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary></summary>
+            <returns>true if right value is greater than the left value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_GreaterThan(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary></summary>
+            <returns>true if left value is greater than the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_LessThan(SnowLibrary.Vectors.Vector3,System.Single)">
+            <summary></summary>
+            <returns>true if right value is greater than the left value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_GreaterThanOrEqual(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary></summary>
+            <returns>true if left value is greater than, or equal the right value</returns>
+        </member>
+        <member name="M:SnowLibrary.Vectors.Vector3.op_LessThanOrEqual(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
+            <summary></summary>
+            <returns>true if right value is greater than, or equal the left value</returns>
+        </member>
+    </members>
+</doc>
