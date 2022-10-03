@@ -10,11 +10,12 @@ namespace CSharpAdvanced.Assignment1
 {
     public class Sword : GameObject, IMyInteractable
     {
-        public Sword(string objectName) : base("new Sword", new Transform())
+        public Sword(string objectName, params Sprite[] sprites) : base("new Sword", new Transform())
         {
-
+            this.objectName = objectName;
+            sprites.Foreach(x => textures.Add(x));
         }
-
+        
         public void CheckColision(params GameObject[] others)
         {
             others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));

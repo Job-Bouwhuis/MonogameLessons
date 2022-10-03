@@ -5,15 +5,19 @@ using SnowLibrary.Monogame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SnowLibrary.Monogame.Debugging;
+using SnowLibrary;
 
 namespace CSharpAdvanced.Assignment1
 {
     public class Player : GameObject
     {
         private int walkSpeed;
-        public Player(int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
+        public Player(string objectName, int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
-            this.walkSpeed = walkSpeed;   
+            this.walkSpeed = walkSpeed;
+            this.objectName = objectName;
+
+            sprites.Foreach(x => textures.Add(x));
         }
 
 
