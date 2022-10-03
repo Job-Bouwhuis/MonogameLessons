@@ -4,34 +4,40 @@ using System.Text;
 using SnowLibrary.Monogame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SnowLibrary.Monogame.Debugging;
 
 namespace CSharpAdvanced.Assignment1
 {
-    internal class Player : GameObject
+    public class Player : GameObject
     {
         private int walkSpeed;
-        public Player(int walkSpeed) : base("new Object", new Transform())
+        public Player(int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
             this.walkSpeed = walkSpeed;   
         }
 
+
         public override void Update()
         {
-            Transform lastPos = transform;
-            if (Input.GetKeyDown(Keys.W))
-                transform.position.Y -= walkSpeed;
-            if (Input.GetKeyDown(Keys.A))
-                transform.position.X -= walkSpeed;
-            if (Input.GetKeyDown(Keys.D))
-                transform.position.X += walkSpeed;
-            if (Input.GetKeyDown(Keys.S))
-                transform.position.Y += walkSpeed;
+            //input vector. values stay between -1 and 1
+            Vector2 input = new Vector2(0, 0);
+            
+            //getting the input itself
+            if (Input.GetKey(Keys.W))
+                input.Y--;
+            if (Input.GetKey(Keys.A))
+                input.X--;
+            if (Input.GetKey(Keys.D))
+                input.X++;
+            if (Input.GetKey(Keys.S))
+                input.Y++;
 
-           
-            if (!MonoUtils.AreYouOnScreen(transform.position, texture))
-            {
-                transform = lastPos;
-            }
+            //normalizing the input vector
+            if (input != Vector2.Zero)
+                input.Normalize();
+
+            //applying the input vector to the transform
+            transform.position = new Vector2(transform.position.X + input.X * walkSpeed, transform.position.Y + input.Y * walkSpeed);
         }
     }
 }

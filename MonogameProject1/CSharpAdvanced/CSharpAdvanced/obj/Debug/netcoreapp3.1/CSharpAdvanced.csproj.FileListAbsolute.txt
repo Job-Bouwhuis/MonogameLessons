@@ -38,3 +38,11 @@ C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvance
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.dll
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.pdb
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.genruntimeconfig.cache
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Gate.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Knight.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\KnightShield.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\KnightWeapon.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\KnightWeaponShield.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Shield.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Weapon.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Font.xnb

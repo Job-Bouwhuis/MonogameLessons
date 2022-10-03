@@ -60,7 +60,54 @@
         </member>
         <member name="T:SnowLibrary.Monogame.GameObject">
             <summary>
-            a game object. exactly as the name emplies
+            Represents an object use within the game world
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,SnowLibrary.Monogame.Sprite[])">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor">
+            <summary>
+            Creates a new empty instance of a GameObject
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.hitbox">
+            <summary>
+            the hitbox of the gameObject. 
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.GameObject.transform">
+            <summary>
+            represents the position, rotation and scale of the given object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.textureIndex">
+            <summary>
+            When using <see cref="!:GetTexture"/> this index is used to select what texture is returned. change this number repeatedly for animations
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.GameObject.texture">
+            <summary>
+            Gets the texture at index <see cref="F:SnowLibrary.Monogame.GameObject.textureIndex"/>
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.textures">
+            <summary>
+            the texture that is drawn to the screen
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.objectName">
+            <summary>
+            Allows for finding the game object within the scene
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.Update">
@@ -68,6 +115,12 @@
             Updates the given game object
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draws the given GameObject
+            </summary>
+            <param name="batch"></param>
         </member>
         <member name="T:SnowLibrary.Monogame.Transform">
             <summary>
@@ -643,7 +696,7 @@
             retrieves a default 10x10 white texture, this can be used to project upon a rectangle to have a larger white area
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.MonoUtils.Initialize(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Content.ContentManager@)">
+        <member name="M:SnowLibrary.Monogame.MonoUtils.Initialize(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Content.ContentManager)">
             <summary>
             Initialize the static utility class
             </summary>
@@ -690,12 +743,12 @@
             <param name="alpha"></param>
             <returns>the altered texture</returns>
         </member>
-        <member name="T:SnowLibrary.Monogame.Colision">
+        <member name="T:SnowLibrary.Monogame.Collision">
             <summary>
             Helper class for getting collitions
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsColliding(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if there is a collition happening using 2 Rectangles
             </summary>
@@ -703,7 +756,7 @@
             <param name="them"></param>
             <returns>returns true if two rectangles collide, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsCollidingOnSides(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsCollidingOnSides(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if two rectangles are colliding
             </summary>
@@ -711,7 +764,7 @@
             <param name="them"></param>
             <returns>returns true if two rectangles collide, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsColliding(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if the given point finds itself within the bounds specified rectangle
             </summary>
@@ -719,7 +772,7 @@
             <param name="them"></param>
             <returns>returns true if the point is within the given rectangle, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionTop(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionTop(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the top of <paramref name="them"/>
             </summary>
@@ -727,7 +780,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the top of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionBottom(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionBottom(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the bottom of <paramref name="them"/>
             </summary>
@@ -735,7 +788,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the bottom of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionRight(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionRight(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the right of <paramref name="them"/>
             </summary>
@@ -743,7 +796,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the right of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionLeft(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionLeft(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the left of <paramref name="them"/>
             </summary>
@@ -754,6 +807,11 @@
         <member name="T:SnowLibrary.Monogame.Input">
             <summary>
             Helper class for getting keyboard and mouse input from the user. place the <b>UpdateState()</b> method at the top of your update for this to be used.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Input.currentPressed">
+            <summary>
+            contains all the keys that are pressed. since the last time of an update call
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.Input.UpdateState">
@@ -782,16 +840,23 @@
             <param name="key"></param>
             <returns>returns true if the key is released on the current frame, otherwise false</returns>
         </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeys(Microsoft.Xna.Framework.Input.Keys[])">
+            <summary>
+            Checks if all the given keys are currently pressed
+            </summary>
+            <param name="keys"></param>
+            <returns>true if none of the given keys are pressed. otherwise false</returns>
+        </member>
         <member name="M:SnowLibrary.Monogame.Input.GetKeysUp(Microsoft.Xna.Framework.Input.Keys[])">
             <summary>
-            Checks if all the given keys are currently not pressed
+            Checks if all the given keys are pressed at the same time
             </summary>
             <param name="keys"></param>
             <returns>true if none of the given keys are pressed. otherwise false</returns>
         </member>
         <member name="M:SnowLibrary.Monogame.Input.GetKeysDown(Microsoft.Xna.Framework.Input.Keys[])">
             <summary>
-            Gets if all the given keys are currently pressed
+            Gets if all the given keys are released at the same time
             </summary>
             <param name="keys"></param>
             <returns>true if all of the given keys are currently pressed. otherwise false</returns>
