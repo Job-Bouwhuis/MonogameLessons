@@ -78,9 +78,14 @@
             Creates a new empty instance of a GameObject
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.hitbox">
+        <member name="P:SnowLibrary.Monogame.GameObject.hitbox">
             <summary>
             the hitbox of the gameObject. 
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.enabled">
+            <summary>
+            gets or sets whether the gameobject should be drawn and run logic or not
             </summary>
         </member>
         <member name="P:SnowLibrary.Monogame.GameObject.transform">
@@ -92,13 +97,6 @@
             <summary>
             When using <see cref="!:GetTexture"/> this index is used to select what texture is returned. change this number repeatedly for animations
             </summary>
-        </member>
-        <member name="P:SnowLibrary.Monogame.GameObject.texture">
-            <summary>
-            Gets the texture at index <see cref="F:SnowLibrary.Monogame.GameObject.textureIndex"/>
-            </summary>
-            <param name="index"></param>
-            <returns></returns>
         </member>
         <member name="F:SnowLibrary.Monogame.GameObject.textures">
             <summary>
@@ -165,6 +163,18 @@
             <summary>
             releases all acociated 
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.op_Implicit(SnowLibrary.Monogame.Transform)~Microsoft.Xna.Framework.Vector2">
+            <summary>
+            returns a new Vector2 representation of the transform.position
+            </summary>
+            <param name="transform"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.op_Implicit(SnowLibrary.Monogame.Transform)~Microsoft.Xna.Framework.Point">
+            <summary>
+            returns a new Point representation of the transform.position
+            </summary>
+            <param name="transform"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.Transform.ToString">
             <summary>

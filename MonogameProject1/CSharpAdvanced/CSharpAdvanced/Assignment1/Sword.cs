@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SnowLibrary;
 using SnowLibrary.Monogame;
 using System;
@@ -6,16 +7,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace CSharpAdvanced.Assignment1
 {
     public class Sword : GameObject, IMyInteractable
     {
-        public Sword(string objectName, params Sprite[] sprites) : base("new Sword", new Transform())
+        public Sword(string objectName, params Sprite[] sprites) : base(objectName, new Transform())
         {
-            this.objectName = objectName;
             sprites.Foreach(x => textures.Add(x));
         }
-        
+        public Sword(string objectName, Transform transform, params Sprite[] sprites) : base(objectName, transform)
+        {
+            sprites.Foreach(x => textures.Add(x));
+        }
+        public Sword(string objectName, Vector2 position, params Sprite[] sprites) : base(objectName, new Transform())
+        {
+            sprites.Foreach(x => textures.Add(x));
+            transform.position = position;
+        }
+        public Sword() : base("new Sword", new Transform())
+        {
+        }
+
         public void CheckColision(params GameObject[] others)
         {
             others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
@@ -23,7 +36,15 @@ namespace CSharpAdvanced.Assignment1
         
         public void OnColisionEnter(GameObject other)
         {
-            
+            if(other is Player p)
+            {
+                if (p.textureIndex == 0)
+                    p.textureIndex = 1;
+                else if (p.textureIndex == 2)
+                    p.textureIndex = 3;
+                
+                enabled = false;
+            }
         }
     }
 }

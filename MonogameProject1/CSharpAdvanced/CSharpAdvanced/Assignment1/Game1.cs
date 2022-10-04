@@ -14,8 +14,7 @@ namespace CSharpAdvanced.Assignment1
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        Player player;
-        Sword sword;
+        // a collection of all game objects for if 
         Dictionary<string, GameObject> gameObjects = new Dictionary<string, GameObject>();
         public Game1()
         {
@@ -26,54 +25,52 @@ namespace CSharpAdvanced.Assignment1
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            // let the utility class initialize with all the values it requires
             MonoUtils.Initialize(graphics.GraphicsDevice, spriteBatch, Content.Load<SpriteFont>("Font"), Content);
+            //debug class initializing. this creates the debug menu that can be opened with Debug.Show(); or closed with Debug.Hide();
             Debug.Initialize();
-            Debug.Show();
 
-
-            string stuff = "Hello World 8.444 times";
-            float num = getFloatFromString(stuff);
-            Debug.Log(num);
+            //create all the game objects and add them to the collection
+            gameObjects.Add("player1", 
+                new Player("Player1", 
+                4,
+                Content.Load<Texture2D>("Assets/Knight"),
+                Content.Load<Texture2D>("Assets/KnightWeapon"),
+                Content.Load<Texture2D>("Assets/KnightShield"),
+                Content.Load<Texture2D>("Assets/KnightWeaponShield"))
+            );
             
-            float getFloatFromString(string source)
-            {
-                string letters = "abcdefghijklmnopqrstuvwxyz ";
-                string floatAsString = "";
-                foreach (char c in source.ToLower())
-                {
-                    if (!letters.Contains(c))
-                    {
-                        floatAsString += c == '.' ? ',' : c;
-                    }
-                }
-                
-                float result = float.Parse(floatAsString);
-                return result;
-
-            }
-
-            player = new Player("Player1", 4, Content.Load<Texture2D>("Assets/Knight"));
-            sword = new Sword("Sword1", Content.Load<Texture2D>("Assets/Weapon"));
-
-            gameObjects.Add(player.objectName, player);
-            gameObjects.Add(sword.objectName, sword);
+            gameObjects.Add("sword1", new Sword("Sword1", 
+                MonoUtils.screenCenter, 
+                Content.Load<Texture2D>("Assets/Weapon")));
+            
+            gameObjects.Add("shield1", new Shield("Shield1", 
+                new Vector2(MonoUtils.screenCenter.X + 80, MonoUtils.screenCenter.Y), 
+                Content.Load<Texture2D>("Assets/Shield")));
+            
+            var gateTexTemp = Content.Load<Texture2D>("Assets/Gate");
+            gameObjects.Add("gate1", new Gate("Gate1", 
+                new Vector2(MonoUtils.screenSize.X - gateTexTemp.Width, 0), 
+                gateTexTemp));
+            
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
             Input.UpdateState();
-            player.Update();
-            
-            foreach (var obj in gameObjects.Values)
+
+            foreach (GameObject obj in gameObjects.Values.Where(x => x.enabled == true))
+                obj.Update();
+
+            foreach (var obj in gameObjects.Values.Where(x => x.enabled == true))
             {
                 if (obj is IMyInteractable interactable)
                 {
@@ -88,7 +85,10 @@ namespace CSharpAdvanced.Assignment1
         {
             GraphicsDevice.Clear(Color.Gray);
 
-            player.Draw(spriteBatch);
+            foreach (GameObject obj in gameObjects.Values.Where(x => x.enabled == true))
+            {
+                obj.Draw(spriteBatch);
+            }
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
