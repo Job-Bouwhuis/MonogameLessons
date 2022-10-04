@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CSharpAdvanced.Assignment1
 {
-    public class Gate : GameObject, IMyInteractable
+    public class Gate : GameObject, IMyCollidable
     {
         /// <summary>
         /// Creates a new instance of the shield class with the given parameters
@@ -33,15 +33,19 @@ namespace CSharpAdvanced.Assignment1
             sprites.Foreach(x => textures.Add(x));
             transform.position = position;
         }
+        /// <summary>
+        /// Creates a new empty instance of the Gate class
+        /// </summary>
         public Gate() : base("new Gate", new Transform()) { }
 
         public void CheckColision(params GameObject[] others)
         {
+            //call the OnColitionEnter method for each object in the list where our hitbox is colliding with the other object's hitbox
             others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
         }
-
         public void OnColisionEnter(GameObject other)
         {
+            //if the colliding object is a player, then close the game
             if (other is Player)
                 Environment.Exit(-1);
         }

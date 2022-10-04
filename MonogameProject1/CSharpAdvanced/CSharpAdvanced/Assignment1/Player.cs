@@ -7,11 +7,16 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using SnowLibrary.Monogame.Debugging;
 using SnowLibrary;
+using SnowLibrary.Serialization;
 
 namespace CSharpAdvanced.Assignment1
 {
+    [IncludePrivateFields]
     public class Player : GameObject
     {
+        /// <summary>
+        /// how fast the player moves
+        /// </summary>
         private int walkSpeed;
         public Player(string objectName, int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
@@ -20,27 +25,19 @@ namespace CSharpAdvanced.Assignment1
 
             sprites.Foreach(x => textures.Add(x));
         }
+        /// <summary>
+        /// Creates a new empty instance of a Player
+        /// </summary>
+        public Player() : base("new Player", new Transform())
+        {
+            walkSpeed = 5;
+        }
 
-
-        public override void Update()
+        public override void Update(GameTime time)
         {
             //input vector. values stay between -1 and 1
-            Vector2 input = new Vector2(0, 0);
+            Vector2 input = Input.GetNormalizedInputVector();
             
-            //getting the input itself
-            if (Input.GetKey(Keys.W))
-                input.Y--;
-            if (Input.GetKey(Keys.A))
-                input.X--;
-            if (Input.GetKey(Keys.D))
-                input.X++;
-            if (Input.GetKey(Keys.S))
-                input.Y++;
-
-            //normalizing the input vector
-            if (input != Vector2.Zero)
-                input.Normalize();
-
             //applying the input vector to the transform
             transform.position = new Vector2(transform.position.X + input.X * walkSpeed, transform.position.Y + input.Y * walkSpeed);
         }

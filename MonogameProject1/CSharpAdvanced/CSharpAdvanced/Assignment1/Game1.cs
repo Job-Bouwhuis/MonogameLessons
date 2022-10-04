@@ -1,11 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SnowLibrary.Monogame;
-using SnowLibrary.Monogame.Debugging;
 using System.Collections.Generic;
 using System.Linq;
+
 using SnowLibrary;
+using SnowLibrary.Monogame.SceneManagement;
+using SnowLibrary.Monogame.UI;
+using SnowLibrary.Monogame;
+using SnowLibrary.Monogame.Debugging;
 
 namespace CSharpAdvanced.Assignment1
 {
@@ -14,13 +17,13 @@ namespace CSharpAdvanced.Assignment1
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        // a collection of all game objects for if 
-        Dictionary<string, GameObject> gameObjects = new Dictionary<string, GameObject>();
+        SceneManager scenes = new SceneManager();
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            scenes += new Scene("DefaultScene");
         }
 
         protected override void Initialize()
@@ -29,66 +32,56 @@ namespace CSharpAdvanced.Assignment1
             MonoUtils.Initialize(graphics.GraphicsDevice, spriteBatch, Content.Load<SpriteFont>("Font"), Content);
             //debug class initializing. this creates the debug menu that can be opened with Debug.Show(); or closed with Debug.Hide();
             Debug.Initialize();
+            Debug.Show();
 
             //create all the game objects and add them to the collection
-            gameObjects.Add("player1", 
-                new Player("Player1", 
+            scenes.ActiveScene += new Player("Player1", 
                 4,
                 Content.Load<Texture2D>("Assets/Knight"),
                 Content.Load<Texture2D>("Assets/KnightWeapon"),
                 Content.Load<Texture2D>("Assets/KnightShield"),
-                Content.Load<Texture2D>("Assets/KnightWeaponShield"))
-            );
+                Content.Load<Texture2D>("Assets/KnightWeaponShield"));
             
-            gameObjects.Add("sword1", new Sword("Sword1", 
-                MonoUtils.screenCenter, 
-                Content.Load<Texture2D>("Assets/Weapon")));
+            scenes.ActiveScene += new Sword("Sword1", 
+                MonoUtils.ScreenCenter, 
+                Content.Load<Texture2D>("Assets/Weapon"));
             
-            gameObjects.Add("shield1", new Shield("Shield1", 
-                new Vector2(MonoUtils.screenCenter.X + 80, MonoUtils.screenCenter.Y), 
-                Content.Load<Texture2D>("Assets/Shield")));
+            scenes.ActiveScene += new Shield("Shield1", 
+                new Vector2(MonoUtils.ScreenCenter.X + 80, MonoUtils.ScreenCenter.Y), 
+                Content.Load<Texture2D>("Assets/Shield"));
             
             var gateTexTemp = Content.Load<Texture2D>("Assets/Gate");
-            gameObjects.Add("gate1", new Gate("Gate1", 
-                new Vector2(MonoUtils.screenSize.X - gateTexTemp.Width, 0), 
-                gateTexTemp));
-            
+            scenes.ActiveScene += new Gate("Gate1", 
+                new Vector2(MonoUtils.ScreenSize.X - gateTexTemp.Width, 0), 
+                gateTexTemp);
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
         }
 
-        protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime time)
         {
+            //refresh the input state each update loop
             Input.UpdateState();
 
-            foreach (GameObject obj in gameObjects.Values.Where(x => x.enabled == true))
-                obj.Update();
+            //update each game object that is enabled
+            scenes.ActiveScene.Update(time);
 
-            foreach (var obj in gameObjects.Values.Where(x => x.enabled == true))
-            {
-                if (obj is IMyInteractable interactable)
-                {
-                    interactable.CheckColision(gameObjects.Values.ToArray());
-                }
-            }
-
-            base.Update(gameTime);
+            base.Update(time);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            //clear the screen and draw the screen with the color Gray
             GraphicsDevice.Clear(Color.Gray);
 
-            foreach (GameObject obj in gameObjects.Values.Where(x => x.enabled == true))
-            {
-                obj.Draw(spriteBatch);
-            }
+            //foreach object that is enabled draw it to the screen using spriteBatch
+            scenes.ActiveScene.Draw(spriteBatch);
+
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

@@ -108,17 +108,146 @@
             Allows for finding the game object within the scene
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.Update">
+        <member name="M:SnowLibrary.Monogame.GameObject.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
             Updates the given game object
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
             <summary>
             Draws the given GameObject
             </summary>
             <param name="batch"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.IMyCollidable">
+            <summary>
+            Represents a game object that can be collided with
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.IMyCollidable.CheckColision(SnowLibrary.Monogame.GameObject[])">
+            <summary>
+            will check for each gameobject in the given array if it is colliding with this object. If so, <see cref="M:SnowLibrary.Monogame.IMyCollidable.OnColisionEnter(SnowLibrary.Monogame.GameObject)"/> will be called for this object with the colliding object as parameter
+            </summary>
+            <param name="others">an array of all game objects that can be collided with</param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.IMyCollidable.OnColisionEnter(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Called when colision check is return true. <paramref name="other"/> is the object that was collided with
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
+            <summary>
+            Represents a collection of game objects that are loaded and unloaded together
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor">
+            <summary>
+            Creates a new empty instance of a Scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(System.String)">
+            <summary>
+            creates a new instance of a Scene with the given name
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(SnowLibrary.Monogame.SceneManagement.SceneManager)">
+            <summary>
+            creates a new instance of the Scene class with the manager set to the given value
+            </summary>
+            <param name="manager"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Adds the given Game Object to the scene
+            </summary>
+            <param name="scene"></param>
+            <param name="gameObject"></param>
+            <returns>the scene with the game object added</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Implicit(SnowLibrary.Monogame.SceneManagement.Scene)~SnowLibrary.Monogame.GameObject[]">
+            <summary>
+            implicitly returns an array of all game objects in the scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Implicit(SnowLibrary.Monogame.SceneManagement.Scene)~System.Collections.Generic.List{SnowLibrary.Monogame.GameObject}">
+            <summary>
+            implicitly returns a list of all game objects in the scene
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.Scene.Item(System.String)">
+            <summary>
+            Gets or sets the game object with the given name
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Save">
+            <summary>
+            Saves the scene to the default location
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Signals every active gameobject to update itself
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Signals every active gameobject to draw itself
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.ActiveScene">
+            <summary>
+            Gets the current active scene. Setting the active scene should be done through <see cref="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)"/>
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.sceneSourcePath">
+            <summary>
+            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes" when the manager is created
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.SceneFileExtension">
+            <summary>
+            The file extention used by all scenes created
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor">
+            <summary>
+            Creates a new instance of the SceneManager class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor(SnowLibrary.Monogame.SceneManagement.Scene)">
+            <summary>
+            Creates a new instance of the SceneManager class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.op_Addition(SnowLibrary.Monogame.SceneManagement.SceneManager,SnowLibrary.Monogame.SceneManagement.Scene)">
+            <summary>
+            Adds the given scene to the scene manager
+            </summary>
+            <param name="scene"></param>
+            <returns>the scene manager with the scene added</returns>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.Item(System.String)">
+            <summary>
+            Gets or sets the scene with the given name
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)">
+            <summary>
+            loads the scene with the given name
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.SaveScene(SnowLibrary.Monogame.SceneManagement.Scene)">
+            <summary>
+            Saves all the items currently in the scene
+            </summary>
+            <param name="scene"></param>
         </member>
         <member name="T:SnowLibrary.Monogame.Transform">
             <summary>
@@ -676,17 +805,17 @@
             Represents the default graphics device used for the game
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.screenSize">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.ScreenSize">
             <summary>
             represents the width and height of the screen
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.screenCenter">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.ScreenCenter">
             <summary>
             represents the exact coordinates of the center of the screen
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.spriteBatch">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.SpriteBatch">
             <summary>
             represents the default spritebatch used for the game
             </summary>
@@ -913,6 +1042,12 @@
             <summary>
             gets the current mouse scroll value since the game started
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetNormalizedInputVector">
+            <summary>
+            Gets a normalized input vector using <see cref="M:SnowLibrary.Monogame.Input.GetKey(Microsoft.Xna.Framework.Input.Keys)"/>
+            </summary>
+            <returns>a normalized vector of the pressed input keys</returns>
         </member>
         <member name="T:SnowLibrary.Monogame.MouseButton">
             <summary>

@@ -10,21 +10,33 @@ using System.Text;
 
 namespace CSharpAdvanced.Assignment1
 {
-    public class Sword : GameObject, IMyInteractable
+    public class Sword : GameObject, IMyCollidable
     {
+        /// <summary>
+        /// Creates a new instance of the Sword class with the given paramteres
+        /// </summary>
         public Sword(string objectName, params Sprite[] sprites) : base(objectName, new Transform())
         {
             sprites.Foreach(x => textures.Add(x));
         }
+        /// <summary>
+        /// Creates a new instance of the Sword class with the given paramteres
+        /// </summary>
         public Sword(string objectName, Transform transform, params Sprite[] sprites) : base(objectName, transform)
         {
             sprites.Foreach(x => textures.Add(x));
         }
+        /// <summary>
+        /// Creates a new instance of the Sword class with the given paramteres
+        /// </summary>
         public Sword(string objectName, Vector2 position, params Sprite[] sprites) : base(objectName, new Transform())
         {
             sprites.Foreach(x => textures.Add(x));
             transform.position = position;
         }
+        /// <summary>
+        /// Creates a new empty instance of the sword class
+        /// </summary>
         public Sword() : base("new Sword", new Transform())
         {
         }
@@ -33,7 +45,6 @@ namespace CSharpAdvanced.Assignment1
         {
             others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
         }
-        
         public void OnColisionEnter(GameObject other)
         {
             if(other is Player p)
