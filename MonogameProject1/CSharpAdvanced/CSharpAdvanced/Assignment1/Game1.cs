@@ -16,8 +16,8 @@ namespace CSharpAdvanced.Assignment1
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
-        SceneManager levelManager = new SceneManager();
+        private SceneManager levelManager = new SceneManager();
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -36,15 +36,13 @@ namespace CSharpAdvanced.Assignment1
             Debug.Initialize();
             //Debug.Show();
 
-            // load the first scene
-            levelManager.LoadScene("Level1");
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            
+            // load the first scene
+            levelManager.LoadScene("Level1");
         }
 
         protected override void Update(GameTime time)
@@ -63,7 +61,7 @@ namespace CSharpAdvanced.Assignment1
             //clear the screen and draw the screen with the color Gray
             GraphicsDevice.Clear(Color.Gray);
 
-            //foreach object that is enabled draw it to the screen using spriteBatch
+            //foreach object that is enabled draw it to the screen using the default spriteBatch
             levelManager.ActiveScene.Draw(spriteBatch);
 
             base.Draw(gameTime);

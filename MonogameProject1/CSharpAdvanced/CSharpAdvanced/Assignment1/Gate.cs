@@ -3,9 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SnowLibrary;
 using SnowLibrary.Monogame;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CSharpAdvanced.Assignment1
 {
@@ -36,12 +34,15 @@ namespace CSharpAdvanced.Assignment1
         /// <summary>
         /// Creates a new empty instance of the Gate class
         /// </summary>
-        public Gate() : base("new Gate", new Transform()) { }
+        public Gate() : base("new Gate", new Transform())
+        {
+            enabled = false;
+        }
 
         public void CheckColision(params GameObject[] others)
         {
             //call the OnColitionEnter method for each object in the list where our hitbox is colliding with the other object's hitbox
-            others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
+            others.Where(x => Collision.IsColliding(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
         }
         public void OnColisionEnter(GameObject other)
         {
@@ -51,9 +52,11 @@ namespace CSharpAdvanced.Assignment1
         }
         public override void Draw(SpriteBatch batch)
         {
-            batch.Begin();
-            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
-            batch.End();
+            //draw hitbox for debug
+            //batch.Begin();
+            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            //batch.End();
+            
             base.Draw(batch);
         }
     }

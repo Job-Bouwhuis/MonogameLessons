@@ -30,22 +30,29 @@ namespace CSharpAdvanced.Assignment1
         public Player() : base("new Player", new Transform())
         {
             walkSpeed = 5;
+            enabled = false;
         }
 
         public override void Update(GameTime time)
         {
             //input vector. values stay between -1 and 1
             Vector2 input = Input.GetNormalizedInputVector();
-            
+
+
+
+
             //applying the input vector to the transform
-            transform.position = new Vector2(transform.position.X + input.X * walkSpeed, transform.position.Y + input.Y * walkSpeed);
+            transform.position += input * walkSpeed;
         }
         
         public override void Draw(SpriteBatch batch)
         {
-            batch.Begin();
-            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
-            batch.End();
+            //draw hitbox for debug
+            //batch.Begin();
+            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            //batch.End();
+            
+            //draw texture
             base.Draw(batch);
         }
     }

@@ -34,11 +34,13 @@ namespace CSharpAdvanced.Assignment1
             sprites.Foreach(x => textures.Add(x));
             transform.position = position;
         }
-        public Shield() : base("new Shield", new Transform()) { }
-        
+        public Shield() : base("new Shield", new Transform())
+        {
+            enabled = false;
+        }
         public void CheckColision(params GameObject[] others)
         {
-            others.Where(x => Collision.IsCollidingOnSides(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
+            others.Where(x => Collision.IsColliding(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
         }
         public void OnColisionEnter(GameObject other)
         {
@@ -54,9 +56,12 @@ namespace CSharpAdvanced.Assignment1
         }
         public override void Draw(SpriteBatch batch)
         {
-            batch.Begin();
-            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
-            batch.End();
+            //draw hitbox for debug
+            //batch.Begin();
+            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            //batch.End();
+            
+            //draw texture
             base.Draw(batch);
         }
     }
