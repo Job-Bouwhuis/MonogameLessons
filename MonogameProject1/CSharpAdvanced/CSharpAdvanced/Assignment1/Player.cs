@@ -11,13 +11,12 @@ using SnowLibrary.Serialization;
 
 namespace CSharpAdvanced.Assignment1
 {
-    [IncludePrivateFields]
     public class Player : GameObject
     {
         /// <summary>
         /// how fast the player moves
         /// </summary>
-        private int walkSpeed;
+        public int walkSpeed;
         public Player(string objectName, int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
             this.walkSpeed = walkSpeed;
@@ -40,6 +39,14 @@ namespace CSharpAdvanced.Assignment1
             
             //applying the input vector to the transform
             transform.position = new Vector2(transform.position.X + input.X * walkSpeed, transform.position.Y + input.Y * walkSpeed);
+        }
+        
+        public override void Draw(SpriteBatch batch)
+        {
+            batch.Begin();
+            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            batch.End();
+            base.Draw(batch);
         }
     }
 }

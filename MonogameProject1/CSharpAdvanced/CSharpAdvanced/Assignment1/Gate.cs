@@ -49,5 +49,12 @@ namespace CSharpAdvanced.Assignment1
             if (other is Player)
                 Environment.Exit(-1);
         }
+        public override void Draw(SpriteBatch batch)
+        {
+            batch.Begin();
+            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            batch.End();
+            base.Draw(batch);
+        }
     }
 }

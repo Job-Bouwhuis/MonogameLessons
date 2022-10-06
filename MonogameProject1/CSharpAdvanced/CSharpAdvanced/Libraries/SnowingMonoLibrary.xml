@@ -68,7 +68,17 @@
             Creates a new instance of the GameObject class with the given values
             </summary>
         </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,SnowLibrary.Monogame.Sprite[])">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,Microsoft.Xna.Framework.Vector2,SnowLibrary.Monogame.Sprite[])">
             <summary>
             Creates a new instance of the GameObject class with the given values
             </summary>
@@ -139,6 +149,11 @@
         <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
             <summary>
             Represents a collection of game objects that are loaded and unloaded together
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneName">
+            <summary>
+            States the name of this scene
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor">
@@ -248,6 +263,11 @@
             Saves all the items currently in the scene
             </summary>
             <param name="scene"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Sprite.LoadContent">
+            <summary>
+            loads the texture from the stored path
+            </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.Transform">
             <summary>
@@ -2206,6 +2226,42 @@
             <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
             <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
         </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeWIP``1(``0,SnowLibrary.Serialization.SerializerSettings)">
+            <summary>
+            WIP... do not use
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeWIP``1(System.String,System.Boolean,SnowLibrary.Serialization.SerializerSettings)">
+            <summary>
+            WIP... do not use
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SnowLibrary.Serialization.SerializerSettings">
+            <summary>
+            Settings for the serializer. these settings are only used for operations on a collection of classes. they are not used for operations on single classes.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Serialization.SerializerSettings.ProgressReporter">
+            <summary>
+            the action that is called wheneve the serializer handled items. this number can be set at <see cref="P:SnowLibrary.Serialization.SerializerSettings.ReportEvery"/> -- <b>NOTE:</b> this only happens on lists and arrays. 
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Serialization.SerializerSettings.ReportEvery">
+            <summary>
+            how often <see cref="P:SnowLibrary.Serialization.SerializerSettings.ProgressReporter"/> should be invoked when serializing or deserialzing
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Serialization.SerializerSettings.theadsToUse">
+            <summary>
+            The number, between 1 and 32, of how many threads the serializer may use to serialize or deserialize items in a list at once. 1 item per thread will be serialized or deserialized at a time.
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Serialization.InvalidArgumentException">
             <summary>
             Gets thrown when an argument is invalid
@@ -2268,6 +2324,13 @@
             Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
             </summary>
         </member>
+        <member name="M:SnowLibrary.SnowUtils.CreateList(System.Type)">
+            <summary>
+            Creates a new list with the given type.
+            </summary>
+            <param name="t"></param>
+            <returns>A dynamic representation of the newly created list. cast this explicitly to the correct list variable if needed</returns>
+        </member>
         <member name="M:SnowLibrary.SnowUtils.GetDirectoryName(System.String)">
             <summary>
             gets the last part of the given path
@@ -2325,7 +2388,7 @@
             Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
             </summary>
         </member>
-        <member name="M:SnowLibrary.SnowUtilsExtentions.As``2(System.Collections.Generic.List{``0},``1)">
+        <member name="M:SnowLibrary.SnowUtilsExtentions.As``1(System.Collections.Generic.List{``0},System.Type)">
             <summary>
             Converts All the items in the list to the given type if possible 
             </summary>
@@ -2596,7 +2659,14 @@
             Provides methods for finding a type or method within accessable assembiles, and easy casting to and from default data types
             </summary>
         </member>
-        <member name="M:SnowLibrary.TypeWorker.ConvertTo(System.Object,System.Type)">
+        <member name="M:SnowLibrary.TypeWorker.GetBaseTypesWIP(System.Type)">
+            <summary>
+            WIP method
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.Convert(System.Object,System.Type)">
             <summary>
             the same as Convert.ChangeType(object frrom, object To) except this returns a dynamic instead of an object
             </summary>
@@ -2678,7 +2748,7 @@
         </member>
         <member name="T:SnowLibrary.CastTypeNotSupportedException">
             <summary>
-            Gets thrown when destination type is not supported by the <b>CastPrimitive</b> method
+            Gets thrown when destination type is not supported by the <see cref="M:SnowLibrary.TypeWorker.CastPrimitive``1(System.Object)"/> methods
             </summary>
         </member>
         <member name="T:SnowLibrary.MethodNotFoundException">
@@ -2945,6 +3015,16 @@
         <member name="M:SnowLibrary.Vectors.Vector3.op_LessThanOrEqual(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
             <summary></summary>
             <returns>true if right value is greater than, or equal the left value</returns>
+        </member>
+        <member name="T:SnowLibrary.WIP.RedisDatabase.GetRedisScript">
+            <summary>
+            connection to the Redis Database to store and retrieve data externally. 
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.WIP.RedisDatabase.GetRedisScript.theScript">
+            <summary>
+            Gets the complete script that was once in this namespace, due to complications this has been temporarily resolved with this. it will be fixed in the future
+            </summary>
         </member>
     </members>
 </doc>

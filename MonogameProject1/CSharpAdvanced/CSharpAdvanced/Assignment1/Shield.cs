@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SnowLibrary;
 using SnowLibrary.Monogame;
 using System;
@@ -50,6 +51,13 @@ namespace CSharpAdvanced.Assignment1
 
                 enabled = false;
             }
+        }
+        public override void Draw(SpriteBatch batch)
+        {
+            batch.Begin();
+            batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            batch.End();
+            base.Draw(batch);
         }
     }
 }
