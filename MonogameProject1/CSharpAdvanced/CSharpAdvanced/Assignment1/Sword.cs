@@ -15,20 +15,6 @@ namespace CSharpAdvanced.Assignment1
         /// <summary>
         /// Creates a new instance of the Sword class with the given paramteres
         /// </summary>
-        public Sword(string objectName, params Sprite[] sprites) : base(objectName, new Transform())
-        {
-            sprites.Foreach(x => textures.Add(x));
-        }
-        /// <summary>
-        /// Creates a new instance of the Sword class with the given paramteres
-        /// </summary>
-        public Sword(string objectName, Transform transform, params Sprite[] sprites) : base(objectName, transform)
-        {
-            sprites.Foreach(x => textures.Add(x));
-        }
-        /// <summary>
-        /// Creates a new instance of the Sword class with the given paramteres
-        /// </summary>
         public Sword(string objectName, Vector2 position, params Sprite[] sprites) : base(objectName, new Transform())
         {
             sprites.Foreach(x => textures.Add(x));

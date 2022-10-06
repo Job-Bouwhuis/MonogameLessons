@@ -14,21 +14,6 @@ namespace CSharpAdvanced.Assignment1
         /// <summary>
         /// Creates a new instance of the shield class with the given parameters
         /// </summary>
-        public Shield(string objectName, params Sprite[] sprites) : base("new Sword", new Transform())
-        {
-            this.objectName = objectName;
-            sprites.Foreach(x => textures.Add(x));
-        }
-        /// <summary>
-        /// Creates a new instance of the shield class with the given parameters
-        /// </summary>
-        public Shield(string objectName, Transform transform, params Sprite[] sprites) : base(objectName, transform)
-        {
-            sprites.Foreach(x => textures.Add(x));
-        }
-        /// <summary>
-        /// Creates a new instance of the shield class with the given parameters
-        /// </summary>
         public Shield(string objectName, Vector2 position, params Sprite[] sprites) : base(objectName, new Transform())
         {
             sprites.Foreach(x => textures.Add(x));
