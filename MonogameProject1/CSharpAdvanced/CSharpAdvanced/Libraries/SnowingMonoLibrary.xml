@@ -247,12 +247,6 @@
             </summary>
             <param name="sceneName"></param>
         </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(SnowLibrary.Monogame.SceneManagement.SceneManager)">
-            <summary>
-            creates a new instance of the Scene class with the manager set to the given value
-            </summary>
-            <param name="manager"></param>
-        </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
             <summary>
             Adds the given Game Object to the scene
@@ -293,50 +287,54 @@
             Signals every active gameobject to draw itself
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.ActiveScene">
+        <member name="T:SnowLibrary.Monogame.SceneManagement.SceneManager">
+            <summary>
+            Allows for the management of scenes. such as saving and loading them.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.CurrentScene">
             <summary>
             Gets the current active scene. Setting the active scene should be done through <see cref="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)"/>
             </summary>
         </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.OnNewSceneLoaded">
+            <summary>
+            Gets called whenever a new scene is loaded.
+            </summary>
+        </member>
         <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.sceneSourcePath">
             <summary>
-            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes" when the manager is created
+            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes"
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.SceneFileExtension">
             <summary>
-            The file extention used by all scenes created
+            The file extention used by all scenes created or loaded
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor">
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#cctor">
             <summary>
-            Creates a new instance of the SceneManager class with the given values
+            Creates the scene storage directory if it does not yet exist
             </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor(SnowLibrary.Monogame.SceneManagement.Scene)">
-            <summary>
-            Creates a new instance of the SceneManager class with the given values
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.op_Addition(SnowLibrary.Monogame.SceneManagement.SceneManager,SnowLibrary.Monogame.SceneManagement.Scene)">
-            <summary>
-            Adds the given scene to the scene manager
-            </summary>
-            <param name="scene"></param>
-            <returns>the scene manager with the scene added</returns>
-        </member>
-        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.Item(System.String)">
-            <summary>
-            Gets or sets the scene with the given name
-            </summary>
-            <param name="index"></param>
-            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)">
+            <summary>
+            loads the scene with the given name and sets it automatically to the active scene
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetSceneAsync(System.String)">
             <summary>
             loads the scene with the given name
             </summary>
             <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetScene(System.String)">
+            <summary>
+            gets the scene with the given name. but doesnt apply it as the active scene
+            </summary>
+            <param name="sceneName"></param>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.SaveScene(SnowLibrary.Monogame.SceneManagement.Scene)">
             <summary>

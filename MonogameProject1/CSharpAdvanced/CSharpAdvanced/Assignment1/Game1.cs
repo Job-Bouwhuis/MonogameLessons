@@ -16,21 +16,12 @@ namespace CSharpAdvanced.Assignment1
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-<<<<<<< HEAD
         private Scene currentScene;
-=======
-        private SceneManager levelManager = new SceneManager();
-        
->>>>>>> parent of 87b38c3 (WIP on Assignment1: c16e993 library updates)
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-<<<<<<< HEAD
-=======
-            levelManager += new Scene("Level1");
->>>>>>> parent of 87b38c3 (WIP on Assignment1: c16e993 library updates)
         }
 
         protected override void Initialize()
@@ -43,11 +34,8 @@ namespace CSharpAdvanced.Assignment1
             Debug.Initialize();
             //Debug.Show();
 
-<<<<<<< HEAD
             SceneManager.OnNewSceneLoaded += OnSceneLoaded;
 
-=======
->>>>>>> parent of 87b38c3 (WIP on Assignment1: c16e993 library updates)
             base.Initialize();
         }
 
@@ -117,7 +105,7 @@ namespace CSharpAdvanced.Assignment1
             #endregion
 
             // load the first scene
-            levelManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level1");
         }
 
         protected override void Update(GameTime time)
@@ -126,7 +114,7 @@ namespace CSharpAdvanced.Assignment1
             Input.UpdateState();
 
             //update each game object that is enabled
-            levelManager.ActiveScene.Update(time);
+            currentScene.Update(time);
 
             base.Update(time);
         }
@@ -137,7 +125,7 @@ namespace CSharpAdvanced.Assignment1
             GraphicsDevice.Clear(Color.Gray);
 
             //foreach object that is enabled draw it to the screen using the default spriteBatch
-            levelManager.ActiveScene.Draw(spriteBatch);
+            currentScene.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
