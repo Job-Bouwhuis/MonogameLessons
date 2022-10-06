@@ -25,5 +25,31 @@ namespace CSharpAdvanced.Assignment1
         {
             enabled = false;
         }
+<<<<<<< HEAD
+=======
+
+        public override void Update(GameTime time)
+        {
+            //input vector. values stay between -1 and 1
+            Vector2 input = Input.GetNormalizedInputVector();
+
+
+
+
+            //applying the input vector to the transform
+            transform.position += input * walkSpeed;
+        }
+        
+        public override void Draw(SpriteBatch batch)
+        {
+            //draw hitbox for debug
+            //batch.Begin();
+            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
+            //batch.End();
+            
+            //draw texture
+            base.Draw(batch);
+        }
+>>>>>>> parent of 87b38c3 (WIP on Assignment1: c16e993 library updates)
     }
 }
