@@ -4,34 +4,26 @@ using System.Text;
 using SnowLibrary.Monogame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using SnowLibrary.Monogame.Debugging;
+using SnowLibrary;
+using SnowLibrary.Serialization;
 
 namespace CSharpAdvanced.Assignment1
 {
-    internal class Player : GameObject
+    public class Player : GameObject
     {
-        private int walkSpeed;
-        public Player(int walkSpeed) : base("new Object", new Transform())
+        public Player(string objectName, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
-            this.walkSpeed = walkSpeed;   
+            this.objectName = objectName;
+            sprites.Foreach(x => textures.Add(x));
         }
-
-        public override void Update()
+        /// <summary>
+        /// Creates a new empty instance of a Player
+        /// </summary>
+        public Player() : base("new Player", new Transform())
         {
-            Transform lastPos = transform;
-            if (Input.GetKeyDown(Keys.W))
-                transform.position.Y -= walkSpeed;
-            if (Input.GetKeyDown(Keys.A))
-                transform.position.X -= walkSpeed;
-            if (Input.GetKeyDown(Keys.D))
-                transform.position.X += walkSpeed;
-            if (Input.GetKeyDown(Keys.S))
-                transform.position.Y += walkSpeed;
-
-           
-            if (!MonoUtils.AreYouOnScreen(transform.position, texture))
-            {
-                transform = lastPos;
-            }
+            enabled = false;
         }
     }
 }

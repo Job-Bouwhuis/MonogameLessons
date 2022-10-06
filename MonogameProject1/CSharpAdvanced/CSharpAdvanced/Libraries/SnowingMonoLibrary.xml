@@ -4,12 +4,81 @@
         <name>SnowingMonoLibrary</name>
     </assembly>
     <members>
+        <member name="T:SnowLibrary.Monogame.TopDownPlayerController">
+            <summary>
+            A component used for easy, basic, top down player movement
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.TopDownPlayerController.walkSpeed">
+            <summary>
+            the speed at which this game object will move using WASD controls
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor(System.Int32)">
+            <summary>
+            Creates a new TopDownPlayerController component with the given values.
+            </summary>
+            <param name="walkspeed"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor">
+            <summary>
+            Creates a new empty TopDownPlayerController component
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.SpriteRenderer">
+            <summary>
+            A component used to render game objects
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SpriteRenderer.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            requests to draw the given object
+            </summary>
+            <param name="batch">sprite batch to be used</param>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.Component">
+            <summary>
+            Represents a component that can be added to a game object.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.transform">
+            <summary>
+            The transform of the gameobject this component is attached to.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.gameObject">
+            <summary>
+            The game object that this component is attached to.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.ComponentTypeAndAssembly">
+            <summary>
+            Specific type annotation of this component. 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.#ctor">
+            <summary>
+            Creates a new empty Component class. this class in itself isnt used for anything.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the given component
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{SnowLibrary.Monogame.GameObject})">
+            <summary>
+            Updates the given component with access to all objects in the scene
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Monogame.Debugging.Debug">
             <summary>
             
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.Debugging.Debug.IsShowing">
+        <member name="F:SnowLibrary.Monogame.Debugging.Debug.DebugMode">
             <summary>
             Indicates if the debug window is at present shown to the screen or not
             </summary>
@@ -63,17 +132,22 @@
             Represents an object use within the game world
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(SnowLibrary.Monogame.Transform,Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Creates a new instance of the GameObject class with the given values
-            </summary>
-        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform)">
             <summary>
             Creates a new instance of the GameObject class with the given values
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,Microsoft.Xna.Framework.Graphics.Texture2D)">
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,SnowLibrary.Monogame.Sprite[])">
+            <summary>
+            Creates a new instance of the GameObject class with the given values
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,Microsoft.Xna.Framework.Vector2,SnowLibrary.Monogame.Sprite[])">
             <summary>
             Creates a new instance of the GameObject class with the given values
             </summary>
@@ -83,9 +157,19 @@
             Creates a new empty instance of a GameObject
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.hitbox">
+        <member name="F:SnowLibrary.Monogame.GameObject.components">
+            <summary>
+            do not use this variable directly. Use the <see cref="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1"/> and <see cref="M:SnowLibrary.Monogame.GameObject.FetchComponent``1"/> methods instead
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.GameObject.hitbox">
             <summary>
             the hitbox of the gameObject. 
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.enabled">
+            <summary>
+            gets or sets whether the gameobject should be drawn and run logic or not
             </summary>
         </member>
         <member name="P:SnowLibrary.Monogame.GameObject.transform">
@@ -93,14 +177,14 @@
             represents the position, rotation and scale of the given object
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.texture">
+        <member name="F:SnowLibrary.Monogame.GameObject.textureIndex">
             <summary>
-            the texture that is drawn to the screen
+            When using <see cref="!:GetTexture"/> this index is used to select what texture is returned. change this number repeatedly for animations
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.TextureName">
+        <member name="F:SnowLibrary.Monogame.GameObject.textures">
             <summary>
-            the name of the texture. use this to dynamically load textures for this game object
+            the texture that is drawn to the screen
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.GameObject.objectName">
@@ -108,17 +192,160 @@
             Allows for finding the game object within the scene
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.Update">
+        <member name="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1">
+            <summary>
+            Adds the given component to this game object
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.FetchComponent``1">
+            <summary>
+            Gets a component of the given type. if the component is not found, null is returned
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>the found component. or null if none are found</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Gets called whenever a game object collides with this one. The colliding game object is passed as the parameter.
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
             Updates the given game object
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="M:SnowLibrary.Monogame.GameObject.Dispose">
             <summary>
-            Draws the given GameObject
+            Clears all resources this class holds.
             </summary>
-            <param name="batch"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
+            <summary>
+            Represents a collection of game objects that are loaded and unloaded together
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneName">
+            <summary>
+            States the name of this scene
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.Scene.Count">
+            <summary>
+            returns the amount of objects in the scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor">
+            <summary>
+            Creates a new empty instance of a Scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(System.String)">
+            <summary>
+            creates a new instance of a Scene with the given name
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Adds the given Game Object to the scene
+            </summary>
+            <param name="scene"></param>
+            <param name="gameObject"></param>
+            <returns>the scene with the game object added</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Implicit(SnowLibrary.Monogame.SceneManagement.Scene)~SnowLibrary.Monogame.GameObject[]">
+            <summary>
+            implicitly returns an array of all game objects in the scene
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Implicit(SnowLibrary.Monogame.SceneManagement.Scene)~System.Collections.Generic.List{SnowLibrary.Monogame.GameObject}">
+            <summary>
+            implicitly returns a list of all game objects in the scene
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.Scene.Item(System.String)">
+            <summary>
+            Gets or sets the game object with the given name
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Save">
+            <summary>
+            Saves the scene to the default location
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Signals every active gameobject to update itself
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Signals every active gameobject to draw itself
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.SceneManagement.SceneManager">
+            <summary>
+            Allows for the management of scenes. such as saving and loading them.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.CurrentScene">
+            <summary>
+            Gets the current active scene. Setting the active scene should be done through <see cref="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.OnNewSceneLoaded">
+            <summary>
+            Gets called whenever a new scene is loaded.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.sceneSourcePath">
+            <summary>
+            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes"
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.SceneFileExtension">
+            <summary>
+            The file extention used by all scenes created or loaded
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#cctor">
+            <summary>
+            Creates the scene storage directory if it does not yet exist
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)">
+            <summary>
+            loads the scene with the given name and sets it automatically to the active scene
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetSceneAsync(System.String)">
+            <summary>
+            loads the scene with the given name
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetScene(System.String)">
+            <summary>
+            gets the scene with the given name. but doesnt apply it as the active scene
+            </summary>
+            <param name="sceneName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.SaveScene(SnowLibrary.Monogame.SceneManagement.Scene)">
+            <summary>
+            Saves all the items currently in the scene
+            </summary>
+            <param name="scene"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Sprite.LoadContent">
+            <summary>
+            loads the texture from the stored path
+            </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.Transform">
             <summary>
@@ -163,6 +390,18 @@
             <summary>
             releases all acociated 
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.op_Implicit(SnowLibrary.Monogame.Transform)~Microsoft.Xna.Framework.Vector2">
+            <summary>
+            returns a new Vector2 representation of the transform.position
+            </summary>
+            <param name="transform"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.op_Implicit(SnowLibrary.Monogame.Transform)~Microsoft.Xna.Framework.Point">
+            <summary>
+            returns a new Point representation of the transform.position
+            </summary>
+            <param name="transform"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.Transform.ToString">
             <summary>
@@ -664,17 +903,17 @@
             Represents the default graphics device used for the game
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.screenSize">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.ScreenSize">
             <summary>
             represents the width and height of the screen
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.screenCenter">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.ScreenCenter">
             <summary>
             represents the exact coordinates of the center of the screen
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.MonoUtils.spriteBatch">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.SpriteBatch">
             <summary>
             represents the default spritebatch used for the game
             </summary>
@@ -741,12 +980,12 @@
             <param name="alpha"></param>
             <returns>the altered texture</returns>
         </member>
-        <member name="T:SnowLibrary.Monogame.Colision">
+        <member name="T:SnowLibrary.Monogame.Collision">
             <summary>
             Helper class for getting collitions
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsColliding(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if there is a collition happening using 2 Rectangles
             </summary>
@@ -754,7 +993,7 @@
             <param name="them"></param>
             <returns>returns true if two rectangles collide, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsCollidingOnSides(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsCollidingOnSides(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if two rectangles are colliding
             </summary>
@@ -762,7 +1001,7 @@
             <param name="them"></param>
             <returns>returns true if two rectangles collide, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.IsColliding(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.IsColliding(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if the given point finds itself within the bounds specified rectangle
             </summary>
@@ -770,7 +1009,7 @@
             <param name="them"></param>
             <returns>returns true if the point is within the given rectangle, otherwise false</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionTop(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionTop(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the top of <paramref name="them"/>
             </summary>
@@ -778,7 +1017,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the top of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionBottom(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionBottom(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the bottom of <paramref name="them"/>
             </summary>
@@ -786,7 +1025,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the bottom of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionRight(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionRight(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the right of <paramref name="them"/>
             </summary>
@@ -794,7 +1033,7 @@
             <param name="them"></param>
             <returns>true if <paramref name="me"/> is intersecting with the right of <paramref name="them"/></returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.Colision.ColisionLeft(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:SnowLibrary.Monogame.Collision.CollisionLeft(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Rectangle)">
             <summary>
             checks if <paramref name="me"/> is colliding at the left of <paramref name="them"/>
             </summary>
@@ -805,6 +1044,11 @@
         <member name="T:SnowLibrary.Monogame.Input">
             <summary>
             Helper class for getting keyboard and mouse input from the user. place the <b>UpdateState()</b> method at the top of your update for this to be used.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Input.currentPressed">
+            <summary>
+            contains all the keys that are pressed. since the last time of an update call
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.Input.UpdateState">
@@ -833,16 +1077,23 @@
             <param name="key"></param>
             <returns>returns true if the key is released on the current frame, otherwise false</returns>
         </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetKeys(Microsoft.Xna.Framework.Input.Keys[])">
+            <summary>
+            Checks if all the given keys are currently pressed
+            </summary>
+            <param name="keys"></param>
+            <returns>true if none of the given keys are pressed. otherwise false</returns>
+        </member>
         <member name="M:SnowLibrary.Monogame.Input.GetKeysUp(Microsoft.Xna.Framework.Input.Keys[])">
             <summary>
-            Checks if all the given keys are currently not pressed
+            Checks if all the given keys are pressed at the same time
             </summary>
             <param name="keys"></param>
             <returns>true if none of the given keys are pressed. otherwise false</returns>
         </member>
         <member name="M:SnowLibrary.Monogame.Input.GetKeysDown(Microsoft.Xna.Framework.Input.Keys[])">
             <summary>
-            Gets if all the given keys are currently pressed
+            Gets if all the given keys are released at the same time
             </summary>
             <param name="keys"></param>
             <returns>true if all of the given keys are currently pressed. otherwise false</returns>
@@ -889,6 +1140,12 @@
             <summary>
             gets the current mouse scroll value since the game started
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Input.GetNormalizedInputVector">
+            <summary>
+            Gets a normalized input vector using <see cref="M:SnowLibrary.Monogame.Input.GetKey(Microsoft.Xna.Framework.Input.Keys)"/>
+            </summary>
+            <returns>a normalized vector of the pressed input keys</returns>
         </member>
         <member name="T:SnowLibrary.Monogame.MouseButton">
             <summary>
@@ -2047,6 +2304,42 @@
             <exception cref="T:SnowLibrary.FailedToCastTypeException">thrown when when the serializer could not cast the string value to the given field type</exception>
             <exception cref="T:SnowLibrary.Serialization.DeserializationFailedException">thrown when any error is thrown. holds this thrown error as its inner exception</exception>
         </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.SerializeWIP``1(``0,SnowLibrary.Serialization.SerializerSettings)">
+            <summary>
+            WIP... do not use
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.Serialization.SnowSerializer.DeserializeWIP``1(System.String,System.Boolean,SnowLibrary.Serialization.SerializerSettings)">
+            <summary>
+            WIP... do not use
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SnowLibrary.Serialization.SerializerSettings">
+            <summary>
+            Settings for the serializer. these settings are only used for operations on a collection of classes. they are not used for operations on single classes.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Serialization.SerializerSettings.ProgressReporter">
+            <summary>
+            the action that is called wheneve the serializer handled items. this number can be set at <see cref="P:SnowLibrary.Serialization.SerializerSettings.ReportEvery"/> -- <b>NOTE:</b> this only happens on lists and arrays. 
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Serialization.SerializerSettings.ReportEvery">
+            <summary>
+            how often <see cref="P:SnowLibrary.Serialization.SerializerSettings.ProgressReporter"/> should be invoked when serializing or deserialzing
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Serialization.SerializerSettings.theadsToUse">
+            <summary>
+            The number, between 1 and 32, of how many threads the serializer may use to serialize or deserialize items in a list at once. 1 item per thread will be serialized or deserialized at a time.
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Serialization.InvalidArgumentException">
             <summary>
             Gets thrown when an argument is invalid
@@ -2109,6 +2402,13 @@
             Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
             </summary>
         </member>
+        <member name="M:SnowLibrary.SnowUtils.CreateList(System.Type)">
+            <summary>
+            Creates a new list with the given type.
+            </summary>
+            <param name="t"></param>
+            <returns>A dynamic representation of the newly created list. cast this explicitly to the correct list variable if needed</returns>
+        </member>
         <member name="M:SnowLibrary.SnowUtils.GetDirectoryName(System.String)">
             <summary>
             gets the last part of the given path
@@ -2166,7 +2466,7 @@
             Suggestions for this class are welcome. please report them the the Author, <b>TheSnowOwl</b>
             </summary>
         </member>
-        <member name="M:SnowLibrary.SnowUtilsExtentions.As``2(System.Collections.Generic.List{``0},``1)">
+        <member name="M:SnowLibrary.SnowUtilsExtentions.As``1(System.Collections.Generic.List{``0},System.Type)">
             <summary>
             Converts All the items in the list to the given type if possible 
             </summary>
@@ -2437,7 +2737,14 @@
             Provides methods for finding a type or method within accessable assembiles, and easy casting to and from default data types
             </summary>
         </member>
-        <member name="M:SnowLibrary.TypeWorker.ConvertTo(System.Object,System.Type)">
+        <member name="M:SnowLibrary.TypeWorker.GetBaseTypesWIP(System.Type)">
+            <summary>
+            WIP method
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.Convert(System.Object,System.Type)">
             <summary>
             the same as Convert.ChangeType(object frrom, object To) except this returns a dynamic instead of an object
             </summary>
@@ -2519,7 +2826,7 @@
         </member>
         <member name="T:SnowLibrary.CastTypeNotSupportedException">
             <summary>
-            Gets thrown when destination type is not supported by the <b>CastPrimitive</b> method
+            Gets thrown when destination type is not supported by the <see cref="M:SnowLibrary.TypeWorker.CastPrimitive``1(System.Object)"/> methods
             </summary>
         </member>
         <member name="T:SnowLibrary.MethodNotFoundException">
@@ -2786,6 +3093,16 @@
         <member name="M:SnowLibrary.Vectors.Vector3.op_LessThanOrEqual(SnowLibrary.Vectors.Vector3,SnowLibrary.Vectors.Vector3)">
             <summary></summary>
             <returns>true if right value is greater than, or equal the left value</returns>
+        </member>
+        <member name="T:SnowLibrary.WIP.RedisDatabase.GetRedisScript">
+            <summary>
+            connection to the Redis Database to store and retrieve data externally. 
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.WIP.RedisDatabase.GetRedisScript.theScript">
+            <summary>
+            Gets the complete script that was once in this namespace, due to complications this has been temporarily resolved with this. it will be fixed in the future
+            </summary>
         </member>
     </members>
 </doc>
