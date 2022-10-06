@@ -13,7 +13,7 @@ namespace CSharpAdvanced.Assignment1
 {
     public class Player : GameObject
     {
-        public Player(string objectName, int walkSpeed, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
+        public Player(string objectName, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
             this.objectName = objectName;
             sprites.Foreach(x => textures.Add(x));
