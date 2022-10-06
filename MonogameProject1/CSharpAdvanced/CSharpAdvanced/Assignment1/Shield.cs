@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CSharpAdvanced.Assignment1
 {
-    internal class Shield : GameObject, IMyCollidable
+    internal class Shield : GameObject
     {
         /// <summary>
         /// Creates a new instance of the shield class with the given parameters
@@ -38,11 +38,7 @@ namespace CSharpAdvanced.Assignment1
         {
             enabled = false;
         }
-        public void CheckColision(params GameObject[] others)
-        {
-            others.Where(x => Collision.IsColliding(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
-        }
-        public void OnColisionEnter(GameObject other)
+        public override void OnCollisionEnter(GameObject other)
         {
             if (other is Player p)
             {
@@ -53,16 +49,6 @@ namespace CSharpAdvanced.Assignment1
 
                 enabled = false;
             }
-        }
-        public override void Draw(SpriteBatch batch)
-        {
-            //draw hitbox for debug
-            //batch.Begin();
-            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
-            //batch.End();
-            
-            //draw texture
-            base.Draw(batch);
         }
     }
 }

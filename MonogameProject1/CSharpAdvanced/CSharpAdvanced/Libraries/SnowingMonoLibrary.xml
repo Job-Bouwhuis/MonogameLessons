@@ -4,12 +4,81 @@
         <name>SnowingMonoLibrary</name>
     </assembly>
     <members>
+        <member name="T:SnowLibrary.Monogame.TopDownPlayerController">
+            <summary>
+            A component used for easy, basic, top down player movement
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.TopDownPlayerController.walkSpeed">
+            <summary>
+            the speed at which this game object will move using WASD controls
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor(System.Int32)">
+            <summary>
+            Creates a new TopDownPlayerController component with the given values.
+            </summary>
+            <param name="walkspeed"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor">
+            <summary>
+            Creates a new empty TopDownPlayerController component
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.SpriteRenderer">
+            <summary>
+            A component used to render game objects
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SpriteRenderer.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            requests to draw the given object
+            </summary>
+            <param name="batch">sprite batch to be used</param>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.Component">
+            <summary>
+            Represents a component that can be added to a game object.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.transform">
+            <summary>
+            The transform of the gameobject this component is attached to.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.gameObject">
+            <summary>
+            The game object that this component is attached to.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.Component.ComponentTypeAndAssembly">
+            <summary>
+            Specific type annotation of this component. 
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.#ctor">
+            <summary>
+            Creates a new empty Component class. this class in itself isnt used for anything.
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the given component
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{SnowLibrary.Monogame.GameObject})">
+            <summary>
+            Updates the given component with access to all objects in the scene
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Monogame.Debugging.Debug">
             <summary>
             
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.Debugging.Debug.IsShowing">
+        <member name="F:SnowLibrary.Monogame.Debugging.Debug.DebugMode">
             <summary>
             Indicates if the debug window is at present shown to the screen or not
             </summary>
@@ -88,6 +157,11 @@
             Creates a new empty instance of a GameObject
             </summary>
         </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.components">
+            <summary>
+            do not use this variable directly. Use the <see cref="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1"/> and <see cref="M:SnowLibrary.Monogame.GameObject.FetchComponent``1"/> methods instead
+            </summary>
+        </member>
         <member name="P:SnowLibrary.Monogame.GameObject.hitbox">
             <summary>
             the hitbox of the gameObject. 
@@ -118,33 +192,34 @@
             Allows for finding the game object within the scene
             </summary>
         </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1">
+            <summary>
+            Adds the given component to this game object
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.FetchComponent``1">
+            <summary>
+            Gets a component of the given type. if the component is not found, null is returned
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>the found component. or null if none are found</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Gets called whenever a game object collides with this one. The colliding game object is passed as the parameter.
+            </summary>
+            <param name="other"></param>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
             Updates the given game object
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="M:SnowLibrary.Monogame.GameObject.Dispose">
             <summary>
-            Draws the given GameObject
+            Clears all resources this class holds.
             </summary>
-            <param name="batch"></param>
-        </member>
-        <member name="T:SnowLibrary.Monogame.IMyCollidable">
-            <summary>
-            Represents a game object that can be collided with
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.IMyCollidable.CheckColision(SnowLibrary.Monogame.GameObject[])">
-            <summary>
-            will check for each gameobject in the given array if it is colliding with this object. If so, <see cref="M:SnowLibrary.Monogame.IMyCollidable.OnColisionEnter(SnowLibrary.Monogame.GameObject)"/> will be called for this object with the colliding object as parameter
-            </summary>
-            <param name="others">an array of all game objects that can be collided with</param>
-        </member>
-        <member name="M:SnowLibrary.Monogame.IMyCollidable.OnColisionEnter(SnowLibrary.Monogame.GameObject)">
-            <summary>
-            Called when colision check is return true. <paramref name="other"/> is the object that was collided with
-            </summary>
-            <param name="other"></param>
         </member>
         <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
             <summary>
@@ -154,6 +229,11 @@
         <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneName">
             <summary>
             States the name of this scene
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.Scene.Count">
+            <summary>
+            returns the amount of objects in the scene
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor">
@@ -166,12 +246,6 @@
             creates a new instance of a Scene with the given name
             </summary>
             <param name="sceneName"></param>
-        </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(SnowLibrary.Monogame.SceneManagement.SceneManager)">
-            <summary>
-            creates a new instance of the Scene class with the manager set to the given value
-            </summary>
-            <param name="manager"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
             <summary>
@@ -213,50 +287,54 @@
             Signals every active gameobject to draw itself
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.ActiveScene">
+        <member name="T:SnowLibrary.Monogame.SceneManagement.SceneManager">
+            <summary>
+            Allows for the management of scenes. such as saving and loading them.
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.CurrentScene">
             <summary>
             Gets the current active scene. Setting the active scene should be done through <see cref="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)"/>
             </summary>
         </member>
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.OnNewSceneLoaded">
+            <summary>
+            Gets called whenever a new scene is loaded.
+            </summary>
+        </member>
         <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.sceneSourcePath">
             <summary>
-            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes" when the manager is created
+            The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes"
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.SceneFileExtension">
             <summary>
-            The file extention used by all scenes created
+            The file extention used by all scenes created or loaded
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor">
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#cctor">
             <summary>
-            Creates a new instance of the SceneManager class with the given values
+            Creates the scene storage directory if it does not yet exist
             </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.#ctor(SnowLibrary.Monogame.SceneManagement.Scene)">
-            <summary>
-            Creates a new instance of the SceneManager class with the given values
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.op_Addition(SnowLibrary.Monogame.SceneManagement.SceneManager,SnowLibrary.Monogame.SceneManagement.Scene)">
-            <summary>
-            Adds the given scene to the scene manager
-            </summary>
-            <param name="scene"></param>
-            <returns>the scene manager with the scene added</returns>
-        </member>
-        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.Item(System.String)">
-            <summary>
-            Gets or sets the scene with the given name
-            </summary>
-            <param name="index"></param>
-            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.LoadScene(System.String)">
+            <summary>
+            loads the scene with the given name and sets it automatically to the active scene
+            </summary>
+            <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetSceneAsync(System.String)">
             <summary>
             loads the scene with the given name
             </summary>
             <param name="sceneName"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.GetScene(System.String)">
+            <summary>
+            gets the scene with the given name. but doesnt apply it as the active scene
+            </summary>
+            <param name="sceneName"></param>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.SceneManager.SaveScene(SnowLibrary.Monogame.SceneManagement.Scene)">
             <summary>

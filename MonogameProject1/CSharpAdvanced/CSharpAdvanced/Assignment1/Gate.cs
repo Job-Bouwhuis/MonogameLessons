@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CSharpAdvanced.Assignment1
 {
-    public class Gate : GameObject, IMyCollidable
+    public class Gate : GameObject
     {
         /// <summary>
         /// Creates a new instance of the shield class with the given parameters
@@ -39,25 +39,9 @@ namespace CSharpAdvanced.Assignment1
             enabled = false;
         }
 
-        public void CheckColision(params GameObject[] others)
+        public override void OnCollisionEnter(GameObject other)
         {
-            //call the OnColitionEnter method for each object in the list where our hitbox is colliding with the other object's hitbox
-            others.Where(x => Collision.IsColliding(hitbox, x.hitbox)).Foreach(x => OnColisionEnter(x));
-        }
-        public void OnColisionEnter(GameObject other)
-        {
-            //if the colliding object is a player, then close the game
-            if (other is Player)
-                Environment.Exit(-1);
-        }
-        public override void Draw(SpriteBatch batch)
-        {
-            //draw hitbox for debug
-            //batch.Begin();
-            //batch.Draw(MonoUtils.DefaultWhiteTexture, hitbox, Color.Red);
-            //batch.End();
-            
-            base.Draw(batch);
+            Environment.Exit(0);
         }
     }
 }
