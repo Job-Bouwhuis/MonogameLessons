@@ -27,7 +27,7 @@ namespace CSharpAdvanced.Assignment1
 
         public override void OnCollisionEnter(GameObject other)
         {
-            Environment.Exit(0);
+            Environment.Exit(69);
         }
     }
 }

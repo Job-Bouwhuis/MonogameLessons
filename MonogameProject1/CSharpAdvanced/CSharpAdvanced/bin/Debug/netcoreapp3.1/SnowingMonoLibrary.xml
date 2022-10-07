@@ -4,6 +4,21 @@
         <name>SnowingMonoLibrary</name>
     </assembly>
     <members>
+        <member name="T:SnowLibrary.Monogame.BoxCollider">
+            <summary>
+            A component used to get collisions
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.BoxCollider.isTrigger">
+            <summary>
+            wether a game object can pass through this collider or not
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.BoxCollider.ShouldMove">
+            <summary>
+            wether the object should be moved on colliding with another object. true will move the object, false will not
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Monogame.TopDownPlayerController">
             <summary>
             A component used for easy, basic, top down player movement
@@ -14,6 +29,12 @@
             the speed at which this game object will move using WASD controls
             </summary>
         </member>
+        <member name="F:SnowLibrary.Monogame.TopDownPlayerController.smoothness">
+            <summary>
+            the amount that the movement will be smoothened with.
+            </summary>
+            
+        </member>
         <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor(System.Int32)">
             <summary>
             Creates a new TopDownPlayerController component with the given values.
@@ -23,6 +44,16 @@
         <member name="M:SnowLibrary.Monogame.TopDownPlayerController.#ctor">
             <summary>
             Creates a new empty TopDownPlayerController component
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.TopDownPlayerController.SetPosition(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Sets the new position of this game object. This method exists cause of the 
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.ScreenClamper">
+            <summary>
+            A component used to clamp game objects to the screen no matter what
             </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.SpriteRenderer">
@@ -64,13 +95,13 @@
         </member>
         <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
-            Updates the given component
+            Updates the given component. This method is automatically invoked.
             </summary>
             <param name="time"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.Component.Update(Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{SnowLibrary.Monogame.GameObject})">
             <summary>
-            Updates the given component with access to all objects in the scene
+            Updates the given component with access to all objects in the scene. This method is automatically invoked.
             </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.Debugging.Debug">
@@ -194,16 +225,22 @@
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1">
             <summary>
-            Adds the given component to this game object
+            Attatches the given component to this game object
             </summary>
-            <param name="component"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.FetchComponent``1">
             <summary>
-            Gets a component of the given type. if the component is not found, null is returned
+            Fetches a component of the given type. if the component is not found, null is returned
             </summary>
             <typeparam name="T"></typeparam>
             <returns>the found component. or null if none are found</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.HasComponent``1">
+            <summary>
+            Checks if the game object has a component of the given type. if it does, true is returned. otherwise false is returned
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
             <summary>
@@ -345,6 +382,21 @@
         <member name="M:SnowLibrary.Monogame.Sprite.LoadContent">
             <summary>
             loads the texture from the stored path
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.Sprite.width">
+            <summary>
+            Gets the width of this sprite
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.Sprite.height">
+            <summary>
+            Gets the height of this sprite
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.Sprite.bounds">
+            <summary>
+            Gets the dimention of this Sprite
             </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.Transform">
