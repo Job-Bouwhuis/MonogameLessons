@@ -14,7 +14,7 @@ namespace CSharpAdvanced.Assignment1
         /// </summary>
         public Gate(string objectName, Vector2 position, params Sprite[] sprites) : base(objectName, new Transform())
         {
-            sprites.Foreach(x => textures.Add(x));
+            sprites.Foreach(x => this.sprites.Add(x));
             transform.position = position;
         }
         /// <summary>
@@ -22,7 +22,7 @@ namespace CSharpAdvanced.Assignment1
         /// </summary>
         public Gate() : base("new Gate", new Transform())
         {
-            enabled = false;
+            Enabled = false;
         }
 
         public override void OnCollisionEnter(GameObject other)

@@ -1,0 +1,7 @@
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\PortfolioWebsite.exe
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\PortfolioWebsite.dll
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\PortfolioWebsite.deps.json
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\PortfolioWebsite.runtimeconfig.json
+C:\GitRepositories\MonogameLessons\MonogameProject1\PortfolioWebsite\PortfolioWebsite\obj\Release\net6.0\PubTmp\Out\PortfolioWebsite.pdb

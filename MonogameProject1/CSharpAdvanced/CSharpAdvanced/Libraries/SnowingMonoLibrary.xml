@@ -68,6 +68,17 @@
             <param name="batch">sprite batch to be used</param>
             <param name="gameTime"></param>
         </member>
+        <member name="T:SnowLibrary.Monogame.IMyRenderable">
+            <summary>
+            Allows for overriding the default sprite renderer's draw method
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.IMyRenderable.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draws the given Renderable object
+            </summary>
+            <param name="batch"></param>
+        </member>
         <member name="T:SnowLibrary.Monogame.Component">
             <summary>
             Represents a component that can be added to a game object.
@@ -81,11 +92,6 @@
         <member name="F:SnowLibrary.Monogame.Component.gameObject">
             <summary>
             The game object that this component is attached to.
-            </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.Component.ComponentTypeAndAssembly">
-            <summary>
-            Specific type annotation of this component. 
             </summary>
         </member>
         <member name="M:SnowLibrary.Monogame.Component.#ctor">
@@ -103,6 +109,38 @@
             <summary>
             Updates the given component with access to all objects in the scene. This method is automatically invoked.
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.Awake">
+            <summary>
+            Gets called when this object is created
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.AttatchComponent``1">
+            <summary>
+            Attatches the given component.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>The newly added component</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.FetchComponent``1">
+            <summary>
+            Fetches the component of the given type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>the found component. if none is found it returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.HasComponent``1">
+            <summary>
+            finds the component of the given type
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>true if it finds the component, false if it doesnt</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Component.RemoveComponent``1">
+            <summary>
+            Removes the component of the given type
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="T:SnowLibrary.Monogame.Debugging.Debug">
             <summary>
@@ -163,16 +201,6 @@
             Represents an object use within the game world
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform)">
-            <summary>
-            Creates a new instance of the GameObject class with the given values
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Creates a new instance of the GameObject class with the given values
-            </summary>
-        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.#ctor(System.String,SnowLibrary.Monogame.Transform,SnowLibrary.Monogame.Sprite[])">
             <summary>
             Creates a new instance of the GameObject class with the given values
@@ -188,9 +216,9 @@
             Creates a new empty instance of a GameObject
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.components">
+        <member name="M:SnowLibrary.Monogame.GameObject.Finalize">
             <summary>
-            do not use this variable directly. Use the <see cref="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1"/> and <see cref="M:SnowLibrary.Monogame.GameObject.FetchComponent``1"/> methods instead
+            Deconstructs the game object.
             </summary>
         </member>
         <member name="P:SnowLibrary.Monogame.GameObject.hitbox">
@@ -213,9 +241,15 @@
             When using <see cref="!:GetTexture"/> this index is used to select what texture is returned. change this number repeatedly for animations
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.GameObject.textures">
+        <member name="P:SnowLibrary.Monogame.GameObject.texture">
             <summary>
-            the texture that is drawn to the screen
+            Setting this value will add it to <see cref="F:SnowLibrary.Monogame.GameObject.sprites"/> if it does not yet exist, and set <see cref="F:SnowLibrary.Monogame.GameObject.textureIndex"/> to the index of the texture
+            </summary>
+            <remarks>getting this value returns the texture with index <see cref="F:SnowLibrary.Monogame.GameObject.textureIndex"/> from <see cref="F:SnowLibrary.Monogame.GameObject.sprites"/></remarks>
+        </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.sprites">
+            <summary>
+            a list of all textures that are used by this gameobject
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.GameObject.objectName">
@@ -223,10 +257,21 @@
             Allows for finding the game object within the scene
             </summary>
         </member>
+        <member name="F:SnowLibrary.Monogame.GameObject.components">
+            <summary>
+            do not use this variable directly. Use the <see cref="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1"/> and <see cref="M:SnowLibrary.Monogame.GameObject.FetchComponent``1"/> methods instead
+            </summary>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.AttatchComponent``1">
             <summary>
             Attatches the given component to this game object
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.FetchComponents``1">
+            <summary>
+            Gets all the components of the given type. or an empty list if no component of the type is attatched to the game object
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.FetchComponent``1">
             <summary>
@@ -242,6 +287,12 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.RemoveComponent``1">
+            <summary>
+            removes the component of the given type
+            </summary>
+            <typeparam name="T">the type of component that will be deleted</typeparam>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
             <summary>
             Gets called whenever a game object collides with this one. The colliding game object is passed as the parameter.
@@ -253,6 +304,16 @@
             Updates the given game object
             </summary>
         </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Awake">
+            <summary>
+            Gets called when creating this object. or setting the <see cref="F:SnowLibrary.Monogame.GameObject.enabled"></see> to true
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Close">
+            <summary>
+            Gets called when disposing, deconstructing, or setting <see cref="F:SnowLibrary.Monogame.GameObject.enabled"></see> to false
+            </summary>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.Dispose">
             <summary>
             Clears all resources this class holds.
@@ -261,6 +322,11 @@
         <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
             <summary>
             Represents a collection of game objects that are loaded and unloaded together
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneUI">
+            <summary>
+            the UI of this scene
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneName">
@@ -379,6 +445,11 @@
             </summary>
             <param name="scene"></param>
         </member>
+        <member name="T:SnowLibrary.Monogame.Sprite">
+            <summary>
+            Represents an image that can be drawn to the screen
+            </summary>
+        </member>
         <member name="M:SnowLibrary.Monogame.Sprite.LoadContent">
             <summary>
             loads the texture from the stored path
@@ -470,159 +541,91 @@
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:SnowLibrary.Monogame.UI.UIEditor">
+        <member name="T:SnowLibrary.Monogame.UI.Editor.UIEditor">
             <summary>
             Allows for the easy creation of game UIs be it for scores, or pause menus
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.UIEditor.Editing">
+        <member name="F:SnowLibrary.Monogame.UI.Editor.UIEditor.isEditing">
             <summary>
             Value is true when the editor is set to Edit mode.
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.UIEditor.processingUIInstance">
+        <member name="F:SnowLibrary.Monogame.UI.Editor.UIEditor.processingUIInstance">
             <summary>
             The UI instance that is currently being worked with
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.#ctor(SnowLibrary.Monogame.UI.UI,Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.#ctor(SnowLibrary.Monogame.UI.UserInterface,Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
             <summary>
             Creates a new instance of the UIEditor class, from here one can edit a UI instance
             </summary>
             <param name="ui">the UI instance that will be worked with</param>
             <param name="graphics">the graphics device to use when editing UI</param>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.EditUI">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.EditUI">
             <summary>
             make sure nothing is going on in the update and draw method when this is active. use the "Editing" field to check. to use press space to add new elements and drag them around with the mouse.
             </summary>
             <returns>the completed task </returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Save(System.String,System.Boolean)">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the UI editor
+            </summary>
+            <param name="time"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.Draw">
+            <summary>
+            Draws the UI Editor
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.Save(System.String,System.Boolean)">
             <summary>
             Saves the current processing UI using the given name
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Save(SnowLibrary.Monogame.UI.UI,System.String)">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.Save(SnowLibrary.Monogame.UI.UserInterface,System.String)">
             <summary>
             Saves the given UI with the given name
             </summary>
             <param name="ui"></param>
             <param name="saveName"></param>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.Load(System.String)">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.Load(System.String)">
             <summary>
             Loads the UI that has the given name. throws an exception when there was no UI found with the given name
             </summary>
             <param name="saveName"></param>
-            <returns></returns>
-            <exception cref="!:FileManagement.FileNotFoundException"></exception>
+            <returns>returns the loaded UI. if none were found it throws an error</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditor.GetSaves">
+        <member name="M:SnowLibrary.Monogame.UI.Editor.UIEditor.GetSaves">
             <summary>
             Gets all the saves that are saved
             </summary>
             <returns>An array of names from all the saved UI templates</returns>
         </member>
-        <member name="T:SnowLibrary.Monogame.UI.UIElement">
+        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.Show">
             <summary>
-            all UI elements inherit from this class. it enables the bundling of all elements for convenient bulk use
+            opens the editor controls and gives it focus
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIElement.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="F:SnowLibrary.Monogame.UI.UIEditorControls.ccomponents">
             <summary>
-            Requests for the given object to be drawn to the screen using the passed Spritebatch
-            </summary>
-            <param name="batch"></param>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:SnowLibrary.Monogame.UI.UI">
-            <summary>
-            Represents a UI object
+            Required designer variable.
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.textFields">
+        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.Dispose(System.Boolean)">
             <summary>
-            A list containing all text fields present in the UI
+            Clean up any resources being used.
             </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.buttons">
+        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.InitializeComponent">
             <summary>
-            A list containing all buttons presnt in the UI
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.sliders">
-            <summary>
-            A list containing all images present in the UI
-            </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.inputFields">
-            <summary>
-            A list containing all InputFields present in the UI
-            </summary>
-        </member>
-        <member name="P:SnowLibrary.Monogame.UI.UI.UIControl">
-            <summary>
-            if a certain UI element has control, this veriable should be used to stop all interfearing code. e.g. keyboard input
-            </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.UseUIBackground">
-            <summary>
-            Specifies if the background color of this UI should be used
-            </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.UI.UI.backgroundColor">
-            <summary>
-            Used to change the backgrounds of specific UI environments
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.DrawUI(Microsoft.Xna.Framework.Graphics.SpriteBatch@)">
-            <summary>
-            draws the UI to the screen using the provided SpriteBatch
-            </summary>
-        </member>
-        <member name="P:SnowLibrary.Monogame.UI.UI.Elements">
-            <summary>
-            returns all the elements assigned to the UI.
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.UpdateUI(Microsoft.Xna.Framework.GameTime)">
-            <summary>
-            Calls the update method on every UI element that requires it
-            </summary>
-            <param name="time">the GameTime some UIElements need</param>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.TextField)">
-            <summary>
-            adds <paramref name="element"/> to <paramref name="ui"/>
-            </summary>
-            <param name="ui"></param>
-            <param name="element"></param>
-            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.Button)">
-            <summary>
-            adds <paramref name="element"/> to <paramref name="ui"/>
-            </summary>
-            <param name="ui"></param>
-            <param name="element"></param>
-            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.Slider)">
-            <summary>
-            adds <paramref name="element"/> to <paramref name="ui"/>
-            </summary>
-            <param name="ui"></param>
-            <param name="element"></param>
-            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.UI.op_Addition(SnowLibrary.Monogame.UI.UI,SnowLibrary.Monogame.UI.UIElement)">
-            <summary>
-            adds <paramref name="element"/> to <paramref name="ui"/>
-            </summary>
-            <param name="ui"></param>
-            <param name="element"></param>
-            <returns><paramref name="ui"/> with the newly added <paramref name="element"/> if the element is of a supported type. if not, it returns the ui unchanged</returns> 
         </member>
         <member name="F:SnowLibrary.Monogame.UI.NewButtonForm.ccomponents">
             <summary>
@@ -685,213 +688,273 @@
              the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.UIEditorControls.ccomponents">
+        <member name="T:SnowLibrary.Monogame.UI.UserInterface">
             <summary>
-            Required designer variable.
+            Represents a UI object
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.Dispose(System.Boolean)">
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.FetchElement``1(System.String)">
             <summary>
-            Clean up any resources being used.
+            Fetches the element of the given type with the given name
             </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+            <typeparam name="T"></typeparam>
+            <param name="elementName"></param>
+            <returns>the found element. if no elements were found it returns null</returns>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UIEditorControls.InitializeComponent">
+        <member name="P:SnowLibrary.Monogame.UI.UserInterface.UIControl">
             <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:SnowLibrary.Monogame.UI.TextField">
-            <summary>
-            Represents a piece of UI text
+            if a certain UI element has control, this veriable should be used to stop all interfearing code. e.g. keyboard input
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.UI.TextField.Content">
+        <member name="F:SnowLibrary.Monogame.UI.UserInterface.UseUIBackground">
             <summary>
-            Gets or sets the content of this Text element
+            Specifies if the background color of this UI should be used
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.TextField.textColor">
+        <member name="F:SnowLibrary.Monogame.UI.UserInterface.backgroundColor">
             <summary>
-            The color of this Text element
+            Used to change the backgrounds of specific UI environments
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.TextField.font">
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
             <summary>
-            The font to use for this Text element
+            draws the UI to the screen using the provided SpriteBatch
             </summary>
         </member>
-        <member name="P:SnowLibrary.Monogame.UI.TextField.PixelLength">
+        <member name="P:SnowLibrary.Monogame.UI.UserInterface.Item(System.String)">
             <summary>
-            gets the with and length of the string using the font of this element, should it not be assigned it uses the global default font
+            Fetches the element with the given name
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.UserInterface.Elements">
+            <summary>
+            returns all the elements assigned to the UI.
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.TextField.#ctor">
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.UpdateUI(Microsoft.Xna.Framework.GameTime)">
             <summary>
-            creates a new empty text element
+            Calls the update method on every UI element that requires it
             </summary>
+            <param name="time">the GameTime some UIElements need</param>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.TextField.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.op_Addition(SnowLibrary.Monogame.UI.UserInterface,SnowLibrary.Monogame.GameObject)">
             <summary>
-            Requests the drawing of this text element
+            adds <paramref name="element"/> to <paramref name="ui"/>
             </summary>
-            <param name="batch">the spritebatch to use when drawing</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="ui"></param>
+            <param name="element"></param>
+            <returns><paramref name="ui"/> with the newly added <paramref name="element"/></returns>
         </member>
         <member name="T:SnowLibrary.Monogame.UI.Button">
             <summary>
-            Represents a UI button object
+            Represents a default UI button
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.buttonX">
+        <member name="M:SnowLibrary.Monogame.UI.Button.AttatchOnClickListener(System.EventHandler)">
             <summary>
-            the width of the button
+            Attatches the given method to the OnClick event
             </summary>
+            <param name="onClick"></param>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.buttonY">
+        <member name="P:SnowLibrary.Monogame.UI.Button.DefaultColor">
             <summary>
-            the height of the button
+            Gets or sets the default color of the button
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.normal">
+        <member name="P:SnowLibrary.Monogame.UI.Button.HoveringColor">
             <summary>
-            Color of the button
+            Gets or sets the color of the button when the mouse is hovering over it
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.hover">
+        <member name="P:SnowLibrary.Monogame.UI.Button.DissabledColor">
             <summary>
-            Color of the button when mouse is hovering
+            Gets or sets the color the button has when it is not interactable
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.click">
+        <member name="P:SnowLibrary.Monogame.UI.Button.Interactable">
             <summary>
-            color when button is clicked <b>Obsoltete, field is not used</b>
+            Gets or sets wether this button is interactable with or not
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.dissabled">
+        <member name="P:SnowLibrary.Monogame.UI.Button.Font">
             <summary>
-            Color the button has when its dissabled
+            the font that is used for this button's text
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.Button.isDissabled">
+        <member name="P:SnowLibrary.Monogame.UI.Button.Content">
             <summary>
-            specify if the button can be clicked or not
+            the text that is displayed for this button
             </summary>
         </member>
-        <member name="E:SnowLibrary.Monogame.UI.Button.OnClick">
+        <member name="P:SnowLibrary.Monogame.UI.Button.ContentSize">
             <summary>
-            raised when the button is clicked
+            the pixel size of the content string
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.Button.#ctor">
+        <member name="P:SnowLibrary.Monogame.UI.Button.TextColor">
             <summary>
-            Creates a new button UI element, with all the default values
+            the color of the text for this button
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.Button.MouseHovering">
-            <returns>
-            returns true when the mouse has entered the bountrybox of the button otherwise false
-            </returns>
-        </member>
-        <member name="M:SnowLibrary.Monogame.UI.Button.Update">
+        <member name="T:SnowLibrary.Monogame.UI.ButtonState">
             <summary>
-            Updates the button so the color changes if the mouse hovers and invokes the OnClick event when the button is clicked 
+            Represents the states a button can be in
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.Button.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="F:SnowLibrary.Monogame.UI.ButtonState.Default">
             <summary>
-            draws the button to the screen
+            the default state
             </summary>
-            <param name="batch"></param>
         </member>
-        <member name="T:SnowLibrary.Monogame.UI.OnClickEventArgs">
+        <member name="F:SnowLibrary.Monogame.UI.ButtonState.Hovering">
             <summary>
-            serves to specify which button was used to click the button
+            the mouse is hovering over the button
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.OnClickEventArgs.button">
+        <member name="F:SnowLibrary.Monogame.UI.ButtonState.Pressed">
             <summary>
-            Gets what button was used to click the button
+            the button is being pressed
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.OnClickEventArgs.#ctor(SnowLibrary.Monogame.MouseButton)">
+        <member name="F:SnowLibrary.Monogame.UI.ButtonState.Dissabled">
             <summary>
-            Creates a new instance of the <b>OnClickEventArgs</b> class
+            the button is dissabled. it cant be interacted with
             </summary>
-            <param name="button"></param>
         </member>
-        <member name="T:SnowLibrary.Monogame.UI.InputField">
+        <member name="T:SnowLibrary.Monogame.UI.ButtonComponent">
+            <summary>
+            Represetns the defaut Button component which is used in the default <see cref="T:SnowLibrary.Monogame.UI.Button"/>
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.DissabledColor">
+            <summary>
+            The color this button will have when it is not interactable
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.DefaultColor">
+            <summary>
+            The color this button will have normally
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.HoveringColor">
+            <summary>
+            The color the button has when the mouse if hovering over it
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.ClickedColor">
+            <summary>
+            Color the button has when its clicked
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.font">
+            <summary>
+            the font used for the text of the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.textColor">
+            <summary>
+            The color of the text for this button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.content">
+            <summary>
+            the text shown on the button
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.ButtonComponent.interactable">
+            <summary>
+            States wether this button can be interacted with
+            </summary>
+        </member>
+        <member name="E:SnowLibrary.Monogame.UI.ButtonComponent.OnClick">
+            <summary>
+            Gets invoked whenever the button is pressed
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.ButtonComponent.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the button component with the parameter as the content
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.ButtonComponent.#ctor">
+            <summary>
+            Creates a new empty instance of the button component with the default values
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.InputFieldComponent">
             <summary>
             represents a Inputfield control for users to input text
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.input">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.input">
             <summary>
             the text that the user inputted into this InputField
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.placeHolder">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.placeHolder">
             <summary>
             the text to show when no input has been given
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.inputTextColor">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.inputTextColor">
             <summary>
             the text color of user inputted text
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.placeholderTextColor">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.placeholderTextColor">
             <summary>
             the color of the placeholder text
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.backgroundColor">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.backgroundColor">
             <summary>
             Background of this TextField
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.selectedBackgroundColor">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.selectedBackgroundColor">
             <summary>
             The background of this TextField when it is selected
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.IsSelected">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.IsSelected">
             <summary>
             Indicates whether the InputField is selected
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.multiLine">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.multiLine">
             <summary>
             Indicates whether the InputField should allow the user to enter multiple lines.
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.UI.InputField.font">
+        <member name="F:SnowLibrary.Monogame.UI.InputFieldComponent.font">
             <summary>
             The font to use with this UI element
             </summary>
         </member>
-        <member name="E:SnowLibrary.Monogame.UI.InputField.OnCompleteTyping">
+        <member name="E:SnowLibrary.Monogame.UI.InputFieldComponent.OnCompleteTyping">
             <summary>
             Raised when enter is pressed while this InputField is selected
             </summary>
         </member>
-        <member name="E:SnowLibrary.Monogame.UI.InputField.OnTextChanged">
+        <member name="E:SnowLibrary.Monogame.UI.InputFieldComponent.OnTextChanged">
             <summary>
             Raised when the input text has changed
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.InputField.#ctor">
+        <member name="M:SnowLibrary.Monogame.UI.InputFieldComponent.#ctor">
             <summary>
             Creates a new empty InputField UI element
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.InputField.Update">
+        <member name="M:SnowLibrary.Monogame.UI.InputFieldComponent.Update">
             <summary>
             Updates the InputField UI element
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.InputField.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="M:SnowLibrary.Monogame.UI.InputFieldComponent.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
             <summary>
             Requests the drawing of the InputField UI element
             </summary>
@@ -930,24 +993,123 @@
             </summary>
             <returns>the argument</returns>
         </member>
-        <member name="T:SnowLibrary.Monogame.UI.Slider">
+        <member name="T:SnowLibrary.Monogame.UI.UIElements.Slider">
             <summary>
             Represents a UI slider object
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.Slider.Update">
+        <member name="M:SnowLibrary.Monogame.UI.UIElements.Slider.Update">
             <summary>
             updates the UI element
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.SliderIndicator.#ctor">
+        <member name="M:SnowLibrary.Monogame.UI.UIElements.SliderIndicator.#ctor">
             <summary>
             Creates a new instance of the SliderIndicator class. this is used for the Slider class. it has no use on its own
             </summary>
         </member>
+        <member name="T:SnowLibrary.Monogame.UI.TextField">
+            <summary>
+            represents a text field object
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.TextField.text">
+            <summary>
+            The text element of the default Textfield object
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextField.Font">
+            <summary>
+            the font used by this text field
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextField.TextColor">
+            <summary>
+            The color the text will have when drawn
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextField.Content">
+            <summary>
+            The content of this text field. This is the text that is displayed
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextField.#ctor(System.String)">
+            <summary>
+            Creates a new default TextField object with the given content string
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextField.#ctor">
+            <summary>
+            Creates a new Empty instance of the default TextField class
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.TextFieldComponent">
+            <summary>
+            Represents a piece of UI text
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextFieldComponent.Content">
+            <summary>
+            Gets or sets the content of this Text element
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.TextFieldComponent.textColor">
+            <summary>
+            The color of this Text element
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.UI.TextFieldComponent.font">
+            <summary>
+            The font to use for this Text element
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.TextFieldComponent.PixelLength">
+            <summary>
+            gets the with and length of the string using the font of this element, should it not be assigned it uses the global default font
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextFieldComponent.#ctor">
+            <summary>
+            creates a new empty text element
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.TextFieldComponent.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Requests the drawing of this text element
+            </summary>
+            <param name="batch">the spritebatch to use when drawing</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SnowLibrary.Monogame.UI.UIComponent">
+            <summary>
+            Represents a UI element
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.UIComponent.gameObject">
+            <summary>
+            The game object this component is attatched to
+            </summary>
+        </member>
+        <member name="P:SnowLibrary.Monogame.UI.UIComponent.transform">
+            <summary>
+            the position of the gameobject this component is attached to
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIComponent.#ctor(SnowLibrary.Monogame.GameObject,SnowLibrary.Monogame.Transform)">
+            <summary>
+            Creates a new instance of the UIComponent class with the given values
+            </summary>
+            <param name="obj"></param>
+            <param name="transform"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UIComponent.#ctor">
+            <summary>
+            Creates a new empty instance of the UIComponent class
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Monogame.MonoUtils">
             <summary>
-            A convenient class containing global elements that can be used throughout the entirety of the project
+            A convenient class containing global elements that can be used throughout the entire project
             </summary>
         </member>
         <member name="F:SnowLibrary.Monogame.MonoUtils.graphics">
@@ -1012,6 +1174,15 @@
             <param name="alpha">the transparency of the texture</param>
             <param name="_graphics">the graphics device to use when creating this texture</param>
             <returns>the newly created texture</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.MonoUtils.CreateTexture(System.Int32,System.Int32,System.UInt32[])">
+            <summary>
+            Creates a new texture with the given set of uint color data
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="data"></param>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.MonoUtils.CreateTexture(System.Int32,System.Int32,Microsoft.Xna.Framework.Color,System.Byte)">
             <summary>
@@ -2105,6 +2276,11 @@
             </summary>
             <param name="argument"></param>
         </member>
+        <member name="T:SnowLibrary.Serialization.IncludePropertiesForFieldAttribute">
+            <summary>
+            Represents an attribute that can be used to include properties in class fields in the serialization process
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Serialization.ExcludeFromSerializationAttribute">
             <summary>
             Makes sure that when serializing or deserializing this field will always be ignore
@@ -2870,6 +3046,16 @@
             <param name="from"></param>
             <param name="result"></param>
             <returns>true if the operation was successful, otherwise false. puts the result in <paramref name="result"/>. if the operation failed this will be the default value of the specified target type</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.TryCastPrimitive(System.Object,System.Type,System.Object@)">
+            <summary>
+            Attemts to cast a primitive value to the given cast target
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="from"></param>
+            <param name="result"></param>
+            <returns>true if the operation was successful, otherwise false. puts the result in <paramref name="result"/>. 
+            if the operation failed null is returned</returns>
         </member>
         <member name="T:SnowLibrary.FailedToCastTypeException">
             <summary>
