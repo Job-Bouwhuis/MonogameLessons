@@ -12,7 +12,7 @@ using SnowLibrary.Monogame.Debugging;
 using SnowLibrary.Monogame.UI.Editor;
 using System;
 
-namespace CSharpAdvanced.Assignment1
+namespace CSharpAdvanced.Assignment2
 {
     public class Game1 : Game
     {
@@ -20,6 +20,13 @@ namespace CSharpAdvanced.Assignment1
         private SpriteBatch spriteBatch;
         private Scene currentScene;
 
+        private UIEditor editor;
+
+        public void ExitGame(object i, EventArgs e)
+        {
+            Exit();
+        }
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -44,7 +51,7 @@ namespace CSharpAdvanced.Assignment1
 
         protected override void LoadContent()
         {
-            // Redundant code from creating the scene itself. keeping this here for the lovely Dominick
+            // Redundant code from creating the scene itself. keeping this here for the lovely teacher <3
             {
                 //Scene scene = SceneManager.CurrentScene = new Scene("Level1");
 
@@ -62,9 +69,6 @@ namespace CSharpAdvanced.Assignment1
                 //player.AttatchComponent<BoxCollider>();
                 //player.AttatchComponent<SpriteRenderer>();
                 //player.AttatchComponent<ScreenClamper>();
-
-                //player.Enabled = true;
-
                 //// add player to the scene.
                 //scene += player;
 
@@ -78,8 +82,6 @@ namespace CSharpAdvanced.Assignment1
                 //sword.AttatchComponent<SpriteRenderer>();
                 //sword.AttatchComponent<BoxCollider>().isTrigger = true;
 
-                //sword.Enabled = true;
-
                 //// add the sword to the scene
                 //scene += sword;
 
@@ -91,8 +93,6 @@ namespace CSharpAdvanced.Assignment1
                 //// attatch all the components
                 //shield.AttatchComponent<BoxCollider>().isTrigger = true;
                 //shield.AttatchComponent<SpriteRenderer>();
-
-                //shield.Enabled = true;
 
                 //// add the shield to the scene
                 //scene += shield;
@@ -108,8 +108,6 @@ namespace CSharpAdvanced.Assignment1
                 //gate.AttatchComponent<BoxCollider>().isTrigger = true;
                 //gate.AttatchComponent<SpriteRenderer>();
 
-                //gate.Enabled = true;
-
                 ////add the gate to the scene
                 //scene += gate;
 
@@ -118,12 +116,27 @@ namespace CSharpAdvanced.Assignment1
                 //scene.Save();
             }
 
-            // load the first scene
-            SceneManager.LoadScene("Level1");
+            // redundant UI stuff. this bool is set to true when a new UI is being created. this is to prevent the game from running normally while the UI is being created.
+            if (true)
+            {
+                editor = new UIEditor(new UserInterface(), GraphicsDevice);
+
+                editor.EditUI();
+            }
+            else
+                // load the first scene
+                SceneManager.LoadScene("Level1");
         }
 
         protected override void Update(GameTime time)
         {
+            if (editor != null && editor.isEditing)
+            {
+                editor.Update(time);
+                editor.Draw();
+                return;
+            }
+
             //refresh the input state each update loop
             Input.UpdateState();
 
@@ -135,6 +148,9 @@ namespace CSharpAdvanced.Assignment1
 
         protected override void Draw(GameTime gameTime)
         {
+            if (editor != null && editor.isEditing)
+                return;
+
             //clear the screen and draw the screen with the color Gray
             GraphicsDevice.Clear(Color.Gray);
 
