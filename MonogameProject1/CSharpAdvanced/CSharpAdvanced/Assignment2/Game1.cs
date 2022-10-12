@@ -14,6 +14,18 @@ using System;
 
 namespace CSharpAdvanced.Assignment2
 {
+    public class ButtonClicks
+    {
+        public void ExitGame(object? o, EventArgs e)
+        {
+            Environment.Exit(-1);
+        }
+        public void LoadLevel1(object? o, EventArgs e)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+    }
+
     public class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
@@ -22,11 +34,21 @@ namespace CSharpAdvanced.Assignment2
 
         private UIEditor editor;
 
-        public void ExitGame(object i, EventArgs e)
+        public static bool paused = false;
+
+        public void ExitGame(object? o, EventArgs e)
         {
             Exit();
         }
-        
+
+        public void LoadLevel(object? o, EventArgs e)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+
+
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -115,21 +137,32 @@ namespace CSharpAdvanced.Assignment2
                 //// after the scene is saved, all the code above to create the scene can be deleted from the project. the entire scene is then stored in a text file and can be loaded with the SceneManager.LoadScene() method.
                 //scene.Save();
             }
-
+            
             // redundant UI stuff. this bool is set to true when a new UI is being created. this is to prevent the game from running normally while the UI is being created.
-            if (true)
+            if (false)
             {
                 editor = new UIEditor(new UserInterface(), GraphicsDevice);
 
                 editor.EditUI();
             }
             else
+            {
+                currentScene = new Scene("MainMenu2");
                 // load the first scene
-                SceneManager.LoadScene("Level1");
+                //SceneManager.LoadScene("MainMenu");
+                currentScene.sceneUI = UIEditor.Load("MainMenu");
+
+                currentScene.Save();
+
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
         protected override void Update(GameTime time)
         {
+            if (!IsActive)
+                paused = true;
+                
             if (editor != null && editor.isEditing)
             {
                 editor.Update(time);
@@ -142,6 +175,7 @@ namespace CSharpAdvanced.Assignment2
 
             //update each game object that is enabled
             currentScene.Update(time);
+            currentScene.sceneUI.UpdateUI(time);
 
             base.Update(time);
         }
@@ -156,6 +190,7 @@ namespace CSharpAdvanced.Assignment2
 
             //foreach object that is enabled draw it to the screen using the default spriteBatch
             currentScene.Draw(spriteBatch);
+            currentScene.sceneUI.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }
@@ -164,6 +199,11 @@ namespace CSharpAdvanced.Assignment2
         {
             // set the current scene to the scene that was loaded
             currentScene = SceneManager.CurrentScene;
+            //load the UI for the scene
+            //currentScene.sceneUI = UIEditor.Load("MainMenu");
+
+            //set the window title screen to the name of the scene
+            Window.Title = currentScene.sceneName;
         }
     }
 }

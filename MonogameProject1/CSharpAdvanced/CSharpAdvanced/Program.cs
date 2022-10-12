@@ -7,7 +7,7 @@ namespace CSharpAdvanced
         [STAThread]
         static void Main()
         {
-            using var game = new Assignment1.Game1();
+            using var game = new Assignment2.Game1();
             game.Run();
         }
     }

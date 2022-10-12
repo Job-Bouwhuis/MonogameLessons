@@ -20,6 +20,8 @@ namespace CSharpAdvanced.Assignment1
         private SpriteBatch spriteBatch;
         private Scene currentScene;
 
+        private UIEditor editor;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
