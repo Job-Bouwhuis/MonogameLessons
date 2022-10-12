@@ -23,22 +23,21 @@ namespace CSharpAdvanced.Assignment2
             {
                 playerState = value;
 
-                textureIndex = value switch
-                {
-                    State.Normal => 0,
-                    State.Weapon => 1,
-                    State.Shield => 2,
-                    State.WeaponShield => 3,
-                    _ => 0
-                };
+                textureIndex = (int)value;
             }
         }
 
+        /// <summary>
+        /// Creates a new instance of the player class with the given parameters
+        /// </summary>
+        /// <param name="objectName">the name this object will be saved as</param>
+        /// <param name="sprites">the sprites that are available for this game object</param>
         public Player(string objectName, params Sprite[] sprites) : base("new Object", new Transform(), sprites)
         {
             this.objectName = objectName;
             sprites.Foreach(x => this.sprites.Add(x));
         }
+        
         /// <summary>
         /// Creates a new empty instance of a Player
         /// </summary>
@@ -47,11 +46,26 @@ namespace CSharpAdvanced.Assignment2
             Enabled = false;
         }
 
+        /// <summary>
+        /// Provides states for the player, wether he is holding a weapon, a shield, both, or none
+        /// </summary>
         public enum State
         {
+            /// <summary>
+            /// the player is holding nothing
+            /// </summary>
             Normal,
+            /// <summary>
+            /// the player is holding a weapon
+            /// </summary>
             Weapon,
+            /// <summary>
+            /// the player is holding a shield
+            /// </summary>
             Shield,
+            /// <summary>
+            /// the player is holding a weapon and a shield
+            /// </summary>
             WeaponShield
         }
     }

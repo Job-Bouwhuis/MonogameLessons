@@ -324,7 +324,7 @@
             Represents a collection of game objects that are loaded and unloaded together
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.SceneManagement.Scene.sceneUI">
+        <member name="P:SnowLibrary.Monogame.SceneManagement.Scene.SceneUI">
             <summary>
             the UI of this scene
             </summary>
@@ -693,6 +693,16 @@
             Represents a UI object
             </summary>
         </member>
+        <member name="F:SnowLibrary.Monogame.UI.UserInterface.UIName">
+            <summary>
+            The name of this UI
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.#ctor">
+            <summary>
+            Creates a new empty instance of the built in User Interface
+            </summary>
+        </member>
         <member name="M:SnowLibrary.Monogame.UI.UserInterface.FetchElement``1(System.String)">
             <summary>
             Fetches the element of the given type with the given name
@@ -716,7 +726,7 @@
             Used to change the backgrounds of specific UI environments
             </summary>
         </member>
-        <member name="M:SnowLibrary.Monogame.UI.UserInterface.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+        <member name="M:SnowLibrary.Monogame.UI.UserInterface.DrawUI(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
             <summary>
             draws the UI to the screen using the provided SpriteBatch
             </summary>
