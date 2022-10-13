@@ -8,6 +8,7 @@ using SnowLibrary.Serialization;
 using SnowLibrary.Monogame.SceneManagement;
 using SnowLibrary.Monogame.Debugging;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace CSharpAdvanced.Assignment2
@@ -15,19 +16,42 @@ namespace CSharpAdvanced.Assignment2
     [IncludePrivateFields]
     public class Enemy : GameObject, IMyRenderable
     {
-        public EnemyState state = EnemyState.Patrolling;
+        /// <summary>
+        /// The name of the game object this enemy is targeting
+        /// </summary>
+        public string TargetName = "Player1";
+        /// <summary>
+        /// the speed of which this enemy will walk
+        /// </summary>
+        public float walkSpeed;
+        /// <summary>
+        /// The state of the enemy. This is used to determine what the enemy is doing
+        /// </summary>
+        public EnemyState State
+        {
+            get => state;
+            set
+            {
+                lastState = state;
+                state = value;
+            }
+        }
 
+        private EnemyState lastState = EnemyState.Patrolling;
+        
         private readonly List<Transform> patrolingPositions = new List<Transform>();
+        
         [ExcludeFromSerialization]
         private int currentPatrolingTarget = 0;
-
         
-        public float walkSpeed;
-
-        public string TargetName = "Player1";
+        [ExcludeFromSerialization]
+        private float distanceToTarget = 0;
+        
+        private EnemyState state;
+        
         [ExcludeFromSerialization]
         private GameObject target;
-
+        
         [ExcludeFromSerialization]
         private double timeWalked = 0, timeIdle = 0;
 
@@ -39,10 +63,11 @@ namespace CSharpAdvanced.Assignment2
         {
 
         }
+        
         /// <summary>
         /// Adds all the positions to this enemy's patroling positions. the enemy will patrol between these positions. function will override all previous positions
         /// </summary>
-        public void SetPatroling(params Transform[] positions)
+        public void SetPatrolingPoints(params Transform[] positions)
         {
             patrolingPositions.Clear();
             positions.Foreach(x => patrolingPositions.Add(x));
@@ -50,6 +75,8 @@ namespace CSharpAdvanced.Assignment2
 
         public override void Awake()
         {
+            state = EnemyState.Patrolling;
+            
             var obj = SceneManager.CurrentScene.FindObjectWithName(TargetName);
             Type t = obj?.GetType();
 
@@ -62,87 +89,94 @@ namespace CSharpAdvanced.Assignment2
         {
             if (target == null)
                 return;
-                
-            float distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
 
-            if (distanceToTarget < 200)
+            distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
+
+            if (distanceToTarget < 200 && target is Player player)
+                if (player.PlayerState == Player.State.WeaponShield)
+                    State = EnemyState.Fleeing;
+                else
+                    State = EnemyState.Chasing;
+
+            switch (State)
             {
-                if (target is Player player)
-                {
-                    if (player.PlayerState == Player.State.WeaponShield)
-                        state = EnemyState.Fleeing;
-                    else
-                        state = EnemyState.Chasing;
-                }
+                case EnemyState.Idle:
+                    Idling(time);
+                    break;
+                case EnemyState.Patrolling:
+                    Patrolling(time);
+                    break;
+                case EnemyState.Chasing:
+                    DifferFromPatrol(time, false);
+                    break;
+                case EnemyState.Fleeing:
+                    DifferFromPatrol(time, true);
+                    break;
+            }
+        }
+
+        private void Patrolling(GameTime time)
+        {
+            if (lastState == EnemyState.Fleeing || lastState == EnemyState.Chasing)
+            {
+                FindClosestPatrolPoint();
+                lastState = state;
             }
 
-            if (state == EnemyState.Chasing)
+            if (timeWalked > 7000)
             {
-                MoveToTarget(target.transform, time);
-                if (distanceToTarget > 250)
-                    state = EnemyState.Patrolling;
+                State = EnemyState.Idle;
+                return;
             }
+            timeWalked += time.ElapsedGameTime.TotalMilliseconds;
+            MoveToTarget(patrolingPositions[currentPatrolingTarget], time);
+            IdleWhenAtTarget();
+        }
 
-            if (state == EnemyState.Fleeing)
+        private void FindClosestPatrolPoint()
+        {
+            List<float> distanceToTargets = new List<float>();
+
+            patrolingPositions.Foreach(x => distanceToTargets.Add(Vector2.Distance(transform.position, x.position)));
+            float smallest = distanceToTargets.Min();
+            currentPatrolingTarget = distanceToTargets.IndexOf(smallest);
+        }
+
+        private void DifferFromPatrol(GameTime time, bool flee)
+        {
+            MoveToTarget(target.transform.position, time, flee);
+            if (distanceToTarget > 250)
+                State = EnemyState.Patrolling;
+        }
+
+        private void Idling(GameTime time)
+        {
+            // if enemy is idling for more than 4 seconds, change state to patrolling
+            if (timeIdle < 4000)
             {
-                MoveToTarget(target.transform.position, time, true);
-                if (distanceToTarget > 250)
-                    state = EnemyState.Patrolling;
-            }
-
-            if (state == EnemyState.Patrolling)
-            {
-                timeWalked += time.ElapsedGameTime.TotalMilliseconds;
-                if (timeWalked > 7000)
-                {
-                    state = EnemyState.Idle;
-                    return;
-                }
-
-
-                MoveToTarget(patrolingPositions[currentPatrolingTarget], time);
-
-                float targetDistance = Vector2.Distance(transform.position, patrolingPositions[currentPatrolingTarget]);
-                if (targetDistance < 4)
-                {
-                    currentPatrolingTarget++;
-                    
-                    if (currentPatrolingTarget >= patrolingPositions.Count)
-                        currentPatrolingTarget = 0;
-                    
-                    state = EnemyState.Idle;
-                }
-            }
-
-            if (state == EnemyState.Idle)
-            {
-                if (timeIdle > 4000)
-                {
-                    state = EnemyState.Idle;
-                    return;
-                }
-
                 timeIdle += time.ElapsedGameTime.TotalMilliseconds;
-                if (timeIdle >= 4000)
-                {
-                    timeWalked = 0;
-                    timeIdle = 0;
-                    state = EnemyState.Patrolling;
-                }
+                return;
             }
 
-
+            
+            if (timeIdle >= 4000)
+            {
+                timeWalked = 0;
+                timeIdle = 0;
+                State = EnemyState.Patrolling;
+            }
         }
 
         private void MoveToTarget(Vector2 target, GameTime time, bool evade = false)
         {
+            // get a normalized direction vector from the enemy to the target, or when evading is true, the oposite direction than towards the player
+            Vector2 directiont = evade ?
+                Vector2.Normalize(transform.position - target)  : 
+                Vector2.Normalize(target - transform.position);
             
-            Vector2 directiont = evade ? Vector2.Normalize(transform.position - target) : Vector2.Normalize(target - transform.position);
-            Vector2 direction = directiont * walkSpeed;
-            
-            transform.position += direction * (float)time.ElapsedGameTime.TotalMilliseconds;
+            //apply movement
+            transform.position += directiont * walkSpeed * (float)time.ElapsedGameTime.TotalMilliseconds;
         }
-
 
         public void Draw(SpriteBatch batch)
         {
@@ -157,6 +191,20 @@ namespace CSharpAdvanced.Assignment2
 
             textureIndex = 0;
             batch.End();
+        }
+
+        public void IdleWhenAtTarget()
+        {
+            float targetDistance = Vector2.Distance(transform.position, patrolingPositions[currentPatrolingTarget]);
+            if (targetDistance < 4)
+            {
+                currentPatrolingTarget++;
+
+                if (currentPatrolingTarget >= patrolingPositions.Count)
+                    currentPatrolingTarget = 0;
+
+                State = EnemyState.Idle;
+            }
         }
     }
 

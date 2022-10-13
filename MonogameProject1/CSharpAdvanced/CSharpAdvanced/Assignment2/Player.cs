@@ -9,12 +9,13 @@ using SnowLibrary.Monogame.Debugging;
 using SnowLibrary;
 using SnowLibrary.Serialization;
 using System.ComponentModel.DataAnnotations;
+using CSharpAdvanced.Assignment1;
 
 namespace CSharpAdvanced.Assignment2
 {
     public class Player : GameObject
     {
-        State playerState = State.Normal;
+        State playerState;
 
         public State PlayerState
         {
@@ -24,6 +25,8 @@ namespace CSharpAdvanced.Assignment2
                 playerState = value;
 
                 textureIndex = (int)value;
+
+                PlayerPrefs.SetValue("PlayerState", textureIndex.ToString());
             }
         }
 
@@ -36,6 +39,8 @@ namespace CSharpAdvanced.Assignment2
         {
             this.objectName = objectName;
             sprites.Foreach(x => this.sprites.Add(x));
+
+            
         }
         
         /// <summary>
@@ -45,7 +50,7 @@ namespace CSharpAdvanced.Assignment2
         {
             Enabled = false;
         }
-
+        
         /// <summary>
         /// Provides states for the player, wether he is holding a weapon, a shield, both, or none
         /// </summary>

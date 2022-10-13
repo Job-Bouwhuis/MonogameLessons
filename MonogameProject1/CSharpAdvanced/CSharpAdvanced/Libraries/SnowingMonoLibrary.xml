@@ -293,6 +293,19 @@
             </summary>
             <typeparam name="T">the type of component that will be deleted</typeparam>
         </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Destroy(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Destroys the given object, deleting it from the scene
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.FindGameObjectWithName(System.String)">
+            <summary>
+            Attempts to find a game object with the given name.
+            </summary>
+            <param name="name"></param>
+            <returns>Returns the found object, or null if no object is found</returns>
+        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
             <summary>
             Gets called whenever a game object collides with this one. The colliding game object is passed as the parameter.
@@ -317,6 +330,16 @@
         <member name="M:SnowLibrary.Monogame.GameObject.Dispose">
             <summary>
             Clears all resources this class holds.
+            </summary>
+        </member>
+        <member name="T:SnowLibrary.Monogame.PlayerPrefs">
+            <summary>
+            Allows for easy storing and saving specific strings to a file
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.PlayerPrefs.Clear">
+            <summary>
+            Removes all the data from the PlayerPrefs
             </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
@@ -346,16 +369,22 @@
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(System.String)">
             <summary>
-            creates a new instance of a Scene with the given name
+            Creates a new instance of a Scene with the given name
             </summary>
             <param name="sceneName"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.FindObjectWithName(System.String)">
             <summary>
-            Attemts to find a game object with the given name. returns null if it did not find it
+            Attemts to find a game object with the given name. 
             </summary>
             <param name="name"></param>
-            <returns></returns>
+            <returns>The found object, or null if it didnt find any</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Destroy(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Destroys the given object, deleting it from the scene
+            </summary>
+            <param name="obj"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
             <summary>
@@ -451,6 +480,32 @@
             Saves all the items currently in the scene
             </summary>
             <param name="scene"></param>
+        </member>
+        <member name="T:SnowLibrary.Monogame.ExitHelper">
+            <summary>
+            Provides an organized and accessable way to close the game rather than through the default game1.Exit() method.
+            </summary>
+        </member>
+        <member name="F:SnowLibrary.Monogame.ExitHelper.GameClosing">
+            <summary>
+            Gets invoked when the <see cref="M:SnowLibrary.Monogame.ExitHelper.CloseGame"/> method is called. therefore it is invoked right before the game closes
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.ExitHelper.CloseGame">
+            <summary>
+            Signals the game to close and invokes the <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> event
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.ExitHelper.ForceClose">
+            <summary>
+            Forces the game to close and does not invoke <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> nor <see cref="F:SnowLibrary.Monogame.ExitHelper.ClosingMethod"/>
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.ExitHelper.SetClosingMethod(System.Action)">
+            <summary>
+            Specifies what method should be called when closing the game. Ususally one wants this to be the "Game1.Close()" method of the game class
+            </summary>
+            <param name="method"></param>
         </member>
         <member name="T:SnowLibrary.Monogame.Sprite">
             <summary>
@@ -1847,6 +1902,34 @@
             <summary>
             Math Extention Methods for all Snow needs
             </summary>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.Min(System.Collections.Generic.List{System.Single})">
+            <summary>
+            Finds the smallest float within the list of floats
+            </summary>
+            <param name="floats"></param>
+            <returns>The smallest float within the given list</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.Max(System.Collections.Generic.List{System.Single})">
+            <summary>
+            Finds the largest float within the list of floats
+            </summary>
+            <param name="floats"></param>
+            <returns>The largest float within the given list</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.Min(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Finds the smallest double within the list of doubles
+            </summary>
+            <param name="doubles"></param>
+            <returns>The smallest double within the given list</returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.Max(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Finds the largest double within the list of doubles
+            </summary>
+            <param name="doubles"></param>
+            <returns>The largest double within the given list</returns>
         </member>
         <member name="M:SnowLibrary.SnowMathExtentionMethods.FloorToInt(System.Double)">
             <summary>
