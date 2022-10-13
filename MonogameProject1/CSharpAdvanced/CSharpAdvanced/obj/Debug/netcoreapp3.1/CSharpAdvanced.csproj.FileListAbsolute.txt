@@ -46,3 +46,10 @@ C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvance
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\SnowingMonoLibrary.dll
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\SnowingMonoLibrary.pdb
 C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\SnowingMonoLibrary.xml
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Enemy.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\Flag.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\UI_Panel.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\UI_Slot.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\UI_Tile_128x64.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\UI_Tile_64x64.xnb
+C:\GitRepositories\MonogameLessons\MonogameProject1\CSharpAdvanced\CSharpAdvanced\bin\Debug\netcoreapp3.1\Content\Assets\UI_Title.xnb

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SnowLibrary;
 using SnowLibrary.Monogame;
+using SnowLibrary.Monogame.SceneManagement;
 using System;
 using System.Linq;
 
@@ -27,7 +28,7 @@ namespace CSharpAdvanced.Assignment2
 
         public override void OnCollisionEnter(GameObject other)
         {
-            Environment.Exit(69);
+            SceneManager.LoadScene("Level2");
         }
     }
 }

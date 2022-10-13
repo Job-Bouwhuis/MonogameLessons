@@ -4,16 +4,30 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Enemy.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Flag.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Gate.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Knight.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/KnightShield.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/KnightWeapon.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/KnightWeaponShield.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Shield.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/UI_Panel.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/UI_Slot.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/UI_Tile_128x64.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/UI_Tile_64x64.png</File>
+    <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/UI_Title.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Assets/Weapon.png</File>
     <File>C:/GitRepositories/MonogameLessons/MonogameProject1/CSharpAdvanced/CSharpAdvanced/Content/Font.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

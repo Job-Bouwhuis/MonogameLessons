@@ -46,9 +46,6 @@ namespace CSharpAdvanced.Assignment2
             SceneManager.LoadScene("Level1");
         }
 
-
-
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -58,13 +55,22 @@ namespace CSharpAdvanced.Assignment2
 
         protected override void Initialize()
         {
+            SceneManager.SceneSourcePath = "Content/ScenesAssignment2";
+
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // set graphical aspects such as screen size
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.ApplyChanges();
+            
             // let the utility class initialize with all the values it requires
             MonoUtils.Initialize(graphics.GraphicsDevice, spriteBatch, Content.Load<SpriteFont>("Font"), Content);
 
             //debug class initializing. this creates the debug menu that can be opened with Debug.Show(); or closed with Debug.Hide();
             Debug.Initialize();
-            //Debug.Show();
+            Debug.Show();
 
             SceneManager.OnNewSceneLoaded += OnSceneLoaded;
 
@@ -135,17 +141,51 @@ namespace CSharpAdvanced.Assignment2
             ////add the gate to the scene
             //scene += gate;
 
+            ////make sure the scene has a UI. this is needed for it will break if it does not have a UI
+            //scene.SceneUI = new UserInterface("Level1UI");
+            //UIEditor.Save(scene.SceneUI, "Level1UI");
+            
             //// save the scene
             //// after the scene is saved, all the code above to create the scene can be deleted from the project. the entire scene is then stored in a text file and can be loaded with the SceneManager.LoadScene() method.
             //scene.Save();
             #endregion
 
             #region Level 2
+            
+            Scene scene = SceneManager.CurrentScene = new Scene("Level2");
 
+            Player player = new Player("Player1",
+                Content.Load<Texture2D>("Assets/Knight"),
+                Content.Load<Texture2D>("Assets/KnightWeapon"),
+                Content.Load<Texture2D>("Assets/KnightShield"),
+                Content.Load<Texture2D>("Assets/KnightWeaponShield"));
+
+            // attatch all the components.
+            var controller = player.AttatchComponent<TopDownPlayerController>();
+            controller.walkSpeed = 5;
+            controller.smoothness = 80;
+            player.AttatchComponent<BoxCollider>();
+            player.AttatchComponent<SpriteRenderer>();
+            player.AttatchComponent<ScreenClamper>();
+            // add player to the scene.
+            scene += player;
+
+            Enemy enemy = new Enemy("Enemy1", new Vector2(MonoUtils.ScreenCenter.X, 0), 
+                MonoUtils.Content.Load<Texture2D>("Assets/Enemy"), 
+                MonoUtils.Content.Load<Texture2D>("Assets/Flag"));
+            
+            enemy.SetPatroling(new Transform(100, 200), new Transform(400, 400), new Transform(500, 300), new Transform(300, 100));
+            enemy.AttatchComponent<SpriteRenderer>();
+            enemy.walkSpeed = 0.1f;
+
+            SceneManager.CurrentScene += enemy;
+
+            
             #endregion
             #endregion
 
             // redundant UI stuff. this bool is set to true when a new UI is being created. this is to prevent the game from running normally while the UI is being created.
+            #region Redundant UI stuff
             if (false)
             {
                 editor = new UIEditor(new UserInterface(), GraphicsDevice);
@@ -156,14 +196,12 @@ namespace CSharpAdvanced.Assignment2
             {
                 // load the first scene
                 //SceneManager.LoadScene("MainMenu");
-                
 
                 currentScene = new Scene("MainMenu");
                 currentScene.SceneUI = UIEditor.Load("MainMenuUI");
                 currentScene.Save();
-                
-                
             }
+            #endregion
 
             SceneManager.LoadScene("MainMenu");
         }
@@ -209,8 +247,6 @@ namespace CSharpAdvanced.Assignment2
         {
             // set the current scene to the scene that was loaded
             currentScene = SceneManager.CurrentScene;
-            //load the UI for the scene
-            //currentScene.sceneUI = UIEditor.Load("MainMenu");
 
             //set the window title screen to the name of the scene
             Window.Title = currentScene.sceneName;

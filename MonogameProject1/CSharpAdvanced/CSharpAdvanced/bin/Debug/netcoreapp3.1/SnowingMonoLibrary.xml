@@ -350,6 +350,13 @@
             </summary>
             <param name="sceneName"></param>
         </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.FindObjectWithName(System.String)">
+            <summary>
+            Attemts to find a game object with the given name. returns null if it did not find it
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.op_Addition(SnowLibrary.Monogame.SceneManagement.Scene,SnowLibrary.Monogame.GameObject)">
             <summary>
             Adds the given Game Object to the scene
@@ -405,7 +412,7 @@
             Gets called whenever a new scene is loaded.
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.SceneManagement.SceneManager.sceneSourcePath">
+        <member name="P:SnowLibrary.Monogame.SceneManagement.SceneManager.SceneSourcePath">
             <summary>
             The source path of where scenes will be saved and loaded from. This is set to the default value of "Content/Scenes"
             </summary>
@@ -499,6 +506,12 @@
             <param name="rotation"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.Transform.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new instance of the Transform class with the position set the the parameter, and the rest set to its default value
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.Transform.#ctor(System.Single,System.Single)">
             <summary>
             Creates a new instance of the Transform class with the position set the the parameter, and the rest set to its default value
             </summary>
@@ -1122,7 +1135,7 @@
             A convenient class containing global elements that can be used throughout the entire project
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.MonoUtils.graphics">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.Graphics">
             <summary>
             Represents the default graphics device used for the game
             </summary>
@@ -1147,7 +1160,7 @@
             represents the default font used by the game. this is also the font used for any UI element created using the UIEditor
             </summary>
         </member>
-        <member name="F:SnowLibrary.Monogame.MonoUtils.content">
+        <member name="P:SnowLibrary.Monogame.MonoUtils.Content">
             <summary>
             the global contentmanager used within the game
             </summary>
@@ -3001,6 +3014,12 @@
             Searches for the Type matching to the given name. can pass the assembly as filter for the search. be sure to just give the name of the assembly
             </summary>
             <returns>The type matching the given name if it is found within the given Assembly. if no matching type is found it returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.TypeWorker.FindType(System.String,System.String,System.String)">
+            <summary>
+            Searches for the Type matching to the given name. can pass the assembly as filter for the search. be sure to just give the name of the assembly
+            </summary>
+            <returns>The type matching the given name if it is found within the given Assembly and namespace. if no matching type is found it returns null</returns>
         </member>
         <member name="M:SnowLibrary.TypeWorker.FindMethod(System.Type,System.String)">
             <summary>
