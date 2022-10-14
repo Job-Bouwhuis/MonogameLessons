@@ -196,6 +196,21 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:SnowLibrary.Monogame.ExitHelper.GameClosing">
+            <summary>
+            Gets invoked right before the <see cref="F:SnowLibrary.Monogame.ExitHelper.CloseMethod"/> is invoked
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.ExitHelper.CloseGame">
+            <summary>
+            Closes the game after invoking the <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> event
+            </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.ExitHelper.ForceCloseGame">
+            <summary>
+            Force closes the game. This does not invoke the <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> event
+            </summary>
+        </member>
         <member name="T:SnowLibrary.Monogame.GameObject">
             <summary>
             Represents an object use within the game world
@@ -293,18 +308,18 @@
             </summary>
             <typeparam name="T">the type of component that will be deleted</typeparam>
         </member>
-        <member name="M:SnowLibrary.Monogame.GameObject.Destroy(SnowLibrary.Monogame.GameObject)">
-            <summary>
-            Destroys the given object, deleting it from the scene
-            </summary>
-            <param name="obj"></param>
-        </member>
         <member name="M:SnowLibrary.Monogame.GameObject.FindGameObjectWithName(System.String)">
             <summary>
-            Attempts to find a game object with the given name.
+            Attemts to find the game object with the given name in the current scene.
             </summary>
             <param name="name"></param>
-            <returns>Returns the found object, or null if no object is found</returns>
+            <returns>The found object. If none are found, returns null</returns>
+        </member>
+        <member name="M:SnowLibrary.Monogame.GameObject.Destroy(SnowLibrary.Monogame.GameObject)">
+            <summary>
+            Destroys the given game object from the current scene. if its null it does nothing
+            </summary>
+            <param name="obj"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.GameObject.OnCollisionEnter(SnowLibrary.Monogame.GameObject)">
             <summary>
@@ -337,9 +352,23 @@
             Allows for easy storing and saving specific strings to a file
             </summary>
         </member>
+        <member name="M:SnowLibrary.Monogame.PlayerPrefs.SetValue(System.String,System.String)">
+            <summary>
+            Sets a value to the player prefs file
+            </summary>
+            <param name="Key"></param>
+            <param name="Value"></param>
+        </member>
+        <member name="M:SnowLibrary.Monogame.PlayerPrefs.GetValue(System.String)">
+            <summary>
+            Gets a value from the player prefs file
+            </summary>
+            <param name="key"></param>
+            <returns>The found value, or null if no value is found</returns>
+        </member>
         <member name="M:SnowLibrary.Monogame.PlayerPrefs.Clear">
             <summary>
-            Removes all the data from the PlayerPrefs
+            Deletes all values from the player prefs file
             </summary>
         </member>
         <member name="T:SnowLibrary.Monogame.SceneManagement.Scene">
@@ -369,20 +398,20 @@
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.#ctor(System.String)">
             <summary>
-            Creates a new instance of a Scene with the given name
+            creates a new instance of a Scene with the given name
             </summary>
             <param name="sceneName"></param>
         </member>
-        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.FindObjectWithName(System.String)">
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.FindGameObjectWithName(System.String)">
             <summary>
-            Attemts to find a game object with the given name. 
+            Attemts to find a game object with the given name. returns null if it did not find it
             </summary>
             <param name="name"></param>
-            <returns>The found object, or null if it didnt find any</returns>
+            <returns></returns>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Destroy(SnowLibrary.Monogame.GameObject)">
             <summary>
-            Destroys the given object, deleting it from the scene
+            Destroys the given object, removing it from the scene. If it is null, it does nothing
             </summary>
             <param name="obj"></param>
         </member>
@@ -420,6 +449,12 @@
             <summary>
             Signals every active gameobject to update itself
             </summary>
+        </member>
+        <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.UpdateUI(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the UI of this scene, if it has one
+            </summary>
+            <param name="time"></param>
         </member>
         <member name="M:SnowLibrary.Monogame.SceneManagement.Scene.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
             <summary>
@@ -480,32 +515,6 @@
             Saves all the items currently in the scene
             </summary>
             <param name="scene"></param>
-        </member>
-        <member name="T:SnowLibrary.Monogame.ExitHelper">
-            <summary>
-            Provides an organized and accessable way to close the game rather than through the default game1.Exit() method.
-            </summary>
-        </member>
-        <member name="F:SnowLibrary.Monogame.ExitHelper.GameClosing">
-            <summary>
-            Gets invoked when the <see cref="M:SnowLibrary.Monogame.ExitHelper.CloseGame"/> method is called. therefore it is invoked right before the game closes
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.ExitHelper.CloseGame">
-            <summary>
-            Signals the game to close and invokes the <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> event
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.ExitHelper.ForceClose">
-            <summary>
-            Forces the game to close and does not invoke <see cref="F:SnowLibrary.Monogame.ExitHelper.GameClosing"/> nor <see cref="F:SnowLibrary.Monogame.ExitHelper.ClosingMethod"/>
-            </summary>
-        </member>
-        <member name="M:SnowLibrary.Monogame.ExitHelper.SetClosingMethod(System.Action)">
-            <summary>
-            Specifies what method should be called when closing the game. Ususally one wants this to be the "Game1.Close()" method of the game class
-            </summary>
-            <param name="method"></param>
         </member>
         <member name="T:SnowLibrary.Monogame.Sprite">
             <summary>
@@ -1903,33 +1912,33 @@
             Math Extention Methods for all Snow needs
             </summary>
         </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.ToRadians(System.Single)">
+            <summary>
+            Converts the given float value of degrees to radians
+            </summary>
+            <param name="degrees"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SnowLibrary.SnowMathExtentionMethods.ToDegrees(System.Single)">
+            <summary>
+            Conterts the given float value of radians to degrees
+            </summary>
+            <param name="radians"></param>
+            <returns></returns>
+        </member>
         <member name="M:SnowLibrary.SnowMathExtentionMethods.Min(System.Collections.Generic.List{System.Single})">
             <summary>
-            Finds the smallest float within the list of floats
+            Finds the smallest float in the list of floats
             </summary>
             <param name="floats"></param>
-            <returns>The smallest float within the given list</returns>
+            <returns>the smallest float in the list</returns>
         </member>
         <member name="M:SnowLibrary.SnowMathExtentionMethods.Max(System.Collections.Generic.List{System.Single})">
             <summary>
-            Finds the largest float within the list of floats
+            Finds the largest float in the list of floats
             </summary>
             <param name="floats"></param>
-            <returns>The largest float within the given list</returns>
-        </member>
-        <member name="M:SnowLibrary.SnowMathExtentionMethods.Min(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Finds the smallest double within the list of doubles
-            </summary>
-            <param name="doubles"></param>
-            <returns>The smallest double within the given list</returns>
-        </member>
-        <member name="M:SnowLibrary.SnowMathExtentionMethods.Max(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Finds the largest double within the list of doubles
-            </summary>
-            <param name="doubles"></param>
-            <returns>The largest double within the given list</returns>
+            <returns>the largest float in the list</returns>
         </member>
         <member name="M:SnowLibrary.SnowMathExtentionMethods.FloorToInt(System.Double)">
             <summary>

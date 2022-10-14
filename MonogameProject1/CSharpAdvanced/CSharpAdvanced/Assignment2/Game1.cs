@@ -58,7 +58,7 @@ namespace CSharpAdvanced.Assignment2
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            ExitHelper.SetClosingMethod(Exit);
+            ExitHelper.SetCloseMethod(Exit);
             PlayerPrefs.Clear();
             PlayerPrefs.SetValue("PlayerState", "0");
         }
@@ -149,6 +149,8 @@ namespace CSharpAdvanced.Assignment2
                 //gate.AttatchComponent<BoxCollider>().isTrigger = true;
                 //gate.AttatchComponent<SpriteRenderer>();
 
+                //gate.sceneNameToLoad = "Level2";
+
                 ////add the gate to the scene
                 //scene += gate;
 
@@ -228,6 +230,8 @@ namespace CSharpAdvanced.Assignment2
 
                 //gate.transform.position = new Vector2(MonoUtils.ScreenSize.X - gate.texture.width, MonoUtils.ScreenSize.Y - gate.texture.height);
 
+                //gate.sceneNameToLoad = "Level1";
+
                 ////add the gate to the scene
                 //scene += gate;
 
@@ -252,16 +256,14 @@ namespace CSharpAdvanced.Assignment2
             }
             else if (false)
             {
-                // load the first scene
-                //SceneManager.LoadScene("MainMenu");
-
                 currentScene = new Scene("MainMenu");
                 currentScene.SceneUI = UIEditor.Load("MainMenuUI");
                 currentScene.Save();
             }
             #endregion
 
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.CurrentScene = new Scene("Splash");
+            SceneManager.CurrentScene.SceneUI = UIEditor.Load("SplashScreen");
         }
 
         protected override void Update(GameTime time)
@@ -307,7 +309,7 @@ namespace CSharpAdvanced.Assignment2
             currentScene = SceneManager.CurrentScene;
 
             //set the window title screen to the name of the scene
-            Window.Title = currentScene.sceneName;
+            Window.Title = $"Zelda Like Game - {currentScene.sceneName}";
         }
     }
 }

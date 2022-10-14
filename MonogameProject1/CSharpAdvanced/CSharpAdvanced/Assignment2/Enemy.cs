@@ -61,7 +61,7 @@ namespace CSharpAdvanced.Assignment2
         }
         public Enemy() : base("new Enemy", new Transform())
         {
-
+            SceneManager.OnNewSceneLoaded += AssignTarget;
         }
         
         /// <summary>
@@ -73,14 +73,13 @@ namespace CSharpAdvanced.Assignment2
             positions.Foreach(x => patrolingPositions.Add(x));
         }
 
-        public override void Awake()
+        public void AssignTarget()
         {
             state = EnemyState.Patrolling;
             
-            var obj = SceneManager.CurrentScene.FindObjectWithName(TargetName);
-            Type t = obj?.GetType();
+            var obj = SceneManager.CurrentScene.FindGameObjectWithName(TargetName);
 
-            Player? p = obj as Player;
+            Type t = obj.GetType();
 
             target = obj;
         }

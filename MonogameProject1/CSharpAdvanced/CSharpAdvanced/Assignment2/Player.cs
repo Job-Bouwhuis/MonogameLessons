@@ -10,6 +10,7 @@ using SnowLibrary;
 using SnowLibrary.Serialization;
 using System.ComponentModel.DataAnnotations;
 using CSharpAdvanced.Assignment1;
+using SnowLibrary.Monogame.SceneManagement;
 
 namespace CSharpAdvanced.Assignment2
 {
@@ -73,6 +74,38 @@ namespace CSharpAdvanced.Assignment2
             /// </summary>
             WeaponShield
         }
+
+        public override void Awake()
+        {
+            RetainPlayersState();
+            EliminateEquipedItems();
+        }
+        
+        private void RetainPlayersState()
+        {
+            // set the player state from the previous scene so the weapons and shield remain, if the player had equiped them
+            PlayerState = (Player.State)TypeWorker.CastPrimitive<int>(PlayerPrefs.GetValue("PlayerState"));
+        }
+        
+        private void EliminateEquipedItems()
+        {
+            switch (PlayerState)
+            {
+                case Player.State.Weapon:
+                    Destroy(FindGameObjectWithName("Sword1"));
+                    break;
+                case Player.State.Shield:
+                    Destroy(FindGameObjectWithName("Shield1"));
+                    break;
+                case Player.State.WeaponShield:
+                    Destroy(FindGameObjectWithName("Sword1"));
+                    Destroy(FindGameObjectWithName("Shield1"));
+                    break;
+            }
+        }
     }
+
+
+
 }
 
