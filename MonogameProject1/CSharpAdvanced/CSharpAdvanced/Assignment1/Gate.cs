@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SnowLibrary;
-using SnowLibrary.Monogame;
+using WinterRose;
+using WinterRose.Monogame;
 using System;
 using System.Linq;
 

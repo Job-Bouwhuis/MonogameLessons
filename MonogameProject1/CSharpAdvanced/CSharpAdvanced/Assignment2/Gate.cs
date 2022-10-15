@@ -1,10 +1,10 @@
 ﻿using CSharpAdvanced.Assignment1;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SnowLibrary;
-using SnowLibrary.Monogame;
-using SnowLibrary.Monogame.SceneManagement;
-using SnowLibrary.Serialization;
+using WinterRose;
+using WinterRose.Monogame;
+using WinterRose.Monogame.SceneManagement;
+using WinterRose.Serialization;
 using System;
 using System.Linq;
 

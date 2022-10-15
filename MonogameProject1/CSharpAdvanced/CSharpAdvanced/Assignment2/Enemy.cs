@@ -1,15 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using SnowLibrary.Monogame;
-using SnowLibrary;
+using WinterRose.Monogame;
+using WinterRose;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using SnowLibrary.Serialization;
-using SnowLibrary.Monogame.SceneManagement;
-using SnowLibrary.Monogame.Debugging;
+using WinterRose.Serialization;
+using WinterRose.Monogame.SceneManagement;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace CSharpAdvanced.Assignment2
 {
@@ -78,8 +74,6 @@ namespace CSharpAdvanced.Assignment2
             state = EnemyState.Patrolling;
             
             var obj = SceneManager.CurrentScene.FindGameObjectWithName(TargetName);
-
-            Type t = obj.GetType();
 
             target = obj;
         }

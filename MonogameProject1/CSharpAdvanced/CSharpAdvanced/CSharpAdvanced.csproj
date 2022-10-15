@@ -25,8 +25,8 @@
     <Folder Include="Content\Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SnowingMonoLibrary">
-      <HintPath>Libraries\SnowingMonoLibrary.dll</HintPath>
+    <Reference Include="WinterRoseMonogame">
+      <HintPath>Libraries\WinterRoseMonogame.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SnowLibrary.Monogame;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Graphics;
-using SnowLibrary.Monogame.Debugging;
-using SnowLibrary;
-using SnowLibrary.Serialization;
-using System.ComponentModel.DataAnnotations;
-using CSharpAdvanced.Assignment1;
-using SnowLibrary.Monogame.SceneManagement;
+﻿using WinterRose.Monogame;
+using WinterRose;
 
 namespace CSharpAdvanced.Assignment2
 {

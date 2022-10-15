@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 
-using SnowLibrary;
-using SnowLibrary.Monogame.SceneManagement;
-using SnowLibrary.Monogame.UI;
-using SnowLibrary.Monogame;
-using SnowLibrary.Monogame.Debugging;
-using SnowLibrary.Monogame.UI.Editor;
+using WinterRose;
+using WinterRose.Monogame.SceneManagement;
+using WinterRose.Monogame.UI;
+using WinterRose.Monogame;
+using WinterRose.Monogame.Debugging;
+using WinterRose.Monogame.UI.Editor;
 using System;
 
 namespace CSharpAdvanced.Assignment1

@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SnowLibrary;
-using SnowLibrary.Monogame;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using WinterRose;
+using WinterRose.Monogame;
 
 
 namespace CSharpAdvanced.Assignment2
